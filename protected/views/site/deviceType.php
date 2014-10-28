@@ -65,7 +65,11 @@ $newProblemType = ($problem_type == 'BREAKDOWN') ? 'PROBLEM' : 'BREAKDOWN';
     }
     else
     {
-
+    ?>
+        <div class="alert alert-danger">
+            По данному устройтсву отсутствуют услуги ремонта
+        </div>
+    <?php
     }
     ?>
 </div>
