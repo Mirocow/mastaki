@@ -1,0 +1,21 @@
+.deviceInfo {
+    margin-bottom: 20px;
+}
+
+.panel {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.problems .panel {
+    border-color: white;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+.problems .panel .list-group-item {
+    border: none
+}
+.problems .panel .panel-heading {
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
+}
