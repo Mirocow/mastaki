@@ -24,9 +24,9 @@ $(document).ready(function () {
         }
 
         if(orderedProblems.length > 0)
-            $('#order-btn').parent().parent().parent().removeClass('hidden');
+            $('#order-btn').removeAttr('disabled')
         else
-            $('#order-btn').parent().parent().parent().addClass('hidden');
+            $('#order-btn').attr('disabled', 'disabled')
     });
 
     $('#order-btn').click(function(){
@@ -44,7 +44,7 @@ $(document).ready(function () {
     });
 });
 
-function orderCreated(response)
+function orderCreated(data)
 {
-    alert(response);
+    alert(data);
 }
