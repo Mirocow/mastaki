@@ -1,5 +1,6 @@
 .deviceInfo {
     margin-bottom: 20px;
+    line-height: 87px;
 }
 
 .panel {
@@ -18,4 +19,15 @@
 .problems .panel .panel-heading {
     border-top-right-radius: 7px;
     border-top-left-radius: 7px;
+}
+.problem-item {
+    cursor: pointer;
+}
+
+.hidden {
+    visibility:hidden;
+}
+
+#order-btn {
+    margin-top: 10px;
 }

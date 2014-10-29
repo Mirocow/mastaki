@@ -10,7 +10,7 @@ return array(
 	'name'=>'My Web Application',
 
 	// preloading 'log' component
-	'preload'=>array('log'),
+	'preload'=>array('log','EJSUrlManager'),
 
 	// autoloading model and component classes
 	'import'=>array(
@@ -36,6 +36,9 @@ return array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
 		),
+        'EJSUrlManager' => array(
+            'class' => 'ext.JSUrlManager.src.EJSUrlManager'
+        ),
 		// uncomment the following to enable URLs in path-format
 		/*
 		'urlManager'=>array(

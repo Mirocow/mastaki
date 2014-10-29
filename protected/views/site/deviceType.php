@@ -37,7 +37,21 @@ $newProblemType = ($problem_type == 'BREAKDOWN') ? 'PROBLEM' : 'BREAKDOWN';
 </div>
 <div class="col-md-10">
     <div class="row deviceInfo">
-        <span class="col-md-8 col-sm-8 col-xs-12"><strong><?=$currentDevice->manufacturer->name.' '.$currentDevice->name;?></strong></span><span class="pull-right col-md-4 col-sm-4 col-xs-12 text-right">Изменить тип проблемы: <a href="<?=$this->createUrl('/site/deviceType', array('type_id' => $type_id, 'manufacturer_id' => $manufacturer_id, 'device_id' => $device_id, 'problem_type' => $newProblemType));?>"><i class="fa fa-refresh"></i></a></span>
+        <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 text-center"><strong><?=$currentDevice->manufacturer->name.' '.$currentDevice->name;?></strong></div>
+        <div class="col-lg-8 col-md-4  col-sm-4 col-xs-12 text-center hidden">
+            <div class="row col-md-12 text-center">
+                <div class="col-md-6">
+                    <input type="text" name="phone" class="form-control col-md-4" placeholder="Телефон"/>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" name="name" class="form-control col-md-4" placeholder="Имя"/>
+                </div>
+                <div class="col-md-12 text-center">
+                    <button type="submit" href="#" id="order-btn" class="btn btn-success">Заказать</button>
+                </div>
+            </div>
+        </div>
+        <div class="pull-right col-lg-2 col-md-4 col-sm-4 col-xs-12 text-center">Тип: <a href="<?=$this->createUrl('/site/deviceType', array('type_id' => $type_id, 'manufacturer_id' => $manufacturer_id, 'device_id' => $device_id, 'problem_type' => $newProblemType));?>"><i class="fa fa-refresh"></i></a></div>
     </div>
     <?php
     if(count($problemCategories) > 0)
@@ -54,7 +68,7 @@ $newProblemType = ($problem_type == 'BREAKDOWN') ? 'PROBLEM' : 'BREAKDOWN';
                  foreach($problemCategory->problems as $problem)
                  {
                      $price = ($problem->type == 'BREAKDOWN') ? $problem->devicesProblem[0]->price.'р.' : 'от '.$problem->devicesProblem[0]->price.'р.';
-                     echo '<li class="list-group-item"><i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="'.$problem->description.'"></i> '.$problem->name.'<span class="pull-right">'.$price.'</span></li>';
+                     echo '<li class="list-group-item"><i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="'.$problem->description.'"></i> <span class="problem-item" problem-id="'.$problem->id.'">'.$problem->name.'</span><span class="pull-right">'.$price.'</span></li>';
                  }
 
                  echo '</ul>';

@@ -21,6 +21,14 @@ class Controller extends CController
 	 */
 	public $breadcrumbs=array();
 
+    public function filterCart($filterChain)
+    {
+        if(!isset(Yii::app()->user->cart) && !Yii::app()->user->isGuest)
+            Yii::app()->user->setState('cart', array());
+
+        $filterChain->run();
+    }
+
     public function getNavBar()
     {
         $deviceTypes = DeviceType::model()->findAll();
@@ -40,5 +48,12 @@ class Controller extends CController
             'encodeLabel'=> false,
         ));
     }
+
+    public function getCart()
+    {
+        return Yii::app()->user->cart;
+    }
+
+
 
 }
