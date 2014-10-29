@@ -25,7 +25,7 @@
 }
 
 .hidden {
-    visibility:hidden;
+    display:none;
 }
 
 #order-btn {

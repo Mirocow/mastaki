@@ -15,12 +15,12 @@ $(document).ready(function () {
         if (position == -1)
         {
             orderedProblems.push(problemId);
-            problemItem.parent().addClass('list-group-item-info');
+            problemItem.parent().addClass('list-group-item-info', 300, "swing" );
         }
         else
         {
             orderedProblems.splice(position, 1);
-            problemItem.parent().removeClass('list-group-item-info');
+            problemItem.parent().removeClass('list-group-item-info', 300, "swing" );
         }
 
         if(orderedProblems.length > 0)
