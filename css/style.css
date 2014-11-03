@@ -31,3 +31,6 @@
 #order-btn {
     margin-top: 10px;
 }
+#form-message {
+    display: none;
+}

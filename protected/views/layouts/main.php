@@ -17,6 +17,7 @@
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/js/bootstrap.js" type="application/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/common.js" type="application/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/addToCart.js" type="application/javascript"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/mask.js" type="application/javascript"></script>
 </head>
 <body>
 <div class="navbar navbar-default">
@@ -31,6 +32,15 @@
         </div>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
             <?php $this->getNavBar(); ?>
+            <ul class="pull-right nav navbar-nav">
+                <li>
+                    <?php if(Yii::app()->user->isGuest) { ?>
+                        <a href="<?=$this->createUrl('/site/login')?>"><i class="fa fa-user"></i> Войти</a>
+                    <?php } else { ?>
+                        <a href="<?=$this->createUrl('/site/logout')?>"><i class="fa fa-user"></i> Выйти</a>
+                    <?php } ?>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

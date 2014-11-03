@@ -39,15 +39,24 @@ $newProblemType = ($problem_type == 'BREAKDOWN') ? 'PROBLEM' : 'BREAKDOWN';
     <div class="row deviceInfo">
         <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 text-center"><strong><?=$currentDevice->manufacturer->name.' '.$currentDevice->name;?></strong></div>
         <div class="col-lg-8 col-md-4  col-sm-4 col-xs-12 text-center">
-            <div class="row col-md-12 text-center">
-                <div class="col-md-6">
-                    <input type="text" name="phone" class="form-control col-md-4" placeholder="Телефон"/>
+            <div class="row col-md-12 text-center" id="form-div">
+                <div class="col-md-6" id="phone-input">
+                    <div class="input-group">
+                        <span class="input-group-addon">+7</span>
+                        <input type="text" name="phone" class="form-control col-md-4" placeholder="Телефон"/>
+                    </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" id="name-input">
                     <input type="text" name="name" class="form-control col-md-4" placeholder="Имя"/>
                 </div>
                 <div class="col-md-12 text-center">
                     <button type="button" id="order-btn" class="btn btn-success" disabled="disabled">Заказать</button>
+                </div>
+            </div>
+            <div class="row col-md-12 text-ceter" id="form-message">
+                <div class="alert alert-dismissable alert-success">
+                    <button type="button" class="close" id="form-message-close">×</button>
+                    <strong>Заказ успешно создан!</strong>
                 </div>
             </div>
         </div>
