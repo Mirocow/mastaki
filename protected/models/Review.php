@@ -1,21 +1,25 @@
 <?php
 
 /**
- * This is the model class for table "order_problem".
+ * This is the model class for table "review".
  *
- * The followings are the available columns in table 'order_problem':
- * @property integer $device_problem_id
- * @property integer $fix_order_id
- * @property string $status
+ * The followings are the available columns in table 'review':
+ * @property integer $id
+ * @property string $content
+ * @property string $created
+ * @property integer $user_id
+ *
+ * The followings are the available model relations:
+ * @property User $user
  */
-class OrderProblem extends CActiveRecord
+class Review extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'order_problem';
+		return 'review';
 	}
 
 	/**
@@ -26,12 +30,12 @@ class OrderProblem extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('device_problem_id, fix_order_id', 'required'),
-			array('device_problem_id, fix_order_id', 'numerical', 'integerOnly'=>true),
-			array('status', 'length', 'max'=>45),
+			array('content, user_id', 'required'),
+			array('user_id', 'numerical', 'integerOnly'=>true),
+			array('created', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('device_problem_id, fix_order_id, status', 'safe', 'on'=>'search'),
+			array('id, content, created, user_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -43,7 +47,7 @@ class OrderProblem extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-            'deviceProblem' => array(self::BELONGS_TO, 'DeviceProblem', 'device_problem_id'),
+			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 		);
 	}
 
@@ -53,9 +57,10 @@ class OrderProblem extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'device_problem_id' => 'Device Problem',
-			'fix_order_id' => 'Fix Order',
-			'status' => 'Status',
+			'id' => 'ID',
+			'content' => 'Content',
+			'created' => 'Created',
+			'user_id' => 'User',
 		);
 	}
 
@@ -77,9 +82,10 @@ class OrderProblem extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('device_problem_id',$this->device_problem_id);
-		$criteria->compare('fix_order_id',$this->fix_order_id);
-		$criteria->compare('status',$this->status,true);
+		$criteria->compare('id',$this->id);
+		$criteria->compare('content',$this->content,true);
+		$criteria->compare('created',$this->created,true);
+		$criteria->compare('user_id',$this->user_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -90,7 +96,7 @@ class OrderProblem extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return OrderProblem the static model class
+	 * @return Review the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

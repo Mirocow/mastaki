@@ -45,6 +45,7 @@ class DeviceProblem extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
             'problem' => array(self::BELONGS_TO, 'Problem', 'problem_id'),
+            'device' => array(self::BELONGS_TO, 'Device', 'device_id'),
 		);
 	}
 

@@ -9,7 +9,6 @@
 }
 
 .problems .panel {
-    border-color: white;
     box-shadow: none;
     -webkit-box-shadow: none;
 }
@@ -33,4 +32,14 @@
 }
 #form-message {
     display: none;
+}
+
+body {
+    background: url('../images/white_carbon.png') repeat;
+
+}
+
+/** overwrite */
+.panel {
+    background: none;
 }

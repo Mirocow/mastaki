@@ -3,5 +3,5 @@
  */
 $(document).ready(function(){
     $('i[data-toggle=tooltip]').tooltip();
-    $('input[name=phone]').mask("(999) 999-99-99");
+    $('input[name=phone],input[name="LoginForm[phone]"],input[name="User[phone]"]').mask("(999) 999-99-99");
 });

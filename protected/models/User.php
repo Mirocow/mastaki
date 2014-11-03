@@ -7,9 +7,14 @@
  * @property integer $id
  * @property string $phone
  * @property string $name
+ * @property string $email
+ * @property string $address
  * @property string $password
  * @property string $role
  * @property string $open_pass
+ *
+ * The followings are the available model relations:
+ * @property Review[] $reviews
  */
 class User extends CActiveRecord
 {
@@ -30,11 +35,13 @@ class User extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('phone, name, password', 'required'),
+            array('email', 'email'),
 			array('phone', 'length', 'max'=>64),
-			array('name, password, role, open_pass', 'length', 'max'=>45),
+            array('name, password, email, role, open_pass', 'length', 'max'=>45),
+            array('address', 'length', 'max'=>128),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, phone, name, password, role, open_pass', 'safe', 'on'=>'search'),
+			array('id, phone, name, email, address, password, role, open_pass', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -45,8 +52,9 @@ class User extends CActiveRecord
 	{
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
-		return array(
-		);
+        return array(
+            'reviews' => array(self::HAS_MANY, 'Review', 'user_id'),
+        );
 	}
 
 	/**
@@ -58,6 +66,8 @@ class User extends CActiveRecord
 			'id' => 'ID',
 			'phone' => 'Phone',
 			'name' => 'Name',
+            'email' => 'Email',
+            'address' => 'Address',
 			'password' => 'Password',
 			'role' => 'Role',
 			'open_pass' => 'Open Pass',
@@ -85,6 +95,8 @@ class User extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('phone',$this->phone,true);
 		$criteria->compare('name',$this->name,true);
+        $criteria->compare('email',$this->email,true);
+        $criteria->compare('address',$this->address,true);
 		$criteria->compare('password',$this->password,true);
 		$criteria->compare('role',$this->role,true);
 		$criteria->compare('open_pass',$this->open_pass,true);
@@ -104,4 +116,12 @@ class User extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+    public function checkPassword($password)
+    {
+        if($this->password == md5($password))
+            return true;
+        else
+            return false;
+    }
 }

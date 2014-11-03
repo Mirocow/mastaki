@@ -62,7 +62,10 @@ function orderCreated(data)
         $('#order-btn').attr('disabled', 'disabled');
         $('.problem-item').parent().removeClass('list-group-item-info', 300, "swing" );
 
-
+        if(data.userPhone != null && data.userPassword != null)
+        {
+            $('#additional-message').html('Номер телефона:' + data.userPhone + ' Пароль:' + data.userPassword);
+        }
 
         $('#form-div').hide(500);
         $('#form-message').show(500);

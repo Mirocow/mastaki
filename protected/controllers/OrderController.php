@@ -7,6 +7,8 @@ class OrderController extends Controller
     {
         $errorName = 0;
         $errorPhone = 0;
+        $userPhone = null;
+        $userPassword = null;
         if(isset($_POST['data']))
         {
             $data = json_decode($_POST['data'], true);
@@ -23,7 +25,11 @@ class OrderController extends Controller
                     $user->password = md5($user->open_pass);
                     $user->save();
 
-                    //@todo Отправка SMS с паролем
+                    //@todo Отправка SMS с паролем, пока вместо этого вывод на экран
+
+                    $userPhone = $user->phone;
+                    $userPassword = $user->open_pass;
+
                 }
 
                 $newFixOrder = new FixOrder();
@@ -35,11 +41,11 @@ class OrderController extends Controller
                 foreach($data['orderedProblems'] as $problem)
                 {
                     $newOrderProblem = new OrderProblem();
-                    $newOrderProblem->fix_order_id = $user->getPrimaryKey();
+                    $newOrderProblem->fix_order_id = $newFixOrder->getPrimaryKey();
                     $newOrderProblem->device_problem_id = $problem;
                     $newOrderProblem->save();
                 }
-                print json_encode(array('result' => 'SUCCESS'));
+                print json_encode(array('result' => 'SUCCESS', 'userPhone' => $userPhone, 'userPassword' => $userPassword));
             }
             else
             {

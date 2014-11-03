@@ -6,6 +6,7 @@
  * The followings are the available columns in table 'fix_order':
  * @property integer $id
  * @property string $created
+ * @property double $discount
  * @property string $status
  * @property integer $user_id
  */
@@ -29,10 +30,11 @@ class FixOrder extends CActiveRecord
 		return array(
 			array('created, user_id', 'required'),
 			array('user_id', 'numerical', 'integerOnly'=>true),
+            array('discount', 'numerical'),
 			array('status', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, created, status, user_id', 'safe', 'on'=>'search'),
+			array('id, created, status, discount, user_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -44,6 +46,10 @@ class FixOrder extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+            //'deviceProblems' => array(self::MANY_MANY, 'DeviceProblem', 'order_problem(fix_order_id, device_problem_id)'),
+            'orderProblems' => array(self::HAS_MANY, 'OrderProblem', 'fix_order_id'),
+            'deviceProblems' => array(self::HAS_MANY, 'DeviceProblem', 'device_problem_id', 'through' => 'orderProblems'),
+
 		);
 	}
 
@@ -55,6 +61,7 @@ class FixOrder extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'created' => 'Created',
+            'discount' => 'Discount',
 			'status' => 'Status',
 			'user_id' => 'User',
 		);
@@ -81,6 +88,7 @@ class FixOrder extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('created',$this->created,true);
 		$criteria->compare('status',$this->status,true);
+        $criteria->compare('discount',$this->discount);
 		$criteria->compare('user_id',$this->user_id);
 
 		return new CActiveDataProvider($this, array(

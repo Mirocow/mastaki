@@ -57,6 +57,7 @@ $newProblemType = ($problem_type == 'BREAKDOWN') ? 'PROBLEM' : 'BREAKDOWN';
                 <div class="alert alert-dismissable alert-success">
                     <button type="button" class="close" id="form-message-close">×</button>
                     <strong>Заказ успешно создан!</strong>
+                    <p id="additional-message"></p>
                 </div>
             </div>
         </div>

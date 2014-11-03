@@ -29,6 +29,48 @@ class Controller extends CController
         $filterChain->run();
     }
 
+    public function sqlDateTime()
+    {
+        $now = new DateTime();
+        return $now->format('Y-m-d H:i:s');
+    }
+
+    public function showMessages($model = null)
+    {
+        if($model === null)
+            $errors = array();
+        else
+            $errors = $model->getErrors();
+
+        if(count($errors) > 0)
+        {
+            echo '<div class="row">';
+            foreach($errors as $error)
+            {
+                echo '<div class="alert alert-dismissable alert-danger">';
+                echo '<button type="button" class="close" data-dismiss="alert">×</button>';
+                echo '<strong>'.$error[0].'</strong>';
+                echo '</div>';
+                break;
+            }
+            echo '</div>';
+        }
+        elseif(Yii::app()->user->hasFlash('SUCCESS'))
+        {
+            echo '<div class="alert alert-dismissable alert-success">';
+            echo '<button type="button" class="close" data-dismiss="alert">×</button>';
+            echo '<strong>'.Yii::app()->user->getFlash('SUCCESS').'</strong>';
+            echo '</div>';
+        }
+        elseif(Yii::app()->user->hasFlash('ERROR'))
+        {
+            echo '<div class="alert alert-dismissable alert-danger">';
+            echo '<button type="button" class="close" data-dismiss="alert">×</button>';
+            echo '<strong>'.Yii::app()->user->getFlash('ERROR').'</strong>';
+            echo '</div>';
+        }
+    }
+
     public function getNavBar()
     {
         $deviceTypes = DeviceType::model()->findAll();
@@ -40,6 +82,8 @@ class Controller extends CController
         {
             $items[] = array('label'=>  $category->name  , 'url' => array('/site/deviceType', 'type_id' => $category->id));
         }
+
+        $items[] = array('label' => 'Личный кабинет', 'url' => array('/cabinet/index'), 'visible' => !Yii::app()->user->isGuest);
 
         $this->widget('zii.widgets.CMenu',array(
             'items'=> $items,
