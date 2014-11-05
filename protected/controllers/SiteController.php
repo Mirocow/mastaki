@@ -101,7 +101,20 @@ class SiteController extends Controller
             ));
         }
     }
-
+    public function actionInit()
+    {
+        foreach (Problem::model()->findAll() as $problem)
+        {
+            foreach(Device::model()->findAll() as $device)
+            {
+                $deviceProblem = new DeviceProblem();
+                $deviceProblem->price = floor(rand(1,10)) * 1000;
+                $deviceProblem->device_id = $device->getPrimaryKey();
+                $deviceProblem->problem_id = $problem->getPrimaryKey();
+                $deviceProblem->save();
+            }
+        }
+    }
 	/**
 	 * Displays the login page
 	 */

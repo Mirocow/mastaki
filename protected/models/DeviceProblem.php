@@ -27,7 +27,7 @@ class DeviceProblem extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, device_id, problem_id, price', 'required'),
+			array('device_id, problem_id, price', 'required'),
 			array('id, device_id, problem_id', 'numerical', 'integerOnly'=>true),
 			array('price', 'numerical'),
 			// The following rule is used by search().

@@ -25,4 +25,27 @@ class Core
             default: return $time->format('d.m.Y');
         }
     }
+
+    public static function problemStatuses()
+    {
+        return array(
+            'DISCUSS' => 'На согласовании',
+            'DIAGNOSTICS' => 'Диагностика',
+            'PENDING' => 'В обработке',
+            'AWAITING_PART' => 'Ожидание запчасти',
+            'REPAIRING' => 'В ремонте',
+            'READY' => 'Готово',
+            'NO_REPAIRS' => 'Без ремонта',
+            'CANCELED' => 'Отменено',
+        );
+    }
+    public static function orderStatuses()
+    {
+        return array(
+            'PENDING' => 'В обработке',
+            'REPAIRING' => 'В ремонте',
+            'READY' => 'Готово',
+            'CANCELED' => 'Отменено',
+        );
+    }
 }

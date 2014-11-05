@@ -37,7 +37,7 @@ $newProblemType = ($problem_type == 'BREAKDOWN') ? 'PROBLEM' : 'BREAKDOWN';
 </div>
 <div class="col-md-10">
     <div class="row deviceInfo">
-        <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 text-center"><strong><?=$currentDevice->manufacturer->name.' '.$currentDevice->name;?></strong></div>
+        <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 text-center"><strong><?=$currentDevice->name;?></strong></div>
         <div class="col-lg-8 col-md-4  col-sm-4 col-xs-12 text-center">
             <div class="row col-md-12 text-center" id="form-div">
                 <div class="col-md-6" id="phone-input">

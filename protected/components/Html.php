@@ -5,7 +5,14 @@ class Html {
     {
         switch($status)
         {
-            case 'PENDING': return '<span class="text-info"><i class="fa fa-clock-o"></i>&nbsp;На согласовании</span>'; break;
+            case 'PENDING': return '<span class="text-info"><i class="fa fa-clock-o"></i>&nbsp;В обработке</span>'; break;
+            case 'REPAIRING': return '<span class="text-warning"><i class="fa fa-gear fa-spin"></i>&nbsp;В ремонте</span>'; break;
+            case 'READY': return '<span class="text-success"><i class="fa fa-check"></i>&nbsp;Готово</span>'; break;
+            case 'CANCELED': return '<span class="text-danger"><i class="fa fa-times"></i>&nbsp;Отменено</span>'; break;
+            case 'NO_REPAIRS': return '<span class="text-success"><i class="fa fa-thumbs-o-up"></i>&nbsp;Без ремонта</span>'; break;
+            case 'AWAITING_PART': return '<span class="text-muted"><i class="fa fa-refresh fa-spin"></i>&nbsp;Ожидание запчасти</span>'; break;
+            case 'DIAGNOSTICS': return '<span class="text-info"><i class="fa fa-search"></i>&nbsp;На диагностике</span>'; break;
+            case 'DISCUSS': return '<span class="text-info"><i class="fa fa-phone"></i>&nbsp;На обсуждении</span>'; break;
             default: return $status;
         }
     }
@@ -13,7 +20,10 @@ class Html {
     {
         switch($status)
         {
-            case 'PENDING': return '<span class="text-info"><i class="fa fa-clock-o"></i>&nbsp;На согласовании</span>'; break;
+            case 'PENDING': return '<span class="text-info"><i class="fa fa-clock-o"></i>&nbsp;В обработке</span>'; break;
+            case 'REPAIRING': return '<span class="text-warning"><i class="fa fa-gear fa-spin"></i>&nbsp;В ремонте</span>'; break;
+            case 'READY': return '<span class="text-success"><i class="fa fa-check"></i>&nbsp;Готово</span>'; break;
+            case 'CANCELED': return '<span class="text-danger"><i class="fa fa-times"></i>&nbsp;Отменено</span>'; break;
             default: return $status;
         }
     }

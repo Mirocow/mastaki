@@ -49,6 +49,7 @@ class FixOrder extends CActiveRecord
             //'deviceProblems' => array(self::MANY_MANY, 'DeviceProblem', 'order_problem(fix_order_id, device_problem_id)'),
             'orderProblems' => array(self::HAS_MANY, 'OrderProblem', 'fix_order_id'),
             'deviceProblems' => array(self::HAS_MANY, 'DeviceProblem', 'device_problem_id', 'through' => 'orderProblems'),
+            'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 
 		);
 	}

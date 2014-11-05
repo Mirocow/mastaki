@@ -85,6 +85,12 @@ class Controller extends CController
 
         $items[] = array('label' => 'Личный кабинет', 'url' => array('/cabinet/index'), 'visible' => !Yii::app()->user->isGuest);
 
+        if(isset(Yii::app()->user->role))
+        {
+            if(Yii::app()->user->role == 'ADMIN')
+                $items[] = array('label' => 'Админка', 'url' => array('/admin/index'), 'visible' => !Yii::app()->user->isGuest);
+        }
+
         $this->widget('zii.widgets.CMenu',array(
             'items'=> $items,
             'submenuHtmlOptions' => array('class' => 'dropdown-menu'),
