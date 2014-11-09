@@ -46,7 +46,8 @@
         </div>
     </div>
 </div>
-
+<div class="body">
     <?php echo $content; ?>
+</div>
 </body>
 </html>

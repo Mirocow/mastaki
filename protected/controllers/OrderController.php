@@ -60,4 +60,28 @@ class OrderController extends Controller
         else
             print json_encode(array('result' => 'ERROR'));
     }
+
+    public function actionAjaxAddProblemToOrder()
+    {
+        $response = array();
+        if(isset($_POST['data']))
+        {
+            $data = json_decode($_POST['data']);
+
+            $order = FixOrder::model()->findByPk($data->orderId);
+            $deviceProblem = DeviceProblem::model()->findByPk($data->problemId);
+            $orderProblem = new OrderProblem();
+            $orderProblem->device_problem_id = $deviceProblem->getPrimaryKey();
+            $orderProblem->fix_order_id = $order->getPrimaryKey();
+            $orderProblem->save();
+
+            $response['position'] = count($order->orderProblems) + 1;
+            $response['name'] = $deviceProblem->problem->name;
+            $response['device'] = Device::model()->findByPk($order->getDevice())->name;
+            $response['price'] = $deviceProblem->getTotalPrice();
+            $response['discount'] = $orderProblem->discount;
+            $response['status'] = Html::getProblemStatus($orderProblem->status);
+            print json_encode($response);
+        }
+    }
 }

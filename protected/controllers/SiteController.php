@@ -78,10 +78,11 @@ class SiteController extends Controller
             $currentDevice = Device::model()->with('manufacturer')->findByPk($device_id);
 
             $problemCategories = ProblemCategory::model()->with(array('problems' => array('with' => 'devicesProblem')))->findAll(array(
-                'condition' => 'devicesProblem.device_id = :device_id AND problems.type = :problem_type',
+                'condition' => 'devicesProblem.device_id = :device_id AND problems.type = :problem_type AND device_type_id = :type_id',
                 'params' => array(
                     ':device_id' => $device_id,
                     ':problem_type' => $problem_type,
+                    ':type_id' => $type_id,
                 ),
             ));
 
@@ -107,8 +108,10 @@ class SiteController extends Controller
         {
             foreach(Device::model()->findAll() as $device)
             {
+                $price = floor(rand(1,10)) * 1000;
                 $deviceProblem = new DeviceProblem();
-                $deviceProblem->price = floor(rand(1,10)) * 1000;
+                $deviceProblem->price = $price / 2;
+                $deviceProblem->part_price = $price / 2;
                 $deviceProblem->device_id = $device->getPrimaryKey();
                 $deviceProblem->problem_id = $problem->getPrimaryKey();
                 $deviceProblem->save();

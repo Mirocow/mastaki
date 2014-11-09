@@ -77,8 +77,16 @@ $newProblemType = ($problem_type == 'BREAKDOWN') ? 'PROBLEM' : 'BREAKDOWN';
 
                  foreach($problemCategory->problems as $problem)
                  {
-                     $price = ($problem->type == 'BREAKDOWN') ? $problem->devicesProblem[0]->price.'р.' : 'от '.$problem->devicesProblem[0]->price.'р.';
-                     echo '<li class="list-group-item"><i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="'.$problem->description.'"></i> <span class="problem-item" problem-id="'.$problem->id.'">'.$problem->name.'</span><span class="pull-right">'.$price.'</span></li>';
+                     $price = ($problem->type == 'BREAKDOWN') ? $problem->devicesProblem[0]->getTotalPrice() .'р.' : 'от '.$problem->devicesProblem[0]->getTotalPrice().'р.';
+                     echo '<li class="list-group-item">';
+                     echo '<i class="fa fa-arrow-circle-down details-arrow" problem-id="'.$problem->devicesProblem[0]->id.'"></i>&nbsp;<span class="problem-item" problem-id="'.$problem->devicesProblem[0]->id.'">'.$problem->name.'</span><span class="pull-right">'.$price.'</span>';
+                     echo '<p class="problem-details hidden" problem-id="'.$problem->devicesProblem[0]->id.'">';
+                     if($problem->image)
+                         echo '<img src="'.Yii::app()->request->baseUrl.'/images/problems/'.$problem->image;
+
+                     echo '<span>'.$problem->description.'</span>';
+                     echo '</p>';
+                     echo '</li>';
                  }
 
                  echo '</ul>';

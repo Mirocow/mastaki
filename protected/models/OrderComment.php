@@ -1,22 +1,27 @@
 <?php
 
 /**
- * This is the model class for table "fix_order".
+ * This is the model class for table "order_comment".
  *
- * The followings are the available columns in table 'fix_order':
+ * The followings are the available columns in table 'order_comment':
  * @property integer $id
+ * @property string $content
  * @property string $created
- * @property string $status
  * @property integer $user_id
+ * @property integer $fix_order_id
+ *
+ * The followings are the available model relations:
+ * @property User $user
+ * @property FixOrder $fixOrder
  */
-class FixOrder extends CActiveRecord
+class OrderComment extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'fix_order';
+		return 'order_comment';
 	}
 
 	/**
@@ -27,12 +32,11 @@ class FixOrder extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('created, user_id', 'required'),
-			array('user_id', 'numerical', 'integerOnly'=>true),
-			array('status', 'length', 'max'=>45),
+			array('content, created, user_id, fix_order_id', 'required'),
+			array('user_id, fix_order_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, created, status, user_id', 'safe', 'on'=>'search'),
+			array('id, content, created, user_id, fix_order_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -44,11 +48,8 @@ class FixOrder extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-            //'deviceProblems' => array(self::MANY_MANY, 'DeviceProblem', 'order_problem(fix_order_id, device_problem_id)'),
-            'orderProblems' => array(self::HAS_MANY, 'OrderProblem', 'fix_order_id'),
-            'deviceProblems' => array(self::HAS_MANY, 'DeviceProblem', 'device_problem_id', 'through' => 'orderProblems'),
-            'user' => array(self::BELONGS_TO, 'User', 'user_id'),
-
+			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
+			'fixOrder' => array(self::BELONGS_TO, 'FixOrder', 'fix_order_id'),
 		);
 	}
 
@@ -59,9 +60,10 @@ class FixOrder extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'content' => 'Content',
 			'created' => 'Created',
-			'status' => 'Status',
 			'user_id' => 'User',
+			'fix_order_id' => 'Fix Order',
 		);
 	}
 
@@ -84,9 +86,10 @@ class FixOrder extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+		$criteria->compare('content',$this->content,true);
 		$criteria->compare('created',$this->created,true);
-		$criteria->compare('status',$this->status,true);
 		$criteria->compare('user_id',$this->user_id);
+		$criteria->compare('fix_order_id',$this->fix_order_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -97,43 +100,10 @@ class FixOrder extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return FixOrder the static model class
+	 * @return OrderComment the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
 	}
-
-    public function getTotalPrice($discounts = true)
-    {
-        if($discounts)
-        {
-            $totalPrice = 0;
-            foreach($this->orderProblems as $orderProblem)
-            {
-                $totalPrice += $orderProblem->deviceProblem->part_price;
-                $totalPrice += $orderProblem->deviceProblem->price - ($orderProblem->deviceProblem->price/100 * $orderProblem->discount);
-            }
-            return $totalPrice;
-        }
-        else
-        {
-            $totalPrice = 0;
-            foreach($this->orderProblems as $orderProblem)
-            {
-                $totalPrice += $orderProblem->deviceProblem->part_price + $orderProblem->deviceProblem->price;
-            }
-            return $totalPrice;
-        }
-    }
-
-    public function getTotalDiscount()
-    {
-        return round(100*($this->getTotalPrice(false) - $this->getTotalPrice(true))/$this->getTotalPrice(false), 2);
-    }
-
-    public function getDevice()
-    {
-        return $this->deviceProblems[0]->device->id;
-    }
 }

@@ -7,6 +7,7 @@
  * @property integer $device_problem_id
  * @property integer $fix_order_id
  * @property string $status
+ * @property double $discount
  */
 class OrderProblem extends CActiveRecord
 {
@@ -26,12 +27,12 @@ class OrderProblem extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('device_problem_id, fix_order_id', 'required'),
+			array('device_problem_id, fix_order_id, discount', 'required'),
 			array('device_problem_id, fix_order_id', 'numerical', 'integerOnly'=>true),
 			array('status', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('device_problem_id, fix_order_id, status', 'safe', 'on'=>'search'),
+			array('device_problem_id, fix_order_id, status, discount', 'safe', 'on'=>'search'),
 		);
 	}
 

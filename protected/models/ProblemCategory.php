@@ -6,6 +6,7 @@
  * The followings are the available columns in table 'problem_category':
  * @property integer $id
  * @property string $name
+ * @property integer $device_type_id
  */
 class ProblemCategory extends CActiveRecord
 {
@@ -25,11 +26,11 @@ class ProblemCategory extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name', 'required'),
+			array('name, device_type_id', 'required'),
 			array('name', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name', 'safe', 'on'=>'search'),
+			array('id, name, device_type_id', 'safe', 'on'=>'search'),
 		);
 	}
 

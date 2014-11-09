@@ -167,6 +167,7 @@ class AdminController extends Controller
     }
     public function actionAjaxGetOrder($id)
     {
+        $response = array();
         $order = FixOrder::model()->find(array(
             'condition' => 't.id = :id',
             'params' => array(':id' => $id),
@@ -182,7 +183,9 @@ class AdminController extends Controller
             ),
         ));
 
-        $this->renderPartial('_order', array('data' => $order));
+        $response['output'] = $this->renderPartial('_order', array('data' => $order), true);
+        $response['problems'] = CHtml::listData(DeviceProblem::model()->findAllByAttributes(array('device_id' => FixOrder::model()->findByPk($id)->getDevice())), 'id', 'problem.name');
+        print json_encode($response);
     }
 
 
@@ -192,7 +195,6 @@ class AdminController extends Controller
         {
             $data = json_decode($_POST['data']);
             $order = FixOrder::model()->findByPk($data->orderId);
-            $order->discount = $data->discount;
             $order->status = $data->orderStatus;
             $order->save();
 
@@ -205,10 +207,12 @@ class AdminController extends Controller
             {
                 $dbProblemStatus = OrderProblem::model()->findByPk($problemStatus->id);
                 $dbProblemStatus->status = $problemStatus->status;
+                $dbProblemStatus->discount = $problemStatus->discount;
                 $dbProblemStatus->save();
             }
-            $newPrice = ($totalPrice - (($totalPrice/100)*$order->discount));
-            print json_encode(array('result' => 'SUCCESS', 'orderId' => $order->getPrimaryKey(), 'newPrice' => $newPrice));
+            $newPrice = $order->getTotalPrice();
+            $newDiscount = $order->getTotalDiscount();
+            print json_encode(array('result' => 'SUCCESS', 'orderId' => $order->getPrimaryKey(), 'newPrice' => $newPrice, 'newDiscount' => $newDiscount));
         }
         else
             print json_encode(array('result' => 'ERROR'));

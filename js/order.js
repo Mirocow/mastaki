@@ -20,15 +20,24 @@ $(document).ready(function () {
 
 function orderSaved(data)
 {
-    //alert(data);
     data = JSON.parse(data);
 
     if(data.result == 'SUCCESS')
     {
         $('table[order-id=' + data.orderId + '] span.price').text(data.newPrice);
+        $('table[order-id=' + data.orderId + '] span.total-discount').text(data.newDiscount);
         $('table[order-id=' + data.orderId + '] a.save-order').attr('disabled', 'disabled').removeClass('btn-success').addClass('btn-default');
         doFiltration($('#orders-filter').val());
     }
+}
+
+function problemAdded(data)
+{
+    data = JSON.parse(data);
+    $('td.main-td').attr('rowspan', $('td.main-td').attr('rowspan') + 1);
+    var html = '<tr><td>' + data.position + '</td><td>' + data.device + '</td><td>' + data.name + '</td><td>' + data.price + '</td><td>' + data.discount + '</td><td>' + data.status + '</td></tr>';
+
+    $('table.order-details-table tr.problem-row:last').after(html);
 }
 
 function filter(data)
@@ -49,9 +58,13 @@ function filter(data)
 
 function orderDetails(data)
 {
-    $('.order-table-container').html(data);
+    data = JSON.parse(data);
+    $('.order-table-container').html(data.output);
+
+    drawProblemsDropdown(data.problems);
+
     $('.problem-status-select,.order-status-select,.discount').change(function(){
-        $(this).parent().parent().parent().find('a.save-order').removeAttr('disabled').removeClass('btn-default').addClass('btn-success');
+        $('table.order-details-table a.save-order').removeAttr('disabled').removeClass('btn-default').addClass('btn-success');
     });
     $('.save-order').click(function(){
 
@@ -62,9 +75,13 @@ function orderDetails(data)
 
 
         $(tbody.find('.problem-status-select')).each(function(){
+            var orderProblemId = $(this).attr('order-problem-id');
+
             problemStatuses.push({
                 status: $(this).val(),
-                id: $(this).attr('order-problem-id')});
+                discount: $('tr[order-problem-id=' + orderProblemId +'] input.discount').val(),
+                id: orderProblemId
+            });
         });
 
         var orderStatus = tbody.find('#orderStatus').val();
@@ -72,7 +89,6 @@ function orderDetails(data)
 
         var data = {
             orderId: orderId,
-            discount: discount,
             problemStatuses: problemStatuses,
             orderStatus: orderStatus
         };
@@ -103,4 +119,31 @@ function doFiltration(string)
             filter: string
         })
         .done(function(response){filter(response)});
+}
+
+function drawProblemsDropdown(problems)
+{
+    var html = '<button class="btn btn-success add-problem col-md-2">Добавить проблему</button>';
+    html += '<div class="col-md-10"><select class="form-control col-md-10 new-problem-select">';
+    $.each(problems, function(key, value){
+        html += '<option value="' + key + '">' + value + '</option>';
+    });
+    html += '</select></div>';
+    $('#problems-dropdown-container').html(html);
+
+    $('button.add-problem').click(function(){
+        var orderId = $('table.order-details-table').attr('order-id');
+
+        var data = {
+            orderId: orderId,
+            problemId: $('select.new-problem-select').val()
+        };
+
+        $.post( Yii.app.createUrl('order/ajaxAddProblemToOrder'),
+            {
+                data: JSON.stringify(data)
+            })
+            .done(function(response){problemAdded(response)});
+
+    });
 }

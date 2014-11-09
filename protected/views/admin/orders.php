@@ -34,6 +34,12 @@
     <div class="table-responsive order-table-container">
     </div>
 </div>
+<div class="col-md-12" id="problems-dropdown-container">
+
+</div>
+<div class="col-md-12">
+
+</div>
 <?php
 /*$this->widget('zii.widgets.CListView', array(
     'dataProvider'=> $orders,

@@ -8,6 +8,7 @@
  * @property integer $device_id
  * @property integer $problem_id
  * @property double $price
+ * @property double $part_price
  */
 class DeviceProblem extends CActiveRecord
 {
@@ -27,12 +28,12 @@ class DeviceProblem extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('device_id, problem_id, price', 'required'),
-			array('id, device_id, problem_id', 'numerical', 'integerOnly'=>true),
-			array('price', 'numerical'),
+            array('device_id, problem_id, price', 'required'),
+            array('device_id, problem_id', 'numerical', 'integerOnly'=>true),
+			array('price, part_price', 'numerical'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, device_id, problem_id, price', 'safe', 'on'=>'search'),
+			array('id, device_id, problem_id, price, part_price', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,6 +60,7 @@ class DeviceProblem extends CActiveRecord
 			'device_id' => 'Device',
 			'problem_id' => 'Breakdown',
 			'price' => 'Price',
+            'part_price' => 'Part Price',
 		);
 	}
 
@@ -84,6 +86,7 @@ class DeviceProblem extends CActiveRecord
 		$criteria->compare('device_id',$this->device_id);
 		$criteria->compare('problem_id',$this->problem_id);
 		$criteria->compare('price',$this->price);
+        $criteria->compare('part_price',$this->part_price);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -100,4 +103,9 @@ class DeviceProblem extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+    public function getTotalPrice()
+    {
+        return $this->price + $this->part_price;
+    }
 }

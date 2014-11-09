@@ -7,7 +7,7 @@ $totalPrice = 0;
 $discount = 0;
 ?>
 
-<table class="table" order-id="<?=$data->id;?>">
+<table class="table order-details-table" order-id="<?=$data->id;?>">
     <tr colspan="7">
         Клиент: <?=$data->user->id.'  '.$data->user->name;?>
     </tr>
@@ -15,7 +15,7 @@ $discount = 0;
         $firstRow = false;
         ?>
     <tr>
-        <td rowspan="<?=(count($data->orderProblems)+1)?>">
+        <td rowspan="<?=(count($data->orderProblems)+1)?>" class="main-td">
             <p>#<?=$data->id;?></p>
             <p><?=$data->created;?></p>
         </td>
@@ -27,7 +27,7 @@ $discount = 0;
         {
             $totalPrice += $orderProblem->deviceProblem->price;
     ?>
-    <tr>
+    <tr class="problem-row" order-problem-id="<?=$orderProblem->id;?>">
         <td>
             <?=$counter;?>
         </td>
@@ -37,8 +37,14 @@ $discount = 0;
         <td>
             <?=$orderProblem->deviceProblem->problem->name;?>
         </td>
-        <td colspan="2">
-            <?=$orderProblem->deviceProblem->price;?>
+        <td>
+            <?=$orderProblem->deviceProblem->getTotalPrice();?>
+        </td>
+        <td class="col-md-1">
+            <div class="input-group input-group-sm">
+                <input type="text" class="form-control discount" size="2" value="<?=$orderProblem->discount;?>"/>
+                <span class="input-group-addon">%</span>
+            </div>
         </td>
         <td>
             <?php
@@ -58,13 +64,10 @@ $discount = 0;
             <strong>Итого по всем работам со скидкой:</strong>
         </td>
         <td>
-            <span class="price"><?=($totalPrice - ($totalPrice/100*$data->discount));?></span>р.
+            <span class="price"><?=$data->getTotalPrice();?></span>р.
         </td>
         <td class="col-md-1">
-            <div class="input-group input-group-sm">
-                <input type="text" class="form-control discount" size="2" value="<?=$data->discount;?>"/>
-                <span class="input-group-addon">%</span>
-            </div>
+            <span class="total-discount"><?=$data->getTotalDiscount();?></span> %
         </td>
         <td>
             <?php
