@@ -8,14 +8,62 @@ $(document).ready(function () {
             .done(function(response){filter(response)});
 
     });
-    $('button#do-filter').click(function(){
+    $('button#do-filter').on('click', function(){
         var string = $('#orders-filter').val();
         doFiltration(string);
     });
-    $('.order-short').click(function(){
+    $('.order-short').on('click', function(){
         orderShortClick($(this));
     });
+    $('button.add-problem').on('click', function(){
+        var orderId = $('table.order-details-table').attr('order-id');
 
+        var data = {
+            orderId: orderId,
+            problemId: $('select.new-problem-select').val()
+        };
+
+        $.post( Yii.app.createUrl('order/ajaxAddProblemToOrder'),
+            {
+                data: JSON.stringify(data)
+            })
+            .done(function(response){problemAdded(response)});
+
+    });
+    $('.save-order').on('click', function(){
+
+        var problemStatuses = [];
+        var orderId = $(this).attr('order-id');
+
+        var tbody = $('table[order-id=' + orderId + ']');
+
+
+        $(tbody.find('.problem-status-select')).each(function(){
+            var orderProblemId = $(this).attr('order-problem-id');
+
+            problemStatuses.push({
+                status: $(this).val(),
+                discount: $('tr[order-problem-id=' + orderProblemId +'] input.discount').val(),
+                id: orderProblemId
+            });
+        });
+
+        var orderStatus = tbody.find('#orderStatus').val();
+        var discount = tbody.find('.discount').val();
+
+        var data = {
+            orderId: orderId,
+            problemStatuses: problemStatuses,
+            orderStatus: orderStatus
+        };
+
+
+        $.post( Yii.app.createUrl('order/ajaxSaveOrder'),
+            {
+                data: JSON.stringify(data)
+            })
+            .done(function(response){orderSaved(response)});
+    });
 });
 
 function orderSaved(data)
@@ -51,9 +99,6 @@ function filter(data)
     });
 
     $('tbody#orders-tbody').html(html);
-    $('.order-short').click(function(){
-        orderShortClick($(this));
-    });
 }
 
 function orderDetails(data)
@@ -65,40 +110,6 @@ function orderDetails(data)
 
     $('.problem-status-select,.order-status-select,.discount').change(function(){
         $('table.order-details-table a.save-order').removeAttr('disabled').removeClass('btn-default').addClass('btn-success');
-    });
-    $('.save-order').click(function(){
-
-        var problemStatuses = [];
-        var orderId = $(this).attr('order-id');
-
-        var tbody = $('table[order-id=' + orderId + ']');
-
-
-        $(tbody.find('.problem-status-select')).each(function(){
-            var orderProblemId = $(this).attr('order-problem-id');
-
-            problemStatuses.push({
-                status: $(this).val(),
-                discount: $('tr[order-problem-id=' + orderProblemId +'] input.discount').val(),
-                id: orderProblemId
-            });
-        });
-
-        var orderStatus = tbody.find('#orderStatus').val();
-        var discount = tbody.find('.discount').val();
-
-        var data = {
-            orderId: orderId,
-            problemStatuses: problemStatuses,
-            orderStatus: orderStatus
-        };
-
-
-        $.post( Yii.app.createUrl('order/ajaxSaveOrder'),
-            {
-                data: JSON.stringify(data)
-            })
-            .done(function(response){orderSaved(response)});
     });
 }
 
@@ -130,20 +141,4 @@ function drawProblemsDropdown(problems)
     });
     html += '</select></div>';
     $('#problems-dropdown-container').html(html);
-
-    $('button.add-problem').click(function(){
-        var orderId = $('table.order-details-table').attr('order-id');
-
-        var data = {
-            orderId: orderId,
-            problemId: $('select.new-problem-select').val()
-        };
-
-        $.post( Yii.app.createUrl('order/ajaxAddProblemToOrder'),
-            {
-                data: JSON.stringify(data)
-            })
-            .done(function(response){problemAdded(response)});
-
-    });
 }

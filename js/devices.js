@@ -1,53 +1,3 @@
-function assignEvents()
-{
-    $('.device-type-li').click(function(){
-        var deviceTypeId = $(this).attr('device-type-id');
-
-        $('.device-type-li').parent().removeClass('bg-info');
-        $(this).parent().addClass('bg-info');
-
-        $('#device-type-input').val($(this).text());
-
-        var data = {
-            deviceTypeId: deviceTypeId,
-            action: 'deviceType'
-        };
-
-        $.post( Yii.app.createUrl('ajax/getDevices'),
-            {
-                data: JSON.stringify(data)
-            })
-            .done(function(response){updateDevices(response)});
-    });
-    $('.manufacturer-li').click(function(){
-        var deviceTypeId = $('.device-types-list .bg-info span').attr('device-type-id');
-        var manufacturerId = $(this).attr('manufacturer-id');
-
-        $('.manufacturer-li').parent().removeClass('bg-info');
-        $(this).parent().addClass('bg-info');
-
-        $('#manufacturer-input').val($(this).text());
-
-        var data = {
-            deviceTypeId: deviceTypeId,
-            manufacturerId: manufacturerId,
-            action: 'manufacturer'
-        };
-
-        $.post( Yii.app.createUrl('ajax/getDevices'),
-            {
-                data: JSON.stringify(data)
-            })
-            .done(function(response){updateDevices(response)});
-    });
-    $('.device-li').click(function(){
-        $('.device-li').parent().removeClass('bg-info');
-        $(this).parent().addClass('bg-info');
-
-        $('#device-input').val($(this).text());
-    });
-}
-
 $(document).ready(function(){
 
     $('#save-device-type').click(function(){
@@ -104,7 +54,54 @@ $(document).ready(function(){
                 $('.devices-list .bg-info span').text(value);
             });
     });
-    assignEvents();
+
+
+    $('.device-type-li').on('click', function(){
+        var deviceTypeId = $(this).attr('device-type-id');
+
+        $('.device-type-li').parent().removeClass('bg-info');
+        $(this).parent().addClass('bg-info');
+
+        $('#device-type-input').val($(this).text());
+
+        var data = {
+            deviceTypeId: deviceTypeId,
+            action: 'deviceType'
+        };
+
+        $.post( Yii.app.createUrl('ajax/getDevices'),
+            {
+                data: JSON.stringify(data)
+            })
+            .done(function(response){updateDevices(response)});
+    });
+    $('.manufacturer-li').on('click', function(){
+        var deviceTypeId = $('.device-types-list .bg-info span').attr('device-type-id');
+        var manufacturerId = $(this).attr('manufacturer-id');
+
+        $('.manufacturer-li').parent().removeClass('bg-info');
+        $(this).parent().addClass('bg-info');
+
+        $('#manufacturer-input').val($(this).text());
+
+        var data = {
+            deviceTypeId: deviceTypeId,
+            manufacturerId: manufacturerId,
+            action: 'manufacturer'
+        };
+
+        $.post( Yii.app.createUrl('ajax/getDevices'),
+            {
+                data: JSON.stringify(data)
+            })
+            .done(function(response){updateDevices(response)});
+    });
+    $('.device-li').on('click', function(){
+        $('.device-li').parent().removeClass('bg-info');
+        $(this).parent().addClass('bg-info');
+
+        $('#device-input').val($(this).text());
+    });
 });
 
 function updateDevices(data)
@@ -164,5 +161,4 @@ function updateDevices(data)
         });
         $('.devices-list').html(html);
     }
-    assignEvents();
 }
