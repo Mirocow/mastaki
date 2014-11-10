@@ -119,3 +119,8 @@ table td {
 .devices-lists .btn-group.col-md-12 {
     margin-bottom: 10px;
 }
+.device-li,
+.manufacturer-li,
+.device-type-li {
+    cursor: pointer;
+}

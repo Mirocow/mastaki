@@ -2565,3 +2565,253 @@ Stack trace:
 REQUEST_URI=/index.php?r=admin/ajaxGetOrder&id=2
 HTTP_REFERER=http://mastaki/index.php?r=admin/orders
 ---
+2014/11/11 01:45:22 [error] [php] json_decode() expects parameter 1 to be string, array given (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:8)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#4 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/getDevices
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (8)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/11 01:46:56 [error] [php] Undefined offset: 0 (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:12)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/getDevices
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (12)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/11 01:49:59 [error] [php] Undefined offset: 0 (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:12)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/getDevices
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (12)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/11 01:50:55 [error] [exception.CDbException] exception 'CDbException' with message 'Table "device" does not have a column named "device_type_id".' in /Applications/MAMP/htdocs/mastaki/framework/db/schema/CDbCommandBuilder.php:694
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveRecord.php(1535): CDbCommandBuilder->createColumnCriteria(Object(CMysqlTableSchema), Array, '', Array, '`t`.')
+#1 /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php(15): CActiveRecord->findAllByAttributes(Array)
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CInlineAction.php(49): AjaxController->actionGetDevices()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): CController->run('getDevices')
+#7 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController('ajax/getDevices')
+#8 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#9 /Applications/MAMP/htdocs/mastaki/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php?r=ajax/getDevices
+HTTP_REFERER=http://mastaki/index.php?r=admin/devices
+---
+2014/11/11 02:02:44 [error] [php] Undefined index: action (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:9)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/getDevices
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (9)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/11 02:02:46 [error] [php] Undefined index: action (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:9)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/getDevices
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (9)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/11 02:02:57 [error] [php] Undefined index: action (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:9)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/getDevices
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (9)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/11 02:03:32 [error] [php] Undefined index: deviceTypeId (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:21)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/getDevices
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (21)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/11 02:03:37 [error] [php] Undefined index: deviceTypeId (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:21)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/getDevices
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (21)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/11 02:03:38 [error] [php] Undefined index: deviceTypeId (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:21)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/getDevices
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (21)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/11 02:05:27 [error] [php] Undefined index: deviceTypeId (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:21)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/getDevices
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (21)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/11 02:05:32 [error] [php] Undefined index: deviceTypeId (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:21)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/getDevices
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (21)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/11 02:05:47 [error] [php] Undefined index: deviceTypeId (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:21)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/getDevices
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (21)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/11 02:05:51 [error] [php] Undefined index: deviceTypeId (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:21)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/getDevices
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (21)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/11 02:06:22 [error] [php] Undefined index: deviceTypeId (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:21)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/getDevices
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (21)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/11 02:20:00 [error] [php] Undefined index: value (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:35)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/saveElement
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (35)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/11 02:21:45 [error] [exception.CDbException] exception 'CDbException' with message 'The value for the column "id" is not supplied when querying the table "manufacturer".' in /Applications/MAMP/htdocs/mastaki/framework/db/schema/CDbCommandBuilder.php:813
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/db/schema/CDbCommandBuilder.php(621): CDbCommandBuilder->createInCondition(Object(CMysqlTableSchema), Array, Array, '`t`.')
+#1 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveRecord.php(1485): CDbCommandBuilder->createPkCriteria(Object(CMysqlTableSchema), '1', '', Array, '`t`.')
+#2 /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php(40): CActiveRecord->findByPk('1')
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CInlineAction.php(49): AjaxController->actionSaveElement()
+#4 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): CController->run('saveElement')
+#8 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController('ajax/saveElemen...')
+#9 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/mastaki/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=ajax/saveElement
+HTTP_REFERER=http://mastaki/index.php?r=admin/devices
+---
+2014/11/11 02:23:24 [error] [exception.CDbException] exception 'CDbException' with message 'The value for the column "id" is not supplied when querying the table "manufacturer".' in /Applications/MAMP/htdocs/mastaki/framework/db/schema/CDbCommandBuilder.php:813
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/db/schema/CDbCommandBuilder.php(621): CDbCommandBuilder->createInCondition(Object(CMysqlTableSchema), Array, Array, '`t`.')
+#1 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveRecord.php(1485): CDbCommandBuilder->createPkCriteria(Object(CMysqlTableSchema), '6', '', Array, '`t`.')
+#2 /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php(40): CActiveRecord->findByPk('6')
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CInlineAction.php(49): AjaxController->actionSaveElement()
+#4 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): CController->run('saveElement')
+#8 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController('ajax/saveElemen...')
+#9 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/mastaki/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=ajax/saveElement
+HTTP_REFERER=http://mastaki/index.php?r=admin/devices
+---
+2014/11/11 02:25:41 [error] [exception.CDbException] exception 'CDbException' with message 'The value for the column "id" is not supplied when querying the table "manufacturer".' in /Applications/MAMP/htdocs/mastaki/framework/db/schema/CDbCommandBuilder.php:813
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/db/schema/CDbCommandBuilder.php(621): CDbCommandBuilder->createInCondition(Object(CMysqlTableSchema), Array, Array, '`t`.')
+#1 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveRecord.php(1485): CDbCommandBuilder->createPkCriteria(Object(CMysqlTableSchema), '6', '', Array, '`t`.')
+#2 /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php(40): CActiveRecord->findByPk('6')
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CInlineAction.php(49): AjaxController->actionSaveElement()
+#4 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): CController->run('saveElement')
+#8 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController('ajax/saveElemen...')
+#9 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/mastaki/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=ajax/saveElement
+HTTP_REFERER=http://mastaki/index.php?r=admin/devices
+---
+2014/11/11 02:26:04 [error] [exception.CDbException] exception 'CDbException' with message 'The value for the column "device_type_id" is not supplied when querying the table "manufacturer".' in /Applications/MAMP/htdocs/mastaki/framework/db/schema/CDbCommandBuilder.php:813
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/db/schema/CDbCommandBuilder.php(621): CDbCommandBuilder->createInCondition(Object(CMysqlTableSchema), Array, Array, '`t`.')
+#1 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveRecord.php(1485): CDbCommandBuilder->createPkCriteria(Object(CMysqlTableSchema), Array, '', Array, '`t`.')
+#2 /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php(40): CActiveRecord->findByPk(Array)
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CInlineAction.php(49): AjaxController->actionSaveElement()
+#4 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): CController->run('saveElement')
+#8 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController('ajax/saveElemen...')
+#9 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/mastaki/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=ajax/saveElement
+HTTP_REFERER=http://mastaki/index.php?r=admin/devices
+---
