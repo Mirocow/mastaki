@@ -116,6 +116,9 @@ function updateDevices(data)
 
     if(data.action == 'deviceType')
     {
+        $('.manufacturers-list').html('');
+        $('.devices-list').html('');
+
         $.each(data.manufacturers, function(id, name){
             if(first)
                 html += '<li class="bg-info">';
@@ -146,6 +149,8 @@ function updateDevices(data)
     {
         html = '';
         first = true;
+
+        $('.devices-list').html('');
 
         $.each(data.devices, function(id, name){
             if(first)
