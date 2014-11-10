@@ -45,16 +45,16 @@ class AdminController extends Controller
 
     public function actionDevices()
     {
-        $devices = new CActiveDataProvider('Device', array(
-            'pagination'=>array(
-                'pageSize' => 10,
-                'pageVar' =>'page',
-            ),
-        ));
+        $deviceTypes = DeviceType::model()->findAll();
+        $manufacturers = Manufacturer::model()->findAllByAttributes(array('device_type_id' => $deviceTypes[0]->getPrimaryKey()));
+        $devices = Device::model()->findAllByAttributes(array('manufacturer_id' => $manufacturers[0]->getPrimaryKey(), 'type_id' => $deviceTypes[0]->getPrimaryKey()));
 
-        $this->render('devices', array('devices' => $devices));
+        $this->render('devices', array('deviceTypes' => $deviceTypes, 'manufacturers' => $manufacturers, 'devices' => $devices));
     }
-
+    public function actionAjaxUploadImage()
+    {
+        $upload_handler = new UploadHandler();
+    }
     public function actionProblems($problem_category_id = null)
     {
         $criteria = new CDbCriteria();

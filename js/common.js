@@ -20,6 +20,6 @@ $(document).ready(function(){
             $('p.problem-details[problem-id=' + $(this).attr('problem-id') +']').removeClass('hidden');
 
         }
-    })
+    });
     $('input[name=phone],input[name="LoginForm[phone]"],input[name="User[phone]"]').mask("(999) 999-99-99");
 });

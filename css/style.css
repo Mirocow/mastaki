@@ -97,3 +97,25 @@ table td {
 #problems-dropdown-container {
     margin-bottom: 200px;
 }
+
+.device-types-list > li > i,
+.manufacturers-list > li > i,
+.devices-list > li > i {
+    font-size: 8pt;
+    padding: 0 5px;
+    cursor: pointer;
+}
+
+.devices-lists > div > ul {
+    height: 100px;
+    min-height: 100px;
+    overflow-y: scroll;
+}
+
+.devices-lists input {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.devices-lists .btn-group.col-md-12 {
+    margin-bottom: 10px;
+}
