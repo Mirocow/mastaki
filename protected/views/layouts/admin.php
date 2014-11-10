@@ -6,7 +6,7 @@
             'items'=> array(
                 array('label' => 'Заказы', 'url' => array('/admin/orders')),
                 array('label' => 'Производители', 'url' => array('/admin/manufacturers')),
-                array('label' => 'Устройства', 'url' => array('/admin/devices')),
+                array('label' => 'Аппараты', 'url' => array('/admin/devices')),
                 array('label' => 'Проблемы', 'url' => array('/admin/problems')),
             ),
             'submenuHtmlOptions' => array('class' => 'dropdown-menu'),

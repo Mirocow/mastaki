@@ -2532,3 +2532,36 @@ Stack trace:
 #10 {main}
 REQUEST_URI=/index.php?r=site/init
 ---
+2014/11/10 15:09:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "ajaxGetOrder".' in /Applications/MAMP/htdocs/mastaki/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(270): CController->missingAction('ajaxGetOrder')
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): CController->run('ajaxGetOrder')
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/ajaxGetOr...')
+#3 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/mastaki/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=admin/ajaxGetOrder&id=3
+HTTP_REFERER=http://mastaki/index.php?r=admin/orders
+---
+2014/11/10 15:09:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "ajaxGetOrder".' in /Applications/MAMP/htdocs/mastaki/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(270): CController->missingAction('ajaxGetOrder')
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): CController->run('ajaxGetOrder')
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/ajaxGetOr...')
+#3 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/mastaki/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=admin/ajaxGetOrder&id=3
+HTTP_REFERER=http://mastaki/index.php?r=admin/orders
+---
+2014/11/10 15:09:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "ajaxGetOrder".' in /Applications/MAMP/htdocs/mastaki/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(270): CController->missingAction('ajaxGetOrder')
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): CController->run('ajaxGetOrder')
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/ajaxGetOr...')
+#3 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/mastaki/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=admin/ajaxGetOrder&id=2
+HTTP_REFERER=http://mastaki/index.php?r=admin/orders
+---

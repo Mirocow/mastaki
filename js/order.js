@@ -34,8 +34,8 @@ function orderSaved(data)
 function problemAdded(data)
 {
     data = JSON.parse(data);
-    $('td.main-td').attr('rowspan', $('td.main-td').attr('rowspan') + 1);
-    var html = '<tr><td>' + data.position + '</td><td>' + data.device + '</td><td>' + data.name + '</td><td>' + data.price + '</td><td>' + data.discount + '</td><td>' + data.status + '</td></tr>';
+    $('td.main-td').attr('rowspan', parseInt($('td.main-td').attr('rowspan')) + 1);
+    var html = '<tr class="problem-row" order-problem-id="' + data.problemId + '"><td>' + data.position + '</td><td>' + data.device + '</td><td>' + data.name + '</td><td>' + data.price + '</td><td>' + data.discount + '</td><td>' + data.status + '</td></tr>';
 
     $('table.order-details-table tr.problem-row:last').after(html);
 }
@@ -94,7 +94,7 @@ function orderDetails(data)
         };
 
 
-        $.post( Yii.app.createUrl('admin/ajaxSaveOrder'),
+        $.post( Yii.app.createUrl('order/ajaxSaveOrder'),
             {
                 data: JSON.stringify(data)
             })
@@ -104,7 +104,7 @@ function orderDetails(data)
 
 function orderShortClick(order)
 {
-    $.get( Yii.app.createUrl('admin/ajaxGetOrder'),
+    $.get( Yii.app.createUrl('order/ajaxGetOrder'),
         {
             id: order.attr('order-id')
         })
@@ -114,7 +114,7 @@ function orderShortClick(order)
 function doFiltration(string)
 {
 
-    $.post( Yii.app.createUrl('admin/ajaxGetOrders'),
+    $.post( Yii.app.createUrl('order/ajaxGetOrders'),
         {
             filter: string
         })

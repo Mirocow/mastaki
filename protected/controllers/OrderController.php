@@ -61,6 +61,76 @@ class OrderController extends Controller
             print json_encode(array('result' => 'ERROR'));
     }
 
+    public function actionAjaxGetOrders()
+    {
+        $response = array();
+        $condition = '';
+        if(isset($_POST['filter']))
+            $condition = "t.id = '".$_POST['filter']."' OR user.name LIKE '%".$_POST['filter']."%'";
+
+        $orders = FixOrder::model()->findAll(array(
+            'condition' => $condition,
+            'with' => array('user'),
+        ));
+
+        foreach($orders as $order)
+            $response[] = array('id' => $order->id, 'name' => $order->user->name, 'status' => $order->status);
+
+        print json_encode($response);
+    }
+    public function actionAjaxGetOrder($id)
+    {
+        $response = array();
+        $order = FixOrder::model()->find(array(
+            'condition' => 't.id = :id',
+            'params' => array(':id' => $id),
+            'with' => array(
+                'orderProblems' => array(
+                    'with' => array(
+                        'deviceProblem' => array(
+                            'with' => array('device', 'problem'),
+                        )
+                    ),
+                ),
+                'user',
+            ),
+        ));
+
+        $response['output'] = $this->renderPartial('_order', array('data' => $order), true);
+        $response['problems'] = CHtml::listData(DeviceProblem::model()->findAllByAttributes(array('device_id' => FixOrder::model()->findByPk($id)->getDevice())), 'id', 'problem.name');
+        print json_encode($response);
+    }
+
+    public function actionAjaxSaveOrder()
+    {
+        if(isset($_POST['data']))
+        {
+            $data = json_decode($_POST['data']);
+            $order = FixOrder::model()->findByPk($data->orderId);
+            $order->status = $data->orderStatus;
+            $order->save();
+
+            $totalPrice = 0;
+            $orderProblems = OrderProblem::model()->with('deviceProblem')->findAllByAttributes(array('fix_order_id' => $order->getPrimaryKey()));
+            foreach($orderProblems as $orderProblem)
+                $totalPrice += $orderProblem->deviceProblem->price;
+
+            foreach($data->problemStatuses as $problemStatus)
+            {
+                $dbProblemStatus = OrderProblem::model()->findByPk($problemStatus->id);
+                $dbProblemStatus->status = $problemStatus->status;
+                $dbProblemStatus->discount = $problemStatus->discount;
+                $dbProblemStatus->save();
+            }
+            $newPrice = $order->getTotalPrice();
+            $newDiscount = $order->getTotalDiscount();
+            print json_encode(array('result' => 'SUCCESS', 'orderId' => $order->getPrimaryKey(), 'newPrice' => $newPrice, 'newDiscount' => $newDiscount));
+        }
+        else
+            print json_encode(array('result' => 'ERROR'));
+
+    }
+
     public function actionAjaxAddProblemToOrder()
     {
         $response = array();
@@ -75,12 +145,16 @@ class OrderController extends Controller
             $orderProblem->fix_order_id = $order->getPrimaryKey();
             $orderProblem->save();
 
-            $response['position'] = count($order->orderProblems) + 1;
+            $response['problemId'] = $orderProblem->getPrimaryKey();
+            $response['position'] = count($order->orderProblems);
             $response['name'] = $deviceProblem->problem->name;
             $response['device'] = Device::model()->findByPk($order->getDevice())->name;
             $response['price'] = $deviceProblem->getTotalPrice();
-            $response['discount'] = $orderProblem->discount;
-            $response['status'] = Html::getProblemStatus($orderProblem->status);
+            $response['discount'] = '<div class="input-group input-group-sm">
+                <input type="text" class="form-control discount" size="2" value="'.$orderProblem->discount.'"/>
+                <span class="input-group-addon">%</span>
+            </div>';
+            $response['status'] = CHtml::dropDownList('problemStatus', $orderProblem->status, Core::problemStatuses(), array('class' => 'form-control input-sm problem-status-select','order-problem-id' => $orderProblem->getPrimaryKey()));
             print json_encode($response);
         }
     }
