@@ -5,10 +5,13 @@
  *
  * The followings are the available columns in table 'device_type':
  * @property integer $id
+ * @property integer $pos
  * @property string $name
+ * @property string $icon
  */
 class DeviceType extends CActiveRecord
 {
+    public $icon_file;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -25,10 +28,11 @@ class DeviceType extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name', 'length', 'max'=>45),
+			array('name', 'length', 'max' => 45),
+            array('icon_file', 'file', 'types'=>'jpg, jpeg, gif, png'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name', 'safe', 'on'=>'search'),
+			array('id, name, pos, icon, icon_file', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -40,6 +44,7 @@ class DeviceType extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+            'manufacturers' => array(self::HAS_MANY, 'Manufacturer', 'device_type_id'),
 		);
 	}
 
@@ -73,6 +78,7 @@ class DeviceType extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+		$criteria->compare('pos',$this->id);
 		$criteria->compare('name',$this->name,true);
 
 		return new CActiveDataProvider($this, array(

@@ -27,8 +27,8 @@ class Device extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, name, manufacturer_id, type_id', 'required'),
-			array('id, manufacturer_id, type_id', 'numerical', 'integerOnly'=>true),
+			array('name, manufacturer_id, type_id', 'required'),
+			array('manufacturer_id, type_id', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

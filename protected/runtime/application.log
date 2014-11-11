@@ -2815,3 +2815,60 @@ Stack trace:
 REQUEST_URI=/index.php?r=ajax/saveElement
 HTTP_REFERER=http://mastaki/index.php?r=admin/devices
 ---
+2014/11/11 23:15:21 [error] [php] Undefined index: id (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:143)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/deleteElement
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (143)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/12 00:24:19 [error] [php] json_decode() expects parameter 1 to be string, array given (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:58)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#4 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/addElement
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (58)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/12 00:24:31 [error] [php] json_decode() expects parameter 1 to be string, array given (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:58)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#4 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/addElement
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (58)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/12 00:24:53 [error] [php] Undefined index: value (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:62)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/addElement
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (62)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/12 00:40:04 [error] [php] Undefined index: device-type-icon-file (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:67)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/addElement
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (67)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)

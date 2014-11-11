@@ -5,6 +5,8 @@
  *
  * The followings are the available columns in table 'manufacturer':
  * @property integer $id
+ * @property integer $pos
+ * @property integer $device_type_id
  * @property string $name
  */
 class Manufacturer extends CActiveRecord
@@ -29,7 +31,7 @@ class Manufacturer extends CActiveRecord
 			array('name', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name', 'safe', 'on'=>'search'),
+			array('id, name, device_type_id, pos', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -52,6 +54,7 @@ class Manufacturer extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'device_type_id' => 'device_type_id',
 			'name' => 'Name',
 		);
 	}
@@ -76,6 +79,7 @@ class Manufacturer extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
+		$criteria->compare('device_type_id',$this->name,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

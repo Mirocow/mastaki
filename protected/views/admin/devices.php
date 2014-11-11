@@ -12,20 +12,23 @@
 
             ?>
         </ul>
-        <input type="text" id="device-type-input" class="form-control" value="<?=$deviceTypes[0]->name;?>"/>
-        <div class="btn-group col-md-12">
-            <button type="button" class="btn btn-default dropdown-toggle col-md-12" data-toggle="dropdown">
-                Действие <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu col-md-12" role="menu">
-                <li><a href="#" id="save-device-type">Сохранить</a></li>
-                <li><a href="#" id="add-device-type">Добавить</a></li>
-                <li><a href="#" id="delete-device-type">Удалить</a></li>
-            </ul>
-        </div>
-        <div class="col-md-12">
-            <input id="device-type-icon-file" type="file" class="form-control col-md-12" name="device-type-icon-file">
-        </div>
+        <form id="device-type-form">
+            <input type="text" id="device-type-input" name="value" class="form-control" value="<?=$deviceTypes[0]->name;?>"/>
+            <div class="btn-group col-md-12">
+                <button type="button" class="btn btn-default dropdown-toggle col-md-12" data-toggle="dropdown">
+                    Действие <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu col-md-12" role="menu">
+                    <li><a href="#" id="save-device-type">Сохранить</a></li>
+                    <li><a href="#" id="add-device-type">Добавить</a></li>
+                    <li><a href="#" id="delete-device-type">Удалить</a></li>
+                </ul>
+            </div>
+            <div class="col-md-12">
+                    <input id="device-type-icon-file" name="DeviceType[icon_file]" type="file" class="form-control col-md-12">
+            </div>
+            <input type="hidden" name="action" value="deviceType"/>
+        </form>
         <div class="col-md-12 text-center device-type-icon-container">
             <img src="#" id="device-type-icon-file-preview" class="img-thumbnail img-responsive hidden"/>
         </div>
