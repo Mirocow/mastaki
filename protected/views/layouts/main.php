@@ -14,6 +14,7 @@
     <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>-->
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.js" type="application/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-ui.js" type="application/javascript"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.swap.js" type="application/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/js/bootstrap.js" type="application/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/common.js" type="application/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/addToCart.js" type="application/javascript"></script>
@@ -22,6 +23,7 @@
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/imagePreview.js" type="application/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/mask.js" type="application/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/devices.js" type="application/javascript"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/devicesSort.js" type="application/javascript"></script>
 </head>
 <body>
 <div class="navbar navbar-default">

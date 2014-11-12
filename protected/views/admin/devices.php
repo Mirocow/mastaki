@@ -6,7 +6,7 @@
                 $first = true;
                 foreach($deviceTypes as $deviceType)
                 {
-                    echo '<li'.(($first) ? ' class="bg-info"' : '').'><i class="fa fa-arrow-down"></i><i class="fa fa-arrow-up"></i><span device-type-id="'.$deviceType->id.'" class="device-type-li">'.$deviceType->name.'</span></li>';
+                    echo '<li'.(($first) ? ' class="bg-info"' : '').'><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span device-type-id="'.$deviceType->id.'" class="device-type-li">'.$deviceType->name.'</span></li>';
                     $first = false;
                 }
 
@@ -41,7 +41,7 @@
                 $first = true;
                 foreach($manufacturers as $manufacturer)
                 {
-                    echo '<li'.(($first) ? ' class="bg-info"' : '').'><i class="fa fa-arrow-down"></i><i class="fa fa-arrow-up"></i><span manufacturer-id="'.$manufacturer->id.'" class="manufacturer-li">'.$manufacturer->name.'</span></li>';
+                    echo '<li'.(($first) ? ' class="bg-info"' : '').'><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span manufacturer-id="'.$manufacturer->id.'" class="manufacturer-li">'.$manufacturer->name.'</span></li>';
                     $first = false;
                 }
             ?>
@@ -65,7 +65,7 @@
                 $first = true;
                 foreach($devices as $device)
                 {
-                    echo '<li'.(($first) ? ' class="bg-info"' : '').'><i class="fa fa-arrow-down"></i><i class="fa fa-arrow-up"></i><span device-id="'.$device->id.'" class="device-li">'.$device->name.'</span></li>';
+                    echo '<li'.(($first) ? ' class="bg-info"' : '').'><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span device-id="'.$device->id.'" class="device-li">'.$device->name.'</span></li>';
                     $first = false;
                 }
             ?>

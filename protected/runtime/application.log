@@ -3007,3 +3007,14 @@ Stack trace:
 REQUEST_URI=/index.php?r=ajax/saveElement
 in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (40)
 in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/13 03:06:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "sortElement".' in /Applications/MAMP/htdocs/mastaki/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(270): CController->missingAction('sortElement')
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): CController->run('sortElement')
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController('ajax/sortElemen...')
+#3 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/mastaki/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=ajax/sortElement
+HTTP_REFERER=http://mastaki/index.php?r=admin/devices
+---
