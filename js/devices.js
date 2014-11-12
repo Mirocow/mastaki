@@ -187,15 +187,11 @@ $(document).ready(function(){
         var value = $('#manufacturer-input').val();
         var deviceTypeId = $('.device-types-list .bg-info span').attr('device-type-id');
 
-        var data = {
-            action: 'manufacturer',
-            deviceTypeId: deviceTypeId,
-            value: value
-        };
-
         $.post( Yii.app.createUrl('ajax/addElement'),
             {
-                data: JSON.stringify(data)
+                action: 'manufacturer',
+                deviceTypeId: deviceTypeId,
+                value: value
             })
             .done(function(response){
                 response = JSON.parse(response);
@@ -211,16 +207,12 @@ $(document).ready(function(){
         var deviceTypeId = $('.device-types-list .bg-info span').attr('device-type-id');
         var manufacturerId = $('.manufacturers-list .bg-info span').attr('manufacturer-id');
 
-        var data = {
-            action: 'device',
-            deviceTypeId: deviceTypeId,
-            manufacturerId: manufacturerId,
-            value: value
-        };
-
         $.post( Yii.app.createUrl('ajax/addElement'),
             {
-                data: JSON.stringify(data)
+                action: 'device',
+                deviceTypeId: deviceTypeId,
+                manufacturerId: manufacturerId,
+                value: value
             })
             .done(function(response){
                 response = JSON.parse(response);

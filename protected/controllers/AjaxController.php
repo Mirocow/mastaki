@@ -63,10 +63,12 @@ class AjaxController extends Controller
 
                 if(isset($_FILES['DeviceType']))
                 {
-
-                    $deviceType->icon_file=CUploadedFile::getInstance($deviceType,'icon_file');
-                    $deviceType->icon_file->saveAs('images/icons/'.$deviceType->icon_file->name);
-                    $deviceType->icon = $deviceType->icon_file->name;
+                    if($_FILES['DeviceType']['tmp_name']['icon_file'] !== '')
+                    {
+                        $deviceType->icon_file=CUploadedFile::getInstance($deviceType,'icon_file');
+                        $deviceType->icon_file->saveAs('images/icons/'.$deviceType->icon_file->name);
+                        $deviceType->icon = $deviceType->icon_file->name;
+                    }
                 }
 
                 if($deviceType->save())
