@@ -12,7 +12,9 @@ class AjaxController extends Controller
 
                 reset($manufacturers);
 
-                $devices = CHtml::listData(Device::model()->findAllByAttributes(array('type_id' => $data['deviceTypeId'], 'manufacturer_id' => key($manufacturers))), 'id', 'name');
+                $devices = array();
+                foreach(Device::model()->findAllByAttributes(array('type_id' => $data['deviceTypeId'], 'manufacturer_id' => key($manufacturers))) as $device)
+                    $devices[] = array('id' => $device->getPrimaryKey(), 'name' => $device->name, 'image' => $device->image);
 
                 print json_encode(array('action' => 'deviceType', 'manufacturers' => $manufacturers, 'devices' => $devices));
             }
@@ -29,13 +31,24 @@ class AjaxController extends Controller
 
     public function actionSaveElement()
     {
-        if(isset($_POST['data']))
+        $data = $_POST;
+        if(isset($data['action']))
         {
-            $data = json_decode($_POST['data'], true);
             if($data['action'] == 'deviceType')
             {
                 $deviceType = DeviceType::model()->findByPk($data['id']);
                 $deviceType->name = $data['value'];
+
+                if(isset($_FILES['DeviceType']))
+                {
+                    if($_FILES['DeviceType']['tmp_name']['icon_file'] !== '')
+                    {
+                        $deviceType->icon_file=CUploadedFile::getInstance($deviceType,'icon_file');
+                        $deviceType->icon_file->saveAs('images/icons/'.$deviceType->icon_file->name);
+                        $deviceType->icon = $deviceType->icon_file->name;
+                    }
+                }
+
                 $deviceType->save();
             }
             if($data['action'] == 'manufacturer')
@@ -48,6 +61,17 @@ class AjaxController extends Controller
             {
                 $device = Device::model()->findByPk($data['id']);
                 $device->name = $data['value'];
+
+                if(isset($_FILES['Device']))
+                {
+                    if($_FILES['Device']['tmp_name']['image_file'] !== '')
+                    {
+                        $device->image_file=CUploadedFile::getInstance($device,'image_file');
+                        $device->image_file->saveAs('images/images/'.$device->image_file->name);
+                        $device->image = $device->image_file->name;
+                    }
+                }
+
                 $device->save();
             }
         }
@@ -175,5 +199,50 @@ class AjaxController extends Controller
             $result = 'ERROR';
 
         print json_encode(array('result' => $result));
+    }
+
+    public function actionGetImage()
+    {
+        $response = array();
+        if(isset($_POST['data']))
+        {
+            $data = json_decode($_POST['data'],true);
+
+            if($data['action'] == 'deviceType')
+            {
+                $deviceType = DeviceType::model()->findByPk($data['id']);
+                if($deviceType !== null)
+                {
+                    if($deviceType->icon !== null)
+                    {
+                        $response['src'] = Yii::app()->baseUrl.'/images/icons/'.$deviceType->icon;
+                        $response['result'] = 'OK';
+                    }
+                    else
+                        $response['result'] = 'NO_IMAGE';
+                }
+                else
+                    $response['result'] = 'ERROR';
+            }
+            elseif($data['action'] == 'device')
+            {
+                $device = Device::model()->findByPk($data['id']);
+                if($device !== null)
+                {
+                    if($device->image !== null)
+                    {
+                        $response['src'] = Yii::app()->baseUrl.'/images/images/'.$device->image;
+                        $response['result'] = 'OK';
+                    }
+                    else
+                        $response['result'] = 'NO_IMAGE';
+                }
+                else
+                    $response['result'] = 'ERROR';
+            }
+            else
+                $response['result'] = 'ERROR';
+        }
+        print json_encode($response);
     }
 }

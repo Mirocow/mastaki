@@ -25,8 +25,9 @@
                 </ul>
             </div>
             <div class="col-md-12">
-                    <input id="device-type-icon-file" name="DeviceType[icon_file]" type="file" class="form-control col-md-12">
+                <input id="device-type-icon-file" name="DeviceType[icon_file]" type="file" class="form-control col-md-12">
             </div>
+            <input type="hidden" id="deviceTypeIdHidden" name="id" value="<?=$deviceTypes[0]->getPrimaryKey();?>"/>
             <input type="hidden" name="action" value="deviceType"/>
         </form>
         <div class="col-md-12 text-center device-type-icon-container">
@@ -85,8 +86,9 @@
                 <input id="device-image-file" name="Device[image_file]" type="file" class="form-control col-md-12">
             </div>
             <input type="hidden" name="action" value="device"/>
-            <input type="hidden" name="deviceTypeId" value=""/>
-            <input type="hidden" name="manufacturerId" value=""/>
+            <input type="hidden" name="deviceTypeId" value="<?=$deviceTypes[0]->getPrimaryKey();?>"/>
+            <input type="hidden" name="manufacturerId" value="<?=$manufacturers[0]->getPrimaryKey();?>"/>
+            <input type="hidden" id="deviceIdHidden" name="id" value=""/>
         </form>
         <div class="col-md-12 text-center device-photo-container">
             <img src="#" id="device-image-file-preview" class="img-thumbnail img-responsive hidden"/>

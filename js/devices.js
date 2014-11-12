@@ -1,22 +1,25 @@
 $(document).ready(function(){
 
     $('#save-device-type').click(function(){
-        var id = $('.device-types-list .bg-info span').attr('device-type-id');
-        var value = $('#device-type-input').val();
+        var form = new FormData($('#device-type-form')[0]);
 
-        var data = {
-            action: 'deviceType',
-            id: id,
-            value: value
-        };
+        var request = $.ajax({
+            url: Yii.app.createUrl('ajax/saveElement'),
+            type: "POST",
+            processData: false,
+            cache: false,
+            contentType: false,
+            data: form
+        });
+        request.done(function(response) {
+            response = JSON.parse(response);
 
-        $.post( Yii.app.createUrl('ajax/saveElement'),
-            {
-                data: JSON.stringify(data)
-            })
-            .done(function(response){
-                $('.device-types-list .bg-info span').text(value);
-            });
+            var html = '<li><i class="fa fa-arrow-down"></i><i class="fa fa-arrow-up"></i><span device-type-id="' + response.id + '" class="device-type-li">' + response.name + '</span></li>';
+            if ($('.device-types-list li').length !== 0)
+                $('.device-types-list li:last').after(html);
+            else
+                $('.device-types-list').html(html);
+        });
     });
     $('#save-manufacturer').click(function(){
         var id = $('.manufacturers-list .bg-info span').attr('manufacturer-id');
@@ -37,22 +40,19 @@ $(document).ready(function(){
             });
     });
     $('#save-device').click(function(){
-        var id = $('.devices-list .bg-info span').attr('device-id');
-        var value = $('#device-input').val();
+        var form = new FormData($('#device-form')[0]);
 
-        var data = {
-            action: 'device',
-            id: id,
-            value: value
-        };
-
-        $.post( Yii.app.createUrl('ajax/saveElement'),
-            {
-                data: JSON.stringify(data)
-            })
-            .done(function(response){
-                $('.devices-list .bg-info span').text(value);
-            });
+        var request = $.ajax({
+            url: Yii.app.createUrl('ajax/saveElement'),
+            type: "POST",
+            processData: false,
+            cache: false,
+            contentType: false,
+            data: form
+        });
+        request.done(function(response) {
+            $('.devices-list .bg-info span').text($('#device-input').val());
+        });
     });
     $('#delete-device-type').click(function(){
         if (confirm('Удалить?')) {
@@ -177,9 +177,6 @@ $(document).ready(function(){
             });
     });
     $('#add-device').click(function(){
-        $('input[name="deviceTypeId"]').val($('.device-types-list .bg-info span').attr('device-type-id'));
-        $('input[name="manufacturerId"]').val($('.manufacturers-list .bg-info span').attr('manufacturer-id'));
-
         var form = new FormData($('#device-form')[0]);
 
         var request = $.ajax({
@@ -202,12 +199,18 @@ $(document).ready(function(){
     });
 
     $(document).on('click', '.device-type-li', function(){
+
+        $('input[name="deviceTypeId"], #deviceTypeIdHidden').val($(this).attr('device-type-id'));
+
         var deviceTypeId = $(this).attr('device-type-id');
 
         $('.device-type-li').parent().removeClass('bg-info');
         $(this).parent().addClass('bg-info');
 
         $('#device-type-input').val($(this).text());
+
+        clearIconFile();
+        getDeviceTypeImage(deviceTypeId);
 
         var data = {
             deviceTypeId: deviceTypeId,
@@ -221,6 +224,9 @@ $(document).ready(function(){
             .done(function(response){updateDevices(response)});
     });
     $(document).on('click', '.manufacturer-li',  function(){
+
+        $('input[name="manufacturerId"]').val($(this).attr('manufacturer-id'));
+
         var deviceTypeId = $('.device-types-list .bg-info span').attr('device-type-id');
         var manufacturerId = $(this).attr('manufacturer-id');
 
@@ -244,6 +250,11 @@ $(document).ready(function(){
     $(document).on('click', '.device-li', function(){
         $('.device-li').parent().removeClass('bg-info');
         $(this).parent().addClass('bg-info');
+
+        $('input#deviceIdHidden').val($(this).attr('device-id'));
+
+        clearImageFile();
+        getDeviceImage($(this).attr('device-id'));
 
         $('#device-input').val($(this).text());
     });
@@ -272,20 +283,22 @@ function updateDevices(data)
             first = false;
         });
         $('.manufacturers-list').html(html);
+        resetManufacturers();
 
         html = '';
         first = true;
-        $.each(data.devices, function(id, name){
+        $.each(data.devices, function(id, device){
             if(first)
                 html += '<li class="bg-info">';
             else
                 html += '<li>';
 
-            html += '<i class="fa fa-arrow-down"></i><i class="fa fa-arrow-up"></i><span image="' + image + '" device-id="' + id + '" class="device-li">' + name + '</span></li>';
+            html += '<i class="fa fa-arrow-down"></i><i class="fa fa-arrow-up"></i><span image="' + device.image + '" device-id="' + device.id + '" class="device-li">' + device.name + '</span></li>';
 
             first = false;
         });
         $('.devices-list').html(html);
+        resetDevices();
     }
     if(data.action == 'manufacturer')
     {
@@ -294,16 +307,80 @@ function updateDevices(data)
 
         $('.devices-list').html('');
 
-        $.each(data.devices, function(id, name){
+        $.each(data.devices, function(id, device){
             if(first)
                 html += '<li class="bg-info">';
             else
                 html += '<li>';
 
-            html += '<i class="fa fa-arrow-down"></i><i class="fa fa-arrow-up"></i><span device-id="' + id + '" class="device-li">' + name + '</span></li>';
+            html += '<i class="fa fa-arrow-down"></i><i class="fa fa-arrow-up"></i><span image="' + device.image + '" device-id="' + device.id + '" class="device-li">' + device.name + '</span></li>';
 
             first = false;
         });
         $('.devices-list').html(html);
+        resetDevices();
     }
+}
+
+function resetDevices()
+{
+    if($('.devices-list li.bg-info').length > 0)
+    {
+        $('#device-input').val($('.devices-list li.bg-info span').text());
+    }
+}
+function resetManufacturers()
+{
+    if($('.manufacturers-list li.bg-info').length > 0)
+    {
+        $('#manufacturer-input').val($('.manufacturers-list li.bg-info span').text());
+    }
+}
+function clearIconFile()
+{
+    var fileField = $('#device-type-icon-file');
+    fileField.replaceWith( fileField = fileField.clone( true ) );
+    $('#device-type-icon-file-preview').removeAttr('src').addClass('hidden');
+}
+function clearImageFile()
+{
+    var fileField = $('#device-image-file');
+    fileField.replaceWith( fileField = fileField.clone( true ) );
+    $('#device-image-file-preview').removeAttr('src').addClass('hidden');
+}
+function getDeviceTypeImage(id)
+{
+
+    var data = {
+        id: id,
+        action: 'deviceType'
+    };
+
+    $.post( Yii.app.createUrl('ajax/getImage'),
+        {
+            data: JSON.stringify(data)
+        })
+        .done(function(response){
+            response = JSON.parse(response);
+            if(typeof response.src !== 'undefined')
+                $('#device-type-icon-file-preview').attr('src', response.src).removeClass('hidden');
+        });
+}
+function getDeviceImage(id)
+{
+
+    var data = {
+        id: id,
+        action: 'device'
+    };
+
+    $.post( Yii.app.createUrl('ajax/getImage'),
+        {
+            data: JSON.stringify(data)
+        })
+        .done(function(response){
+            response = JSON.parse(response);
+            if(typeof response.src !== 'undefined')
+                $('#device-image-file-preview').attr('src', response.src).removeClass('hidden');
+        });
 }
