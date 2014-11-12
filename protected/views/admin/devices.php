@@ -69,20 +69,25 @@
                 }
             ?>
         </ul>
-        <input type="text" id="device-input" class="form-control" value="<?=$devices[0]->name;?>"/>
-        <div class="btn-group col-md-12">
-            <button type="button" class="btn btn-default dropdown-toggle col-md-12" data-toggle="dropdown">
-                Действие <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu col-md-12" role="menu">
-                <li><a href="#" id="save-device">Сохранить</a></li>
-                <li><a href="#" id="add-device">Добавить</a></li>
-                <li><a href="#" id="delete-device">Удалить</a></li>
-            </ul>
-        </div>
-        <div class="col-md-12">
-            <input id="device-image-file" type="file" class="form-control col-md-12" name="device-image-file">
-        </div>
+        <form id="device-form">
+            <input type="text" id="device-input" class="form-control" name="value" value="<?=$devices[0]->name;?>"/>
+            <div class="btn-group col-md-12">
+                <button type="button" class="btn btn-default dropdown-toggle col-md-12" data-toggle="dropdown">
+                    Действие <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu col-md-12" role="menu">
+                    <li><a href="#" id="save-device">Сохранить</a></li>
+                    <li><a href="#" id="add-device">Добавить</a></li>
+                    <li><a href="#" id="delete-device">Удалить</a></li>
+                </ul>
+            </div>
+            <div class="col-md-12">
+                <input id="device-image-file" name="Device[image_file]" type="file" class="form-control col-md-12">
+            </div>
+            <input type="hidden" name="action" value="device"/>
+            <input type="hidden" name="deviceTypeId" value=""/>
+            <input type="hidden" name="manufacturerId" value=""/>
+        </form>
         <div class="col-md-12 text-center device-photo-container">
             <img src="#" id="device-image-file-preview" class="img-thumbnail img-responsive hidden"/>
         </div>

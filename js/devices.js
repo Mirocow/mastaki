@@ -136,31 +136,7 @@ $(document).ready(function(){
     });
 
     $('#add-device-type').click(function(){
-        var value = $('#device-type-input').val();
-
-        var data = {
-            action: 'deviceType',
-            value: value
-        };
-
-
         var form = new FormData($('#device-type-form')[0]);
-
-
-        /*$.post( Yii.app.createUrl('ajax/addElement'),
-            {
-                data: JSON.stringify(data),
-                file: form
-            })
-            .done(function(response){
-                response = JSON.parse(response);
-                var html = '<li><i class="fa fa-arrow-down"></i><i class="fa fa-arrow-up"></i><span device-type-id="' + response.id + '" class="device-type-li">' + response.name + '</span></li>';
-                if($('.device-types-list li').length !== 0)
-                    $('.device-types-list li:last').after(html);
-                else
-                    $('.device-types-list').html(html);
-            });
-         */
 
         var request = $.ajax({
             url: Yii.app.createUrl('ajax/addElement'),
@@ -172,8 +148,6 @@ $(document).ready(function(){
         });
         request.done(function(response) {
             response = JSON.parse(response);
-
-            document.getElementById('device-type-icon-file').innerHTML = document.getElementById('device-type-icon-file').innerHTML;
 
             var html = '<li><i class="fa fa-arrow-down"></i><i class="fa fa-arrow-up"></i><span device-type-id="' + response.id + '" class="device-type-li">' + response.name + '</span></li>';
             if ($('.device-types-list li').length !== 0)
@@ -203,25 +177,28 @@ $(document).ready(function(){
             });
     });
     $('#add-device').click(function(){
-        var value = $('#device-input').val();
-        var deviceTypeId = $('.device-types-list .bg-info span').attr('device-type-id');
-        var manufacturerId = $('.manufacturers-list .bg-info span').attr('manufacturer-id');
+        $('input[name="deviceTypeId"]').val($('.device-types-list .bg-info span').attr('device-type-id'));
+        $('input[name="manufacturerId"]').val($('.manufacturers-list .bg-info span').attr('manufacturer-id'));
 
-        $.post( Yii.app.createUrl('ajax/addElement'),
-            {
-                action: 'device',
-                deviceTypeId: deviceTypeId,
-                manufacturerId: manufacturerId,
-                value: value
-            })
-            .done(function(response){
-                response = JSON.parse(response);
-                var html = '<li><i class="fa fa-arrow-down"></i><i class="fa fa-arrow-up"></i><span device-id="' + response.id + '" class="device-li">' + response.name + '</span></li>';
-                if($('.devices-list li').length !== 0)
-                    $('.devices-list li:last').after(html);
-                else
-                    $('.devices-list').html(html);
-            });
+        var form = new FormData($('#device-form')[0]);
+
+        var request = $.ajax({
+            url: Yii.app.createUrl('ajax/addElement'),
+            type: "POST",
+            processData: false,
+            cache: false,
+            contentType: false,
+            data: form
+        });
+        request.done(function(response) {
+            response = JSON.parse(response);
+
+            var html = '<li><i class="fa fa-arrow-down"></i><i class="fa fa-arrow-up"></i><span device-id="' + response.id + '" class="device-li">' + response.name + '</span></li>';
+            if ($('.devices-list li').length !== 0)
+                $('.devices-list li:last').after(html);
+            else
+                $('.devices-list').html(html);
+        });
     });
 
     $(document).on('click', '.device-type-li', function(){
@@ -304,7 +281,7 @@ function updateDevices(data)
             else
                 html += '<li>';
 
-            html += '<i class="fa fa-arrow-down"></i><i class="fa fa-arrow-up"></i><span device-id="' + id + '" class="device-li">' + name + '</span></li>';
+            html += '<i class="fa fa-arrow-down"></i><i class="fa fa-arrow-up"></i><span image="' + image + '" device-id="' + id + '" class="device-li">' + name + '</span></li>';
 
             first = false;
         });

@@ -8,9 +8,11 @@
  * @property string $name
  * @property integer $manufacturer_id
  * @property integer $type_id
+ * @property string $image
  */
 class Device extends CActiveRecord
 {
+    public $image_file;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -30,9 +32,10 @@ class Device extends CActiveRecord
 			array('name, manufacturer_id, type_id', 'required'),
 			array('manufacturer_id, type_id', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>45),
+            array('image_file', 'file', 'types'=>'jpg, jpeg, gif, png', 'allowEmpty' => true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, manufacturer_id, type_id', 'safe', 'on'=>'search'),
+			array('id, name, manufacturer_id, type_id, image, image_file', 'safe', 'on'=>'search'),
 		);
 	}
 

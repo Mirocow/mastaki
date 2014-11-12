@@ -18,7 +18,10 @@ class AjaxController extends Controller
             }
             elseif($data['action'] == 'manufacturer')
             {
-                $devices = CHtml::listData(Device::model()->findAllByAttributes(array('type_id' => $data['deviceTypeId'], 'manufacturer_id' => $data['manufacturerId'])), 'id', 'name');
+                $devices = array();
+                foreach(Device::model()->findAllByAttributes(array('type_id' => $data['deviceTypeId'], 'manufacturer_id' => $data['manufacturerId'])) as $device)
+                    $devices[] = array('id' => $device->getPrimaryKey(), 'name' => $device->name, 'image' => $device->image);
+
                 print json_encode(array('action' => 'manufacturer', 'devices' => $devices));
             }
         }
@@ -99,6 +102,16 @@ class AjaxController extends Controller
                 $device->name = $data['value'];
                 $device->type_id = $data['deviceTypeId'];
                 $device->manufacturer_id = $data['manufacturerId'];
+
+                if(isset($_FILES['Device']))
+                {
+                    if($_FILES['Device']['tmp_name']['image_file'] !== '')
+                    {
+                        $device->image_file=CUploadedFile::getInstance($device,'image_file');
+                        $device->image_file->saveAs('images/images/'.$device->image_file->name);
+                        $device->image = $device->image_file->name;
+                    }
+                }
 
                 if($device->save())
                     $response['result'] = 'OK';
