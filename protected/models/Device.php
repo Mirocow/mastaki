@@ -50,6 +50,7 @@ class Device extends CActiveRecord
             'manufacturer'=>array(self::BELONGS_TO, 'Manufacturer', 'manufacturer_id'),
             'type'=>array(self::BELONGS_TO, 'DeviceType', 'type_id'),
             'deviceProblems'=>array(self::HAS_MANY, 'DeviceProblem', 'device_id'),
+            'maxPos' => array(self::STAT, 'Device', 'id', 'select'=> 'MAX(pos)', 'defaultValue' => 1),
 		);
 	}
 
@@ -104,4 +105,25 @@ class Device extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+    public function nextPos()
+    {
+        $criteria = new CDbCriteria;
+        $criteria->select = new CDbExpression('MAX(pos) as maxPos');
+        $cmd = self::model()->getCommandBuilder()->createFindCommand(self::model()->tableName(), $criteria);
+        $max = $cmd->query()->read();
+
+        return $max['maxPos'] + 1;
+    }
+
+    protected function beforeSave()
+    {
+
+        if($this->isNewRecord)
+        {
+            $this->pos = $this->nextPos();
+        }
+        parent::beforeSave();
+        return true;
+    }
 }

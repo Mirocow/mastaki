@@ -3037,3 +3037,48 @@ Stack trace:
 REQUEST_URI=/index.php?r=ajax/getDevices
 HTTP_REFERER=http://mastaki/index.php?r=admin/devices
 ---
+2014/11/13 20:45:40 [error] [php] preg_match() expects parameter 2 to be string, array given (/Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveFinder.php:1391)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveFinder.php(68): CJoinElement->find()
+#1 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveRecord.php(1356): CActiveFinder->query()
+#2 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveRecord.php(1456): Device->query()
+#3 /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php(326): Device->find()
+#4 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CInlineAction.php(49): AjaxController->actionTest()
+#5 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CInlineAction->runWithParams()
+#6 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#7 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#8 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#9 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/test
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (326)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/13 20:45:55 [error] [php] preg_match() expects parameter 2 to be string, array given (/Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveFinder.php:1391)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveFinder.php(68): CJoinElement->find()
+#1 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveRecord.php(1356): CActiveFinder->query()
+#2 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveRecord.php(1456): Device->query()
+#3 /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php(326): Device->find()
+#4 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CInlineAction.php(49): AjaxController->actionTest()
+#5 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CInlineAction->runWithParams()
+#6 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#7 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#8 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#9 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/test
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (326)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/13 20:49:07 [error] [php] Array to string conversion (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:331)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/test
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (331)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)

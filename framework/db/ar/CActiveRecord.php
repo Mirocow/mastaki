@@ -84,6 +84,7 @@ abstract class CActiveRecord extends CModel
 		$this->afterConstruct();
 	}
 
+
 	/**
 	 * Initializes this model.
 	 * This method is invoked when an AR instance is newly created and has

@@ -320,4 +320,9 @@ class AjaxController extends Controller
         }
         print json_encode($response);
     }
+
+    public function actionTest()
+    {
+        echo DeviceType::model()->find()->nextPos();
+    }
 }

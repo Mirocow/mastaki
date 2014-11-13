@@ -85,7 +85,6 @@ class DeviceType extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
-
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
@@ -96,4 +95,26 @@ class DeviceType extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+
+    public function nextPos()
+    {
+        $criteria = new CDbCriteria;
+        $criteria->select = new CDbExpression('MAX(pos) as maxPos');
+        $cmd = self::model()->getCommandBuilder()->createFindCommand(self::model()->tableName(), $criteria);
+        $max = $cmd->query()->read();
+
+        return $max['maxPos'] + 1;
+    }
+
+    protected function beforeSave()
+    {
+
+        if($this->isNewRecord)
+        {
+            $this->pos = $this->nextPos();
+        }
+        parent::beforeSave();
+        return true;
+    }
 }
