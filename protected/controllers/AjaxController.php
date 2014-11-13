@@ -8,12 +8,12 @@ class AjaxController extends Controller
             $data = json_decode($_POST['data'], true);
             if($data['action'] == 'deviceType')
             {
-                $manufacturers = CHtml::listData(Manufacturer::model()->findAllByAttributes(array('device_type_id' => $data['deviceTypeId'])), 'id', 'name');
+                $manufacturers = CHtml::listData(Manufacturer::model()->findAllByAttributes(array('device_type_id' => $data['deviceTypeId']), array('order' => 'pos ASC')), 'id', 'name');
 
                 reset($manufacturers);
 
                 $devices = array();
-                foreach(Device::model()->findAllByAttributes(array('type_id' => $data['deviceTypeId'], 'manufacturer_id' => key($manufacturers))) as $device)
+                foreach(Device::model()->findAllByAttributes(array('type_id' => $data['deviceTypeId'], 'manufacturer_id' => key($manufacturers)), array('order' => 'pos ASC')) as $device)
                     $devices[] = array('id' => $device->getPrimaryKey(), 'name' => $device->name, 'image' => $device->image);
 
                 print json_encode(array('action' => 'deviceType', 'manufacturers' => $manufacturers, 'devices' => $devices));
@@ -21,7 +21,7 @@ class AjaxController extends Controller
             elseif($data['action'] == 'manufacturer')
             {
                 $devices = array();
-                foreach(Device::model()->findAllByAttributes(array('type_id' => $data['deviceTypeId'], 'manufacturer_id' => $data['manufacturerId'])) as $device)
+                foreach(Device::model()->findAllByAttributes(array('type_id' => $data['deviceTypeId'], 'manufacturer_id' => $data['manufacturerId']), array('order' => 'pos ASC')) as $device)
                     $devices[] = array('id' => $device->getPrimaryKey(), 'name' => $device->name, 'image' => $device->image);
 
                 print json_encode(array('action' => 'manufacturer', 'devices' => $devices));
@@ -242,6 +242,81 @@ class AjaxController extends Controller
             }
             else
                 $response['result'] = 'ERROR';
+        }
+        print json_encode($response);
+    }
+
+    public function actionSortElement()
+    {
+        $response = array('result' => 'ERROR');
+        if(isset($_POST['data']))
+        {
+            $data = json_decode($_POST['data'], true);
+            $id = $data['id'];
+            $direction = $data['direction'];
+            if($data['action'] == 'deviceType')
+            {
+                $deviceTypeToMove = DeviceType::model()->findByPk($id);
+
+                if($direction == 'up')
+                    $deviceTypeToReplace = DeviceType::model()->findByAttributes(array('pos' => $deviceTypeToMove->pos - 1));
+                else
+                    $deviceTypeToReplace = DeviceType::model()->findByAttributes(array('pos' => $deviceTypeToMove->pos + 1));
+
+                if($deviceTypeToReplace !== null)
+                {
+                    $pos = $deviceTypeToReplace->pos;
+                    $deviceTypeToReplace->pos = $deviceTypeToMove->pos;
+                    $deviceTypeToMove->pos = $pos;
+
+                    $deviceTypeToMove->save();
+                    $deviceTypeToReplace->save();
+
+                    $response['result'] = 'OK';
+                }
+            }
+            elseif($data['action'] == 'manufacturer')
+            {
+                $manufacturerToMove = Manufacturer::model()->findByPk($id);
+
+                if($direction == 'up')
+                    $manufacturerToReplace = Manufacturer::model()->findByAttributes(array('device_type_id' => $data['deviceTypeId'], 'pos' => $manufacturerToMove->pos - 1));
+                else
+                    $manufacturerToReplace = Manufacturer::model()->findByAttributes(array('device_type_id' => $data['deviceTypeId'], 'pos' => $manufacturerToMove->pos + 1));
+
+                if($manufacturerToReplace !== null)
+                {
+                    $pos = $manufacturerToReplace->pos;
+                    $manufacturerToReplace->pos = $manufacturerToMove->pos;
+                    $manufacturerToMove->pos = $pos;
+
+                    $manufacturerToMove->save();
+                    $manufacturerToReplace->save();
+
+                    $response['result'] = 'OK';
+                }
+            }
+            elseif($data['action'] == 'device')
+            {
+                $deviceToMove = Device::model()->findByPk($id);
+
+                if($direction == 'up')
+                    $deviceToReplace = Device::model()->findByAttributes(array('manufacturer_id' => $data['manufacturerId'], 'type_id' => $data['deviceTypeId'], 'pos' => $deviceToMove->pos - 1));
+                else
+                    $deviceToReplace = Device::model()->findByAttributes(array('manufacturer_id' => $data['manufacturerId'], 'type_id' => $data['deviceTypeId'], 'pos' => $deviceToMove->pos + 1));
+
+                if($deviceToReplace !== null)
+                {
+                    $pos = $deviceToReplace->pos;
+                    $deviceToReplace->pos = $deviceToMove->pos;
+                    $deviceToMove->pos = $pos;
+
+                    $deviceToMove->save();
+                    $deviceToReplace->save();
+
+                    $response['result'] = 'OK';
+                }
+            }
         }
         print json_encode($response);
     }

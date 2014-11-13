@@ -3018,3 +3018,22 @@ Stack trace:
 REQUEST_URI=/index.php?r=ajax/sortElement
 HTTP_REFERER=http://mastaki/index.php?r=admin/devices
 ---
+2014/11/13 11:22:17 [error] [exception.CException] exception 'CException' with message 'Property "CDbCriteria.sort" is not defined.' in /Applications/MAMP/htdocs/mastaki/framework/base/CComponent.php:173
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/db/schema/CDbCriteria.php(160): CComponent->__set('sort', 'pos ASC')
+#1 /Applications/MAMP/htdocs/mastaki/framework/db/schema/CDbCommandBuilder.php(585): CDbCriteria->__construct(Array)
+#2 /Applications/MAMP/htdocs/mastaki/framework/db/schema/CDbCommandBuilder.php(661): CDbCommandBuilder->createCriteria(Array, Array)
+#3 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveRecord.php(1535): CDbCommandBuilder->createColumnCriteria(Object(CMysqlTableSchema), Array, Array, Array, '`t`.')
+#4 /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php(11): CActiveRecord->findAllByAttributes(Array, Array)
+#5 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CInlineAction.php(49): AjaxController->actionGetDevices()
+#6 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#7 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#8 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): CController->run('getDevices')
+#10 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController('ajax/getDevices')
+#11 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /Applications/MAMP/htdocs/mastaki/index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/index.php?r=ajax/getDevices
+HTTP_REFERER=http://mastaki/index.php?r=admin/devices
+---

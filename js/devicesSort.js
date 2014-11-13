@@ -19,30 +19,33 @@ $(document).ready(function(){
             id: id,
             action: 'deviceType'
         };
-        var liToMove = arrow.parent();
-        var liToReplace;
-        if(direction == 'up')
-            liToReplace = $(liToMove).prev();
-        else
-            liToReplace = $(liToMove).next();
 
-        $(liToMove).swap($(liToReplace));
 
-        //$.post( Yii.app.createUrl('ajax/sortElement'),
-        //    {
-        //        data: JSON.stringify(data)
-        //    })
-        //    .done(function(response){
-        //        var liToMove = arrow.parent();
-        //        if(direction == 'up')
-        //            liToMove.prev().after(liToMove);
-        //        else
-        //            liToMove.next().before(liToMove);
-        //    });
+        $.post( Yii.app.createUrl('ajax/sortElement'),
+            {
+                data: JSON.stringify(data)
+            }).done(function(response){
+                response = JSON.parse(response);
+                if(typeof response.result !== 'undefined')
+                {
+                    if(response.result == 'OK')
+                    {
+                        var liToMove = arrow.parent();
+                        var liToReplace;
+                        if(direction == 'up')
+                            liToReplace = $(liToMove).prev();
+                        else
+                            liToReplace = $(liToMove).next();
+
+                        $(liToMove).swap($(liToReplace));
+                    }
+                }
+            });
     });
     $(document).on('click', '.manufacturers-list .move', function(){
         var arrow = $(this);
         var id = $(this).parent().find('span:last').attr('manufacturer-id');
+        var deviceTypeId = $('.device-types-list .bg-info span').attr('device-type-id');
         var direction;
 
         if(arrow.hasClass('up'))
@@ -52,33 +55,38 @@ $(document).ready(function(){
 
         var data = {
             direction: direction,
+            deviceTypeId: deviceTypeId,
             id: id,
             action: 'manufacturer'
         };
-        var liToMove = arrow.parent();
-        var liToReplace;
-        if(direction == 'up')
-            liToReplace = $(liToMove).prev();
-        else
-            liToReplace = $(liToMove).next();
 
-        $(liToMove).swap($(liToReplace));
+        $.post( Yii.app.createUrl('ajax/sortElement'),
+            {
+                data: JSON.stringify(data)
+            })
+            .done(function(response){
+                response = JSON.parse(response);
+                if(typeof response.result !== 'undefined')
+                {
+                    if(response.result == 'OK')
+                    {
+                        var liToMove = arrow.parent();
+                        var liToReplace;
+                        if(direction == 'up')
+                            liToReplace = $(liToMove).prev();
+                        else
+                            liToReplace = $(liToMove).next();
 
-        //$.post( Yii.app.createUrl('ajax/sortElement'),
-        //    {
-        //        data: JSON.stringify(data)
-        //    })
-        //    .done(function(response){
-        //        var liToMove = arrow.parent();
-        //        if(direction == 'up')
-        //            liToMove.prev().after(liToMove);
-        //        else
-        //            liToMove.next().before(liToMove);
-        //    });
+                        $(liToMove).swap($(liToReplace));
+                    }
+                }
+            });
     });
     $(document).on('click', '.devices-list .move', function(){
         var arrow = $(this);
         var id = $(this).parent().find('span:last').attr('device-id');
+        var deviceTypeId = $('.device-types-list .bg-info span').attr('device-type-id');
+        var manufacturerId = $('.manufacturers-list .bg-info span').attr('manufacturer-id');
         var direction;
 
         if(arrow.hasClass('up'))
@@ -88,28 +96,32 @@ $(document).ready(function(){
 
         var data = {
             direction: direction,
+            deviceTypeId: deviceTypeId,
+            manufacturerId: manufacturerId,
             id: id,
             action: 'device'
         };
-        var liToMove = arrow.parent();
-        var liToReplace;
-        if(direction == 'up')
-            liToReplace = $(liToMove).prev();
-        else
-            liToReplace = $(liToMove).next();
 
-        $(liToMove).swap($(liToReplace));
+        $.post( Yii.app.createUrl('ajax/sortElement'),
+            {
+                data: JSON.stringify(data)
+            })
+            .done(function(response){
+                response = JSON.parse(response);
+                if(typeof response.result !== 'undefined')
+                {
+                    if(response.result == 'OK')
+                    {
+                        var liToMove = arrow.parent();
+                        var liToReplace;
+                        if(direction == 'up')
+                            liToReplace = $(liToMove).prev();
+                        else
+                            liToReplace = $(liToMove).next();
 
-        //$.post( Yii.app.createUrl('ajax/sortElement'),
-        //    {
-        //        data: JSON.stringify(data)
-        //    })
-        //    .done(function(response){
-        //        var liToMove = arrow.parent();
-        //        if(direction == 'up')
-        //            liToMove.prev().after(liToMove);
-        //        else
-        //            liToMove.next().before(liToMove);
-        //    });
+                        $(liToMove).swap($(liToReplace));
+                    }
+                }
+            });
     });
 });
