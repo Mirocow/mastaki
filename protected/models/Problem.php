@@ -8,11 +8,12 @@
  * @property string $name
  * @property string $type
  * @property string $description
- * @property string $image_file
+ * @property string $image
  * @property integer $problem_category_id
  */
 class Problem extends CActiveRecord
 {
+    public $image_file;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -32,7 +33,7 @@ class Problem extends CActiveRecord
 			array('name, type, problem_category_id', 'required'),
 			array('problem_category_id', 'numerical', 'integerOnly'=>true),
 			array('name, type, image', 'length', 'max'=>45),
-            array('image_file', 'file', 'types' => 'jpg, gif, png', 'on' => 'admin'),
+            array('image_file', 'file', 'types'=>'jpg, jpeg, gif, png', 'allowEmpty' => true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, name, type, problem_category_id, description, image, image_file', 'safe', 'on'=>'search'),
@@ -104,4 +105,25 @@ class Problem extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+    public function nextPos()
+    {
+        $criteria = new CDbCriteria;
+        $criteria->select = new CDbExpression('MAX(pos) as maxPos');
+        $cmd = self::model()->getCommandBuilder()->createFindCommand(self::model()->tableName(), $criteria);
+        $max = $cmd->query()->read();
+
+        return $max['maxPos'] + 1;
+    }
+
+    protected function beforeSave()
+    {
+
+        if($this->isNewRecord)
+        {
+            $this->pos = $this->nextPos();
+        }
+        parent::beforeSave();
+        return true;
+    }
 }

@@ -5,11 +5,15 @@
  *
  * The followings are the available columns in table 'problem_category':
  * @property integer $id
+ * @property integer $pos
  * @property string $name
+ * @property string $icon
  * @property integer $device_type_id
  */
 class ProblemCategory extends CActiveRecord
 {
+    public $icon_file;
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -28,9 +32,10 @@ class ProblemCategory extends CActiveRecord
 		return array(
 			array('name, device_type_id', 'required'),
 			array('name', 'length', 'max'=>45),
+            array('icon_file', 'file', 'types'=>'jpg, jpeg, gif, png', 'allowEmpty' => true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, device_type_id', 'safe', 'on'=>'search'),
+			array('id, name, device_type_id, pos, icon', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -93,4 +98,25 @@ class ProblemCategory extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+    public function nextPos()
+    {
+        $criteria = new CDbCriteria;
+        $criteria->select = new CDbExpression('MAX(pos) as maxPos');
+        $cmd = self::model()->getCommandBuilder()->createFindCommand(self::model()->tableName(), $criteria);
+        $max = $cmd->query()->read();
+
+        return $max['maxPos'] + 1;
+    }
+
+    protected function beforeSave()
+    {
+
+        if($this->isNewRecord)
+        {
+            $this->pos = $this->nextPos();
+        }
+        parent::beforeSave();
+        return true;
+    }
 }

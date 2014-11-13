@@ -13,7 +13,7 @@
             ?>
         </ul>
         <form id="device-type-form">
-            <input type="text" id="device-type-input" name="value" class="form-control" value="<?=$deviceTypes[0]->name;?>"/>
+            <input type="text" id="device-type-input" name="value" class="form-control" value="<?=(isset($deviceTypes[0]) ? $deviceTypes[0]->name : '');?>"/>
             <div class="btn-group col-md-12">
                 <button type="button" class="btn btn-default dropdown-toggle col-md-12" data-toggle="dropdown">
                     Действие <span class="caret"></span>
@@ -27,7 +27,7 @@
             <div class="col-md-12">
                 <input id="device-type-icon-file" name="DeviceType[icon_file]" type="file" class="form-control col-md-12">
             </div>
-            <input type="hidden" id="deviceTypeIdHidden" name="id" value="<?=$deviceTypes[0]->getPrimaryKey();?>"/>
+            <input type="hidden" id="deviceTypeIdHidden" name="id" value="<?=(isset($deviceTypes[0]) ? $deviceTypes[0]->getPrimaryKey() : '');?>"/>
             <input type="hidden" name="action" value="deviceType"/>
         </form>
         <div class="col-md-12 text-center device-type-icon-container">
@@ -46,7 +46,7 @@
                 }
             ?>
         </ul>
-        <input type="text" id="manufacturer-input" class="form-control" value="<?=$manufacturers[0]->name;?>"/>
+        <input type="text" id="manufacturer-input" class="form-control" value="<?=(isset($manufacturers[0]) ? $manufacturers[0]->name : '');?>"/>
         <div class="btn-group col-md-12">
             <button type="button" class="btn btn-default dropdown-toggle col-md-12" data-toggle="dropdown">
                 Действие <span class="caret"></span>
@@ -71,7 +71,7 @@
             ?>
         </ul>
         <form id="device-form">
-            <input type="text" id="device-input" class="form-control" name="value" value="<?=$devices[0]->name;?>"/>
+            <input type="text" id="device-input" class="form-control" name="value" value="<?=(isset($devices[0]) ? $devices[0]->name : '');?>"/>
             <div class="btn-group col-md-12">
                 <button type="button" class="btn btn-default dropdown-toggle col-md-12" data-toggle="dropdown">
                     Действие <span class="caret"></span>
@@ -86,9 +86,9 @@
                 <input id="device-image-file" name="Device[image_file]" type="file" class="form-control col-md-12">
             </div>
             <input type="hidden" name="action" value="device"/>
-            <input type="hidden" name="deviceTypeId" value="<?=$deviceTypes[0]->getPrimaryKey();?>"/>
-            <input type="hidden" name="manufacturerId" value="<?=$manufacturers[0]->getPrimaryKey();?>"/>
-            <input type="hidden" id="deviceIdHidden" name="id" value=""/>
+            <input type="hidden" name="deviceTypeId" value="<?=(isset($deviceTypes[0]) ? $deviceTypes[0]->getPrimaryKey() : '');?>"/>
+            <input type="hidden" name="manufacturerId" value="<?=(isset($manufacturers[0]) ? $manufacturers[0]->getPrimaryKey() : '');?>"/>
+            <input type="hidden" id="deviceIdHidden" name="id" value="<?=(isset($devices[0]) ? $devices[0]->getPrimaryKey() : '');?>"/>
         </form>
         <div class="col-md-12 text-center device-photo-container">
             <img src="#" id="device-image-file-preview" class="img-thumbnail img-responsive hidden"/>

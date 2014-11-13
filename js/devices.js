@@ -12,13 +12,7 @@ $(document).ready(function(){
             data: form
         });
         request.done(function(response) {
-            response = JSON.parse(response);
-
-            var html = '<li><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span device-type-id="' + response.id + '" class="device-type-li">' + response.name + '</span></li>';
-            if ($('.device-types-list li').length !== 0)
-                $('.device-types-list li:last').after(html);
-            else
-                $('.device-types-list').html(html);
+            $('.device-types-list .bg-info span').text($('#device-type-input').val());
         });
     });
     $('#save-manufacturer').click(function(){
@@ -36,7 +30,7 @@ $(document).ready(function(){
                 data: JSON.stringify(data)
             })
             .done(function(response){
-                $('.manufacturers-list .bg-info span').text(value);
+                $('.manufacturers-list .bg-info span').text($('#manufacturer-input').val());
             });
     });
     $('#save-device').click(function(){

@@ -100,7 +100,10 @@ table td {
 
 .device-types-list > li > i,
 .manufacturers-list > li > i,
-.devices-list > li > i {
+.devices-list > li > i,
+.problem-categories-list > li > i,
+.breakdowns-list > li > i,
+.problems-list > li > i {
     font-size: 8pt;
     padding: 0 5px;
     cursor: pointer;
@@ -121,6 +124,17 @@ table td {
 }
 .device-li,
 .manufacturer-li,
-.device-type-li {
+.device-type-li,
+.problem-category-li,
+.breakdown-li,
+.problem-li {
     cursor: pointer;
+}
+
+.devices-lists .page-header {
+    margin-top: 0;
+}
+
+#breakdown-input {
+    margin-top: 0;
 }

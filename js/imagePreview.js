@@ -11,7 +11,7 @@ function readURL(input, id) {
     }
 }
 $(document).ready(function(){
-    $("#device-image-file,#device-type-icon-file").change(function(){
+    $("#device-image-file, #device-type-icon-file, #problem-category-icon-file, #breakdown-image-file, #problem-image-file").change(function(){
         readURL(this, $(this).attr('id')+'-preview');
     });
 });

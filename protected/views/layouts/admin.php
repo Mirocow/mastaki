@@ -7,7 +7,7 @@
                 array('label' => 'Заказы', 'url' => array('/admin/orders')),
                 array('label' => 'Производители', 'url' => array('/admin/manufacturers')),
                 array('label' => 'Аппараты', 'url' => array('/admin/devices')),
-                array('label' => 'Проблемы', 'url' => array('/admin/problems')),
+                array('label' => 'Услуги', 'url' => array('/admin/services')),
             ),
             'submenuHtmlOptions' => array('class' => 'dropdown-menu'),
             'htmlOptions' => array('class'=>'nav nav-pills nav-stacked'),

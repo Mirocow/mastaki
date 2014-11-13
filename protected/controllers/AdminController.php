@@ -45,15 +45,32 @@ class AdminController extends Controller
 
     public function actionDevices()
     {
+        $manufacturers = array();
+        $devices = array();
         $deviceTypes = DeviceType::model()->findAll(array('order' => 'pos ASC'));
-        $manufacturers = Manufacturer::model()->findAllByAttributes(array('device_type_id' => $deviceTypes[0]->getPrimaryKey()), array('order' => 'pos ASC'));
-        $devices = Device::model()->findAllByAttributes(array('manufacturer_id' => $manufacturers[0]->getPrimaryKey(), 'type_id' => $deviceTypes[0]->getPrimaryKey()), array('order' => 'pos ASC'));
+
+        if(count($deviceTypes) > 0)
+            $manufacturers = Manufacturer::model()->findAllByAttributes(array('device_type_id' => $deviceTypes[0]->getPrimaryKey()), array('order' => 'pos ASC'));
+        if(count($deviceTypes) > 0 && count($manufacturers) > 0)
+            $devices = Device::model()->findAllByAttributes(array('manufacturer_id' => $manufacturers[0]->getPrimaryKey(), 'type_id' => $deviceTypes[0]->getPrimaryKey()), array('order' => 'pos ASC'));
 
         $this->render('devices', array('deviceTypes' => $deviceTypes, 'manufacturers' => $manufacturers, 'devices' => $devices));
     }
-    public function actionAjaxUploadImage()
+    public function actionServices()
     {
-        $upload_handler = new UploadHandler();
+        $problemCategories = array();
+        $problems = array();
+        $breakdowns = array();
+
+        $deviceTypes = DeviceType::model()->findAll(array('order' => 'pos ASC'));
+        if(count($deviceTypes) > 0)
+            $problemCategories = ProblemCategory::model()->findAllByAttributes(array('device_type_id' => $deviceTypes[0]->getPrimaryKey()), array('order' => 'pos ASC'));
+        if(count($problemCategories) > 0 )
+            $breakdowns = Problem::model()->findAllByAttributes(array('problem_category_id' => $problemCategories[0]->getPrimaryKey(), 'type' => 'BREAKDOWN'), array('order' => 'pos ASC'));
+        if(count($problemCategories) > 0)
+            $problems = Problem::model()->findAllByAttributes(array('problem_category_id' => $problemCategories[0]->getPrimaryKey(), 'type' => 'PROBLEM'), array('order' => 'pos ASC'));
+
+        $this->render('services', array('deviceTypes' => $deviceTypes, 'problemCategories' => $problemCategories, 'breakdowns' => $breakdowns, 'problems' => $problems));
     }
     public function actionProblems($problem_category_id = null)
     {
@@ -173,6 +190,7 @@ class AdminController extends Controller
         // display the login form
         $this->render('login',array('model'=>$model));
     }
+
 
     /**
      * Logs out the current user and redirect to homepage.

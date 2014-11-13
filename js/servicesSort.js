@@ -1,12 +1,12 @@
 /**
- * Created by slashman on 13.11.14.
+ * Created by slashman on 14.11.14.
  */
 
-
 $(document).ready(function(){
-    $(document).on('click', '.device-types-list .move', function(){
+    $(document).on('click', '.problem-categories-list .move', function(){
         var arrow = $(this);
-        var id = $(this).parent().find('span:last').attr('device-type-id');
+        var id = $(this).parent().find('span:last').attr('problem-category-id');
+        var deviceTypeId = $('.device-types-list .bg-info span').attr('device-type-id');
         var direction;
 
         if(arrow.hasClass('up'))
@@ -17,7 +17,8 @@ $(document).ready(function(){
         var data = {
             direction: direction,
             id: id,
-            action: 'deviceType'
+            deviceTypeId: deviceTypeId,
+            action: 'problemCategory'
         };
 
 
@@ -42,10 +43,10 @@ $(document).ready(function(){
                 }
             });
     });
-    $(document).on('click', '.manufacturers-list .move', function(){
+    $(document).on('click', '.breakdowns-list .move', function(){
         var arrow = $(this);
-        var id = $(this).parent().find('span:last').attr('manufacturer-id');
-        var deviceTypeId = $('.device-types-list .bg-info span').attr('device-type-id');
+        var id = $(this).parent().find('span:last').attr('breakdown-id');
+        var problemCategoryId = $('.problem-categories-list .bg-info span').attr('problem-category-id');
         var direction;
 
         if(arrow.hasClass('up'))
@@ -55,9 +56,9 @@ $(document).ready(function(){
 
         var data = {
             direction: direction,
-            deviceTypeId: deviceTypeId,
+            problemCategoryId: problemCategoryId,
             id: id,
-            action: 'manufacturer'
+            action: 'breakdown'
         };
 
         $.post( Yii.app.createUrl('ajax/sortElement'),
@@ -82,11 +83,10 @@ $(document).ready(function(){
                 }
             });
     });
-    $(document).on('click', '.devices-list .move', function(){
+    $(document).on('click', '.problems-list .move', function(){
         var arrow = $(this);
-        var id = $(this).parent().find('span:last').attr('device-id');
-        var deviceTypeId = $('.device-types-list .bg-info span').attr('device-type-id');
-        var manufacturerId = $('.manufacturers-list .bg-info span').attr('manufacturer-id');
+        var id = $(this).parent().find('span:last').attr('problem-id');
+        var problemCategoryId = $('.problem-categories-list .bg-info span').attr('problem-category-id');
         var direction;
 
         if(arrow.hasClass('up'))
@@ -96,10 +96,9 @@ $(document).ready(function(){
 
         var data = {
             direction: direction,
-            deviceTypeId: deviceTypeId,
-            manufacturerId: manufacturerId,
+            problemCategoryId: problemCategoryId,
             id: id,
-            action: 'device'
+            action: 'problem'
         };
 
         $.post( Yii.app.createUrl('ajax/sortElement'),

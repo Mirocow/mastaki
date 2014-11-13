@@ -73,7 +73,7 @@ class Controller extends CController
 
     public function getNavBar()
     {
-        $deviceTypes = DeviceType::model()->findAll();
+        $deviceTypes = DeviceType::model()->findAll(array('order' => 'pos ASC'));
 
 
         $items = array();
