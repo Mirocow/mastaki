@@ -66,7 +66,7 @@ $newProblemType = ($problem_type == 'BREAKDOWN') ? 'PROBLEM' : 'BREAKDOWN';
     <?php
     if(count($problemCategories[0]) > 0)
      {
-         echo '<div class="problems">';
+         echo '<div id="problems-columns" class="problems" role="tablist" aria-multiselectable="true">';
          foreach($problemCategories as $column)
          {
              echo '<div class="col-md-4">';
@@ -82,7 +82,7 @@ $newProblemType = ($problem_type == 'BREAKDOWN') ? 'PROBLEM' : 'BREAKDOWN';
                      {
                          $price = ($problem->type == 'BREAKDOWN') ? $problem->devicesProblem[0]->getTotalPrice() .'р.' : 'от '.$problem->devicesProblem[0]->getTotalPrice().'р.';
                          echo '<li class="list-group-item">';
-                         echo '<a aria-expanded="true" aria-controls="p'.$problem->devicesProblem[0]->id.'" data-toggle="collapse" href="#p'.$problem->devicesProblem[0]->id.'"><i class="fa fa-arrow-circle-down details-arrow" problem-id="'.$problem->devicesProblem[0]->id.'"></i></a>&nbsp;<span class="problem-item" problem-id="'.$problem->devicesProblem[0]->id.'">'.$problem->name.'</span><span class="pull-right">'.$price.'</span>';
+                         echo '<a aria-expanded="true" aria-controls="p'.$problem->devicesProblem[0]->id.'" data-toggle="collapse" class="collapsed" data-parent="#problems-columns" href="#p'.$problem->devicesProblem[0]->id.'"><i class="fa fa-arrow-circle-down details-arrow" problem-id="'.$problem->devicesProblem[0]->id.'"></i></a>&nbsp;<span class="problem-item" problem-id="'.$problem->devicesProblem[0]->id.'">'.$problem->name.'</span><span class="pull-right">'.$price.'</span>';
                          echo '<p role="tabpanel" aria-labelledby="p'.$problem->devicesProblem[0]->id.'" class="problem-details panel-collapse collapse" id="p'.$problem->devicesProblem[0]->id.'" problem-id="'.$problem->devicesProblem[0]->id.'">';
                          if($problem->image)
                              echo '<img src="'.Yii::app()->request->baseUrl.'/images/problems/'.$problem->image;

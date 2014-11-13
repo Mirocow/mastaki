@@ -21,5 +21,9 @@ $(document).ready(function(){
     //
     //    }
     //});
+
+    $('.problem-details').on('show.bs.collapse', function () {
+        $('.problem-details.in').collapse('hide');
+    });
     $('input[name=phone],input[name="LoginForm[phone]"],input[name="User[phone]"]').mask("(999) 999-99-99");
 });
