@@ -87,7 +87,16 @@ class SiteController extends Controller
             ));
 
 
+            $col = count($problemCategories);
+            $newProblemCategories = array();
+            $column = 0;
 
+            foreach($problemCategories as $problemCategory)
+            {
+                $newProblemCategories[$column][] = $problemCategory;
+
+                $column = ($column + 1) % 3;
+            }
 
             $this->render('deviceType',
                 array(
@@ -97,7 +106,7 @@ class SiteController extends Controller
                     'manufacturer_id' => $manufacturer_id,
                     'currentDevice' => $currentDevice,
                     'device_id' => $device_id,
-                    'problemCategories' => $problemCategories,
+                    'problemCategories' => $newProblemCategories,
                     'problem_type' => $problem_type,
             ));
         }

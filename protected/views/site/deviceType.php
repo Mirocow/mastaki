@@ -64,32 +64,37 @@ $newProblemType = ($problem_type == 'BREAKDOWN') ? 'PROBLEM' : 'BREAKDOWN';
         <div class="pull-right col-lg-2 col-md-4 col-sm-4 col-xs-12 text-center">Тип: <a href="<?=$this->createUrl('/site/deviceType', array('type_id' => $type_id, 'manufacturer_id' => $manufacturer_id, 'device_id' => $device_id, 'problem_type' => $newProblemType));?>"><i class="fa fa-refresh"></i></a></div>
     </div>
     <?php
-    if(count($problemCategories) > 0)
+    if(count($problemCategories[0]) > 0)
      {
          echo '<div class="problems">';
-         foreach($problemCategories as $problemCategory)
+         foreach($problemCategories as $column)
          {
-             echo '<div class="panel panel-default col-md-4">';
-             echo '<div class="panel-heading">'.$problemCategory->name.'</div>';
-             if(count($problemCategory->problems) > 0)
+             echo '<div class="col-md-4">';
+             foreach($column as $problemCategory)
              {
-                 echo '<ul class="list-group">';
-
-                 foreach($problemCategory->problems as $problem)
+                 echo '<div class="panel panel-default col-md-12">';
+                 echo '<div class="panel-heading">'.$problemCategory->name.'</div>';
+                 if(count($problemCategory->problems) > 0)
                  {
-                     $price = ($problem->type == 'BREAKDOWN') ? $problem->devicesProblem[0]->getTotalPrice() .'р.' : 'от '.$problem->devicesProblem[0]->getTotalPrice().'р.';
-                     echo '<li class="list-group-item">';
-                     echo '<a aria-expanded="true" aria-controls="p'.$problem->devicesProblem[0]->id.'" data-toggle="collapse" href="#p'.$problem->devicesProblem[0]->id.'"><i class="fa fa-arrow-circle-down details-arrow" problem-id="'.$problem->devicesProblem[0]->id.'"></i></a>&nbsp;<span class="problem-item" problem-id="'.$problem->devicesProblem[0]->id.'">'.$problem->name.'</span><span class="pull-right">'.$price.'</span>';
-                     echo '<p role="tabpanel" aria-labelledby="p'.$problem->devicesProblem[0]->id.'" class="problem-details panel-collapse collapse" id="p'.$problem->devicesProblem[0]->id.'" problem-id="'.$problem->devicesProblem[0]->id.'">';
-                     if($problem->image)
-                         echo '<img src="'.Yii::app()->request->baseUrl.'/images/problems/'.$problem->image;
+                     echo '<ul class="list-group">';
 
-                     echo '<span>'.$problem->description.'</span>';
-                     echo '</p>';
-                     echo '</li>';
+                     foreach($problemCategory->problems as $problem)
+                     {
+                         $price = ($problem->type == 'BREAKDOWN') ? $problem->devicesProblem[0]->getTotalPrice() .'р.' : 'от '.$problem->devicesProblem[0]->getTotalPrice().'р.';
+                         echo '<li class="list-group-item">';
+                         echo '<a aria-expanded="true" aria-controls="p'.$problem->devicesProblem[0]->id.'" data-toggle="collapse" href="#p'.$problem->devicesProblem[0]->id.'"><i class="fa fa-arrow-circle-down details-arrow" problem-id="'.$problem->devicesProblem[0]->id.'"></i></a>&nbsp;<span class="problem-item" problem-id="'.$problem->devicesProblem[0]->id.'">'.$problem->name.'</span><span class="pull-right">'.$price.'</span>';
+                         echo '<p role="tabpanel" aria-labelledby="p'.$problem->devicesProblem[0]->id.'" class="problem-details panel-collapse collapse" id="p'.$problem->devicesProblem[0]->id.'" problem-id="'.$problem->devicesProblem[0]->id.'">';
+                         if($problem->image)
+                             echo '<img src="'.Yii::app()->request->baseUrl.'/images/problems/'.$problem->image;
+
+                         echo '<span>'.$problem->description.'</span>';
+                         echo '</p>';
+                         echo '</li>';
+                     }
+
+                     echo '</ul>';
                  }
-
-                 echo '</ul>';
+                 echo '</div>';
              }
              echo '</div>';
          }
