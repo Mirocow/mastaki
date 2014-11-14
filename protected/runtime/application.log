@@ -3412,3 +3412,58 @@ Stack trace:
 REQUEST_URI=/index.php?r=ajax/sortElement
 in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (559)
 in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/14 19:43:46 [error] [php] Undefined index: icon_file (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:274)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/addElement
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (274)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/14 19:44:20 [error] [php] Undefined index: icon_file (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:300)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/addElement
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (300)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/14 19:44:44 [error] [php] Undefined index: icon_file (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:274)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/addElement
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (274)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/14 19:45:54 [error] [php] Undefined index: icon_file (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:274)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/addElement
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (274)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/14 19:46:39 [error] [php] Undefined index: icon_file (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:274)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/addElement
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (274)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)

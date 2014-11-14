@@ -271,7 +271,7 @@ class AjaxController extends Controller
 
                 if(isset($_FILES['Problem']))
                 {
-                    if($_FILES['Problem']['tmp_name']['icon_file'] !== '')
+                    if($_FILES['Problem']['tmp_name']['image_file'] !== '')
                     {
                         $breakdown->image_file=CUploadedFile::getInstance($breakdown,'image_file');
                         $breakdown->image_file->saveAs('images/images/'.$breakdown->image_file->name);
@@ -297,7 +297,7 @@ class AjaxController extends Controller
 
                 if(isset($_FILES['Problem']))
                 {
-                    if($_FILES['Problem']['tmp_name']['icon_file'] !== '')
+                    if($_FILES['Problem']['tmp_name']['image_file'] !== '')
                     {
                         $problem->image_file=CUploadedFile::getInstance($problem,'image_file');
                         $problem->image_file->saveAs('images/images/'.$problem->image_file->name);
