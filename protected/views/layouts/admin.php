@@ -5,7 +5,6 @@
         $this->widget('zii.widgets.CMenu',array(
             'items'=> array(
                 array('label' => 'Заказы', 'url' => array('/admin/orders')),
-                array('label' => 'Производители', 'url' => array('/admin/manufacturers')),
                 array('label' => 'Аппараты', 'url' => array('/admin/devices')),
                 array('label' => 'Услуги', 'url' => array('/admin/services')),
                 array('label' => 'Каталог услуг', 'url' => array('/admin/catalog')),

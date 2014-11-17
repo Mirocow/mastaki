@@ -31,18 +31,6 @@ class AdminController extends Controller
         $this->redirect(array('/admin/orders'));
     }
 
-    public function actionManufacturers()
-    {
-        $manufacturers = new CActiveDataProvider('Manufacturer', array(
-            'pagination'=>array(
-                'pageSize' => 10,
-                'pageVar' =>'page',
-            ),
-        ));
-
-        $this->render('manufacturers', array('manufacturers' => $manufacturers));
-    }
-
     public function actionDevices()
     {
         $manufacturers = array();
