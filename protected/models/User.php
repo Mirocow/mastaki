@@ -64,11 +64,11 @@ class User extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'phone' => 'Phone',
-			'name' => 'Name',
-            'email' => 'Email',
-            'address' => 'Address',
-			'password' => 'Password',
+			'phone' => 'Телефон',
+			'name' => 'Имя и фамилия',
+            'email' => 'E-mail',
+            'address' => 'Адрес',
+			'password' => 'Пароль',
 			'role' => 'Role',
 			'open_pass' => 'Open Pass',
 		);
