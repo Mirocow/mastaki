@@ -53,11 +53,11 @@ class SiteController extends Controller
 
         if($deviceType !== null)
         {
-            $devices = Device::model()->with('manufacturer')->with('type')->findAllByAttributes(array('type_id' => $type_id));
+            $devices = Device::model()->with('manufacturer')->with('type')->findAllByAttributes(array('type_id' => $type_id, 'active' => '1'),array('order' => 't.pos ASC'));
 
             $manufacturers = Manufacturer::model()->with('devices')->findAll(array(
-                'condition' => 'devices.type_id = :type_id',
-                'order' => 't.id DESC',
+                'condition' => 'devices.type_id = :type_id AND t.active = 1',
+                'order' => 't.pos ASC',
                 'params' => array(':type_id' => $type_id),
             ));
 
@@ -77,8 +77,15 @@ class SiteController extends Controller
 
             $currentDevice = Device::model()->with('manufacturer')->findByPk($device_id);
 
-            $problemCategories = ProblemCategory::model()->with(array('problems' => array('with' => 'devicesProblem')))->findAll(array(
-                'condition' => 'devicesProblem.device_id = :device_id AND problems.type = :problem_type AND device_type_id = :type_id',
+            $problemCategories = ProblemCategory::model()->with(array(
+                'problems' => array(
+                    'with' => array(
+                        'devicesProblem',
+                    ),
+                    'order' => 'problems.pos ASC',
+                )
+            ))->findAll(array(
+                'condition' => 'devicesProblem.device_id = :device_id AND problems.type = :problem_type AND device_type_id = :type_id AND devicesProblem.active = 1',
                 'params' => array(
                     ':device_id' => $device_id,
                     ':problem_type' => $problem_type,
@@ -123,6 +130,7 @@ class SiteController extends Controller
                 $deviceProblem->part_price = $price / 2;
                 $deviceProblem->device_id = $device->getPrimaryKey();
                 $deviceProblem->problem_id = $problem->getPrimaryKey();
+                $deviceProblem->active = 1;
                 $deviceProblem->save();
             }
         }
