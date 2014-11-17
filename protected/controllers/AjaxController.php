@@ -54,6 +54,86 @@ class AjaxController extends Controller
 
                 print json_encode(array('action' => 'servicesDeviceType', 'problemCategories' => $problemCategories, 'breakdowns' => $breakdowns, 'problems' => $problems));
             }
+            elseif($data['action'] == 'catalogDeviceType')
+            {
+                $manufacturers = array();
+                $devices = array();
+                $problemCategories = array();
+                $breakdowns = array();
+                $problems = array();
+
+                foreach(Manufacturer::model()->findAllByAttributes(array('device_type_id' => $data['deviceTypeId']), array('order' => 'pos ASC')) as $manufacturer)
+                    $manufacturers[] = array('id' => $manufacturer->getPrimaryKey(), 'name' => $manufacturer->name, 'active' => $manufacturer->active);
+
+                if(count($manufacturers) > 0)
+                    foreach(Device::model()->findAllByAttributes(array('type_id' => $data['deviceTypeId'], 'manufacturer_id' => $manufacturers[0]['id']), array('order' => 'pos ASC')) as $device)
+                        $devices[] = array('id' => $device->getPrimaryKey(), 'name' => $device->name, 'image' => $device->image, 'active' => $device->active);
+
+                foreach(ProblemCategory::model()->findAllByAttributes(array('device_type_id' => $data['deviceTypeId']), array('order' => 'pos ASC')) as $problemCategory)
+                    $problemCategories[] = array('id' => $problemCategory->getPrimaryKey(), 'name' => $problemCategory->name, 'active' => $problemCategory->active);
+
+                if(count($problemCategories) > 0 && count($devices) > 0)
+                {
+                    foreach(Problem::model()->findAllByAttributes(array('problem_category_id' => $problemCategories[0]['id'], 'type' => 'BREAKDOWN'), array('order' => 'pos ASC')) as $breakdown)
+                    {
+                        $data = array('id' => $breakdown->getPrimaryKey(), 'name' => $breakdown->name, 'description' => $breakdown->description, 'active' => $breakdown->active);
+                        $deviceBreakdown = DeviceProblem::model()->findByAttributes(array('problem_id' => $breakdown->getPrimaryKey(), 'device_id' => $devices[0]['id']));
+
+                        if($deviceBreakdown !== null)
+                            $data['active'] = $deviceBreakdown->active;
+                        else
+                            $data['active'] = 0;
+
+                        $breakdowns[] = $data;
+                    }
+                    foreach(Problem::model()->findAllByAttributes(array('problem_category_id' => $problemCategories[0]['id'], 'type' => 'PROBLEM'), array('order' => 'pos ASC')) as $problem)
+                    {
+                        $data = array('id' => $problem->getPrimaryKey(), 'name' => $problem->name, 'description' => $problem->description, 'active' => $problem->active);
+                        $deviceProblem = DeviceProblem::model()->findByAttributes(array('problem_id' => $problem->getPrimaryKey(), 'device_id' => $devices[0]['id']));
+
+                        if($deviceProblem !== null)
+                            $data['active'] = $deviceProblem->active;
+                        else
+                            $data['active'] = 0;
+
+                        $problems[] = $data;
+                    }
+                }
+
+                print json_encode(array('action' => 'catalogDeviceType', 'devices' => $devices, 'manufacturers' => $manufacturers, 'problemCategories' => $problemCategories, 'breakdowns' => $breakdowns, 'problems' => $problems));
+            }
+            elseif($data['action'] == 'catalogProblemCategory')
+            {
+                $breakdowns = array();
+                $problems = array();
+
+                foreach(Problem::model()->findAllByAttributes(array('problem_category_id' => $data['problemCategoryId'], 'type' => 'BREAKDOWN'), array('order' => 'pos ASC')) as $breakdown)
+                {
+                    $element = array('id' => $breakdown->getPrimaryKey(), 'name' => $breakdown->name, 'description' => $breakdown->description, 'active' => $breakdown->active);
+                    $deviceBreakdown = DeviceProblem::model()->findByAttributes(array('problem_id' => $breakdown->getPrimaryKey(), 'device_id' => $data['deviceId']));
+
+                    if($deviceBreakdown !== null)
+                        $element['active'] = $deviceBreakdown->active;
+                    else
+                        $element['active'] = 0;
+
+                    $breakdowns[] = $element;
+                }
+                foreach(Problem::model()->findAllByAttributes(array('problem_category_id' => $data['problemCategoryId'], 'type' => 'PROBLEM'), array('order' => 'pos ASC')) as $problem)
+                {
+                    $element = array('id' => $problem->getPrimaryKey(), 'name' => $problem->name, 'description' => $problem->description, 'active' => $problem->active);
+                    $deviceProblem = DeviceProblem::model()->findByAttributes(array('problem_id' => $problem->getPrimaryKey(), 'device_id' => $data['deviceId']));
+
+                    if($deviceProblem !== null)
+                        $element['active'] = $deviceProblem->active;
+                    else
+                        $element['active'] = 0;
+
+                    $problems[] = $element;
+                }
+
+                print json_encode(array('action' => 'problemCategory', 'breakdowns' => $breakdowns, 'problems' => $problems));
+            }
             elseif($data['action'] == 'problemCategory')
             {
                 $breakdowns = array();
@@ -654,13 +734,16 @@ class AjaxController extends Controller
         if(isset($_POST['data']))
         {
             $data = json_decode($_POST['data'], true);
-            $breakdown = DeviceProblem::model()->findByAttributes(array('device_id' => $data['deviceId'], 'problem_id' => $data['breakdownId']));
-            $problem = DeviceProblem::model()->findByAttributes(array('device_id' => $data['deviceId'], 'problem_id' => $data['problemId']));
+            if(isset($data['deviceId']) && isset($data['breakdownId']) && isset($data['problemId']))
+            {
+                $breakdown = DeviceProblem::model()->findByAttributes(array('device_id' => $data['deviceId'], 'problem_id' => $data['breakdownId']));
+                $problem = DeviceProblem::model()->findByAttributes(array('device_id' => $data['deviceId'], 'problem_id' => $data['problemId']));
 
-            if($breakdown !== null)
-                $response['breakdown'] = array('price' => $breakdown->price, 'partPrice' => $breakdown->part_price);
-            if($problem !== null)
-                $response['problem'] = array('price' => $problem->price, 'partPrice' => $problem->part_price);
+                if($breakdown !== null)
+                    $response['breakdown'] = array('price' => $breakdown->price, 'partPrice' => $breakdown->part_price);
+                if($problem !== null)
+                    $response['problem'] = array('price' => $problem->price, 'partPrice' => $problem->part_price);
+            }
         }
 
         print json_encode($response);
@@ -670,12 +753,73 @@ class AjaxController extends Controller
 
     public function actionToggle()
     {
-        if(isset($_POST['data']))
+        if(isset($_POST['action']))
         {
-            $data = json_decode($_POST['data'], true);
-            if($data['action'] = 'deviceType')
+            $data = $_POST;
+            if($data['action'] == 'problemCategory')
             {
+                $problemCategory = ProblemCategory::model()->findByPk($data['problemCategoryId']);
 
+                if($problemCategory->active == 1) {
+                    $problemCategory->active = 0;
+                    $deviceProblems = DeviceProblem::model()->findAll(array(
+                        'with' => array('device', 'problem' => array(
+                            'with' => array('problemCategory'),
+                        )),
+                        'condition' => 'device.id = :deviceId AND problemCategory.id = :problemCategoryId',
+                        'params' => array(':problemCategoryId' => $data['problemCategoryId'], ':deviceId' => $data['deviceId']),
+                    ));
+
+                    foreach ($deviceProblems as $deviceProblem)
+                    {
+                        $deviceProblem->active = 0;
+                        $deviceProblem->save();
+                    }
+                }
+                else
+                    $problemCategory->active = 1;
+
+                $problemCategory->save();
+            }
+            if($data['action'] == 'deviceType')
+            {
+                $deviceType = DeviceType::model()->findByPk($data['deviceTypeId']);
+                if($deviceType->active == 1)
+                    $deviceType->active = 0;
+                else
+                    $deviceType->active = 1;
+
+                $deviceType->save();
+            }
+            if($data['action'] == 'manufacturer')
+            {
+                $manufacturer = Manufacturer::model()->findByPk($data['manufacturerId']);
+                if($manufacturer->active == 1)
+                    $manufacturer->active = 0;
+                else
+                    $manufacturer->active = 1;
+
+                $manufacturer->save();
+            }
+            if($data['action'] == 'device')
+            {
+                $device = Device::model()->findByPk($data['deviceId']);
+                if($device->active == 1)
+                    $device->active = 0;
+                else
+                    $device->active = 1;
+
+                $device->save();
+            }
+            if($data['action'] == 'problem')
+            {
+                $problem = DeviceProblem::model()->findByAttributes(array('device_id' => $data['deviceId'], 'problem_id' => $data['problemId']));
+                if($problem->active == 1)
+                    $problem->active = 0;
+                else
+                    $problem->active = 1;
+
+                $problem->save();
             }
         }
     }

@@ -73,15 +73,28 @@ $cs->registerScriptFile(Yii::app()->baseUrl.'/js/'.'catalogToggle.js');
             $first = true;
             foreach($breakdowns as $breakdown)
             {
-                echo '<li'.(($first) ? ' class="bg-info"' : '').'><span breakdown-id="'.$breakdown->id.'" class="breakdown-li">'.$breakdown->name.'</span><i class="fa pull-right fa-toggle-'.(($breakdown->active == 1) ? 'on text-success' : 'off text-mute').'"></i></li>';
+                $params = array('problem_id' => $breakdown->getPrimaryKey());
+                $active = false;
+                if(count($devices) > 0)
+                    $params['device_id'] = $devices[0]->getPrimaryKey();
+
+                $deviceBreakdown = DeviceProblem::model()->findByAttributes($params);
+
+                if($deviceBreakdown !== null)
+                {
+                    if($deviceBreakdown->active == 1)
+                        $active = true;
+                }
+
+                echo '<li'.(($first) ? ' class="bg-info"' : '').'><span breakdown-id="'.$breakdown->id.'" class="breakdown-li">'.$breakdown->name.'</span><i class="fa pull-right fa-toggle-'.(($active) ? 'on text-success' : 'off text-mute').'"></i></li>';
                 $first = false;
             }
             ?>
         </ul>
         <div class="col-md-12">Цена запчастей</div>
-        <div class="col-md-12"><input type="text" id="breakdown-part-price" class="form-control" value="<?php echo ($deviceBreakdown) ? $deviceBreakdown->part_price : '';?>"/></div>
+        <div class="col-md-12"><input type="text" id="breakdown-part-price" class="form-control" value="<?php echo ($firstDeviceBreakdown) ? $firstDeviceBreakdown->part_price : '';?>"/></div>
         <div class="col-md-12">Цена работы</div>
-        <div class="col-md-12"><input type="text" id="breakdown-work-price" class="form-control" value="<?php echo ($deviceBreakdown) ? $deviceBreakdown->price : '';?>"/></div>
+        <div class="col-md-12"><input type="text" id="breakdown-work-price" class="form-control" value="<?php echo ($firstDeviceBreakdown) ? $firstDeviceBreakdown->price : '';?>"/></div>
         <div class="col-md-12 text-center"><button id="breakdown-price-save" class="btn btn-success">Сохранить</button></div>
     </div>
     <div class="col-md-4">
@@ -93,15 +106,27 @@ $cs->registerScriptFile(Yii::app()->baseUrl.'/js/'.'catalogToggle.js');
             $first = true;
             foreach($problems as $problem)
             {
-                echo '<li'.(($first) ? ' class="bg-info"' : '').'><span problem-id="'.$problem->id.'" class="problem-li">'.$problem->name.'</span><i class="fa pull-right fa-toggle-'.(($problem->active == 1) ? 'on text-success' : 'off text-mute').'"></i></li>';
+                $params = array('problem_id' => $problem->getPrimaryKey());
+                $active = false;
+                if(count($devices) > 0)
+                    $params['device_id'] = $devices[0]->getPrimaryKey();
+
+                $deviceProblem = DeviceProblem::model()->findByAttributes($params);
+
+                if($deviceProblem !== null)
+                {
+                    if($deviceProblem->active == 1)
+                        $active = true;
+                }
+                echo '<li'.(($first) ? ' class="bg-info"' : '').'><span problem-id="'.$problem->id.'" class="problem-li">'.$problem->name.'</span><i class="fa pull-right fa-toggle-'.(($active) ? 'on text-success' : 'off text-mute').'"></i></li>';
                 $first = false;
             }
             ?>
         </ul>
         <div class="col-md-12">Цена запчастей</div>
-        <div class="col-md-12"><input type="text" id="problem-part-price" class="form-control" value="<?php echo ($deviceProblem) ? $deviceProblem->part_price : '';?>"/></div>
+        <div class="col-md-12"><input type="text" id="problem-part-price" class="form-control" value="<?php echo ($firstDeviceProblem) ? $firstDeviceProblem->part_price : '';?>"/></div>
         <div class="col-md-12">Цена работы</div>
-        <div class="col-md-12"><input type="text" id="problem-work-price" class="form-control" value="<?php echo ($deviceProblem) ? $deviceProblem->price : '';?>"/></div>
+        <div class="col-md-12"><input type="text" id="problem-work-price" class="form-control" value="<?php echo ($firstDeviceProblem) ? $firstDeviceProblem->price : '';?>"/></div>
         <div class="col-md-12 text-center"><button id="problem-price-save" class="btn btn-success">Сохранить</button></div>
     </div>
 </div>

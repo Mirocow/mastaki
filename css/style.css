@@ -143,3 +143,19 @@ table td {
     width: 150px;
     height: 100px;
 }
+
+
+.device-types-list > li > i.fa-toggle-on,
+.manufacturers-list > li > i.fa-toggle-on,
+.devices-list > li > i.fa-toggle-on,
+.problem-categories-list > li > i.fa-toggle-on,
+.breakdowns-list > li > i.fa-toggle-on,
+.problems-list > li > i.fa-toggle-on,
+.device-types-list > li > i.fa-toggle-off,
+.manufacturers-list > li > i.fa-toggle-off,
+.devices-list > li > i.fa-toggle-off,
+.problem-categories-list > li > i.fa-toggle-off,
+.breakdowns-list > li > i.fa-toggle-off,
+.problems-list > li > i.fa-toggle-off {
+    font-size: 16pt;
+}

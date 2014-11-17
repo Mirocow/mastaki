@@ -88,7 +88,7 @@ class AdminController extends Controller
                 $deviceProblem = DeviceProblem::model()->findByAttributes(array('device_id' => $devices[0]->getPrimaryKey(), 'problem_id' => $problems[0]->getPrimaryKey()));
         }
 
-        $this->render('catalog', array('deviceTypes' => $deviceTypes, 'manufacturers' => $manufacturers, 'devices' => $devices, 'breakdowns' => $breakdowns, 'problems' => $problems, 'problemCategories' => $problemCategories, 'deviceBreakdown' => $deviceBreakdown, 'deviceProblem' => $deviceProblem));
+        $this->render('catalog', array('deviceTypes' => $deviceTypes, 'manufacturers' => $manufacturers, 'devices' => $devices, 'breakdowns' => $breakdowns, 'problems' => $problems, 'problemCategories' => $problemCategories, 'firstDeviceBreakdown' => $deviceBreakdown, 'firstDeviceProblem' => $deviceProblem));
     }
     public function actionServices()
     {

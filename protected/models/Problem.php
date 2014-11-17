@@ -50,6 +50,7 @@ class Problem extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
             'devicesProblem' => array(self::HAS_MANY, 'DeviceProblem', 'problem_id'),
+            'problemCategory' => array(self::BELONGS_TO, 'ProblemCategory', 'problem_category_id'),
 		);
 	}
 

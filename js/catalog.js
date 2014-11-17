@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function(){/*
     $(document).on('click', '.device-type-li', function(){
 
         $('input[name="deviceTypeId"], #deviceTypeIdHidden').val($(this).attr('device-type-id'));
@@ -20,7 +20,7 @@ $(document).ready(function(){
                 data: JSON.stringify(data)
             })
             .done(function(response){updateDevices(response)});
-    });
+    });*/
     $(document).on('click', '.device-type-li', function(){
 
         $('input[name="deviceTypeId"], #deviceTypeIdHidden').val($(this).attr('device-type-id'));
@@ -32,14 +32,14 @@ $(document).ready(function(){
 
         var data = {
             deviceTypeId: deviceTypeId,
-            action: 'servicesDeviceType'
+            action: 'catalogDeviceType'
         };
 
         $.post( Yii.app.createUrl('ajax/getDevices'),
             {
                 data: JSON.stringify(data)
             })
-            .done(function(response){updateServices(response)});
+            .done(function(response){updateDevices(response); updateServices(response);});
     });
     $(document).on('click', '.manufacturer-li',  function(){
 
@@ -80,6 +80,7 @@ $(document).ready(function(){
         $('#problemCategoryIdHidden').val($(this).attr('problem-category-id'));
 
         var deviceTypeId = $('.device-types-list .bg-info span').attr('device-type-id');
+        var deviceId = $('.devices-list .bg-info span').attr('device-id');
         var problemCategoryId = $(this).attr('problem-category-id');
 
         $('.problem-category-li').parent().removeClass('bg-info');
@@ -89,8 +90,9 @@ $(document).ready(function(){
 
         var data = {
             deviceTypeId: deviceTypeId,
+            deviceId: deviceId,
             problemCategoryId: problemCategoryId,
-            action: 'problemCategory'
+            action: 'catalogProblemCategory'
         };
 
         $.post( Yii.app.createUrl('ajax/getDevices'),
@@ -184,7 +186,7 @@ function updateDevices(data)
     var html = '';
     var first = true;
 
-    if(data.action == 'deviceType')
+    if(data.action == 'catalogDeviceType')
     {
         $('.manufacturers-list').html('');
         $('.devices-list').html('');
@@ -195,7 +197,14 @@ function updateDevices(data)
             else
                 html += '<li>';
 
-            html += '<span manufacturer-id="' + manufacturer.id + '" class="manufacturer-li">' + manufacturer.name + '</span></li>';
+            html += '<span manufacturer-id="' + manufacturer.id + '" class="manufacturer-li">' + manufacturer.name + '</span>';
+
+            if(manufacturer.active == '1')
+                html += '<i class="fa pull-right fa-toggle-on text-success"></i>';
+            else
+                html += '<i class="fa pull-right fa-toggle-off text-mute"></i>';
+
+            html += '</li>';
 
             first = false;
         });
@@ -209,7 +218,14 @@ function updateDevices(data)
             else
                 html += '<li>';
 
-            html += '<span image="' + device.image + '" device-id="' + device.id + '" class="device-li">' + device.name + '</span></li>';
+            html += '<span image="' + device.image + '" device-id="' + device.id + '" class="device-li">' + device.name + '</span>';
+
+            if(device.active == '1')
+                html += '<i class="fa pull-right fa-toggle-on text-success"></i>';
+            else
+                html += '<i class="fa pull-right fa-toggle-off text-mute"></i>';
+
+            html += '</li>';
 
             first = false;
         });
@@ -228,7 +244,14 @@ function updateDevices(data)
             else
                 html += '<li>';
 
-            html += '<span image="' + device.image + '" device-id="' + device.id + '" class="device-li">' + device.name + '</span></li>';
+            html += '<span image="' + device.image + '" device-id="' + device.id + '" class="device-li">' + device.name + '</span>';
+
+            if(device.active == '1')
+                html += '<i class="fa pull-right fa-toggle-on text-success"></i>';
+            else
+                html += '<i class="fa pull-right fa-toggle-off text-mute"></i>';
+
+            html += '</li>';
 
             first = false;
         });
@@ -244,7 +267,7 @@ function updateServices(data)
     var html = '';
     var first = true;
 
-    if(data.action == 'servicesDeviceType')
+    if(data.action == 'catalogDeviceType')
     {
         $('.problem-categories-list').html('');
         $('.breakdowns-list').html('');
@@ -256,7 +279,14 @@ function updateServices(data)
             else
                 html += '<li>';
 
-            html += '<span problem-category-id="' + problemCategory.id + '" class="problem-category-li">' + problemCategory.name + '</span></li>';
+            html += '<span problem-category-id="' + problemCategory.id + '" class="problem-category-li">' + problemCategory.name + '</span>';
+
+            if(problemCategory.active == '1')
+                html += '<i class="fa pull-right fa-toggle-on text-success"></i>';
+            else
+                html += '<i class="fa pull-right fa-toggle-off text-mute"></i>';
+
+            html += '</li>';
 
             first = false;
         });
@@ -271,7 +301,14 @@ function updateServices(data)
             else
                 html += '<li>';
 
-            html += '<span breakdown-id="' + breakdown.id + '" class="breakdown-li">' + breakdown.name + '</span></li>';
+            html += '<span breakdown-id="' + breakdown.id + '" class="breakdown-li">' + breakdown.name + '</span>';
+
+            if(breakdown.active == '1')
+                html += '<i class="fa pull-right fa-toggle-on text-success"></i>';
+            else
+                html += '<i class="fa pull-right fa-toggle-off text-mute"></i>';
+
+            html += '</li>';
 
             first = false;
         });
@@ -286,7 +323,14 @@ function updateServices(data)
             else
                 html += '<li>';
 
-            html += '<span problem-id="' + problem.id + '" class="problem-li">' + problem.name + '</span></li>';
+            html += '<span problem-id="' + problem.id + '" class="problem-li">' + problem.name + '</span>';
+
+            if(problem.active == '1')
+                html += '<i class="fa pull-right fa-toggle-on text-success"></i>';
+            else
+                html += '<i class="fa pull-right fa-toggle-off text-mute"></i>';
+
+            html += '</li>';
 
             first = false;
         });
@@ -303,7 +347,14 @@ function updateServices(data)
             else
                 html += '<li>';
 
-            html += '<span breakdown-id="' + breakdown.id + '" class="breakdown-li">' + breakdown.name + '</span></li>';
+            html += '<span breakdown-id="' + breakdown.id + '" class="breakdown-li">' + breakdown.name + '</span>';
+
+            if(breakdown.active == '1')
+                html += '<i class="fa pull-right fa-toggle-on text-success"></i>';
+            else
+                html += '<i class="fa pull-right fa-toggle-off text-mute"></i>';
+
+            html += '</li>';
 
             first = false;
         });
@@ -318,8 +369,14 @@ function updateServices(data)
             else
                 html += '<li>';
 
-            html += '<span problem-id="' + problem.id + '" class="problem-li">' + problem.name + '</span></li>';
+            html += '<span problem-id="' + problem.id + '" class="problem-li">' + problem.name + '</span>';
 
+            if(problem.active == '1')
+                html += '<i class="fa pull-right fa-toggle-on text-success"></i>';
+            else
+                html += '<i class="fa pull-right fa-toggle-off text-mute"></i>';
+
+            html += '</li>';
             first = false;
         });
         $('.problems-list').html(html);
