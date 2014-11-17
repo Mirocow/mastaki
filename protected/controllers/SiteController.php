@@ -88,7 +88,7 @@ class SiteController extends Controller
 
 
             $col = count($problemCategories);
-            $newProblemCategories = array();
+            $newProblemCategories = array(array(), array(), array());
             $column = 0;
 
             foreach($problemCategories as $problemCategory)

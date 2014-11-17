@@ -7,6 +7,7 @@
  * @property integer $id
  * @property integer $device_id
  * @property integer $problem_id
+ * @property integer $active
  * @property double $price
  * @property double $part_price
  */
@@ -33,7 +34,7 @@ class DeviceProblem extends CActiveRecord
 			array('price, part_price', 'numerical'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, device_id, problem_id, price, part_price', 'safe', 'on'=>'search'),
+			array('id, device_id, problem_id, price, part_price, active', 'safe', 'on'=>'search'),
 		);
 	}
 

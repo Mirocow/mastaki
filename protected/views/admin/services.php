@@ -1,3 +1,10 @@
+<?php
+    $cs = Yii::app()->clientScript;
+    $cs->registerScriptFile(Yii::app()->baseUrl.'/js/services.js');
+    $cs->registerScriptFile(Yii::app()->baseUrl.'/js/servicesSort.js');
+    $cs->registerScriptFile(Yii::app()->baseUrl.'/js/imagePreview.js');
+    $cs->registerScriptFile(Yii::app()->baseUrl.'/js/jquery.swap.js');
+?>
 <div class="col-md-12 devices-lists">
     <div class="col-md-4">
         <div class="page-header">

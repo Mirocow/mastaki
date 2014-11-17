@@ -6,6 +6,7 @@
  * The followings are the available columns in table 'manufacturer':
  * @property integer $id
  * @property integer $pos
+ * @property integer $active
  * @property integer $device_type_id
  * @property string $name
  */
@@ -28,10 +29,11 @@ class Manufacturer extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('name', 'required'),
+            array('pos, active, device_type_id', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, device_type_id, pos', 'safe', 'on'=>'search'),
+			array('id, name, device_type_id, pos, active', 'safe', 'on'=>'search'),
 		);
 	}
 

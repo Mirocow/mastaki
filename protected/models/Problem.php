@@ -9,6 +9,7 @@
  * @property string $type
  * @property string $description
  * @property string $image
+ * @property integer $active
  * @property integer $problem_category_id
  */
 class Problem extends CActiveRecord
@@ -31,12 +32,12 @@ class Problem extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('name, type, problem_category_id', 'required'),
-			array('problem_category_id', 'numerical', 'integerOnly'=>true),
+			array('problem_category_id, active', 'numerical', 'integerOnly'=>true),
 			array('name, type, image', 'length', 'max'=>45),
             array('image_file', 'file', 'types'=>'jpg, jpeg, gif, png', 'allowEmpty' => true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, type, problem_category_id, description, image, image_file', 'safe', 'on'=>'search'),
+			array('id, name, type, problem_category_id, description, image, image_file, active', 'safe', 'on'=>'search'),
 		);
 	}
 

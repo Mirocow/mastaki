@@ -266,13 +266,13 @@ function updateDevices(data)
         $('.manufacturers-list').html('');
         $('.devices-list').html('');
 
-        $.each(data.manufacturers, function(id, name){
+        $.each(data.manufacturers, function(id, manufacturer){
             if(first)
                 html += '<li class="bg-info">';
             else
                 html += '<li>';
 
-            html += '<i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span manufacturer-id="' + id + '" class="manufacturer-li">' + name + '</span></li>';
+            html += '<i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span manufacturer-id="' + manufacturer.id + '" class="manufacturer-li">' + manufacturer.name + '</span></li>';
 
             first = false;
         });

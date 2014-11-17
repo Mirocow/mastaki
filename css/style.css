@@ -110,7 +110,7 @@ table td {
 }
 
 .devices-lists > div > ul {
-    height: 100px;
+    height: 130px;
     min-height: 100px;
     overflow-y: scroll;
 }

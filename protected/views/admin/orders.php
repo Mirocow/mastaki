@@ -1,3 +1,7 @@
+<?php
+    $cs = Yii::app()->clientScript;
+    $cs->registerScriptFile(Yii::app()->baseUrl.'/js/order.js');
+?>
 <div class="col-md-12">
     <div class="col-md-3">
         <input type="text" placeholder="Фильтр" class="form-control" id="orders-filter"/>

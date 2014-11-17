@@ -56,6 +56,40 @@ class AdminController extends Controller
 
         $this->render('devices', array('deviceTypes' => $deviceTypes, 'manufacturers' => $manufacturers, 'devices' => $devices));
     }
+    public function actionCatalog()
+    {
+        $manufacturers = array();
+        $devices = array();
+        $problemCategories = array();
+        $problems = array();
+        $breakdowns = array();
+        $deviceBreakdown = null;
+        $deviceProblem = null;
+
+        $deviceTypes = DeviceType::model()->findAll(array('order' => 'pos ASC'));
+
+        if(count($deviceTypes) > 0)
+            $manufacturers = Manufacturer::model()->findAllByAttributes(array('device_type_id' => $deviceTypes[0]->getPrimaryKey()), array('order' => 'pos ASC'));
+        if(count($deviceTypes) > 0 && count($manufacturers) > 0)
+            $devices = Device::model()->findAllByAttributes(array('manufacturer_id' => $manufacturers[0]->getPrimaryKey(), 'type_id' => $deviceTypes[0]->getPrimaryKey()), array('order' => 'pos ASC'));
+
+        if(count($deviceTypes) > 0)
+            $problemCategories = ProblemCategory::model()->findAllByAttributes(array('device_type_id' => $deviceTypes[0]->getPrimaryKey()), array('order' => 'pos ASC'));
+        if(count($problemCategories) > 0 )
+            $breakdowns = Problem::model()->findAllByAttributes(array('problem_category_id' => $problemCategories[0]->getPrimaryKey(), 'type' => 'BREAKDOWN'), array('order' => 'pos ASC'));
+        if(count($problemCategories) > 0)
+            $problems = Problem::model()->findAllByAttributes(array('problem_category_id' => $problemCategories[0]->getPrimaryKey(), 'type' => 'PROBLEM'), array('order' => 'pos ASC'));
+
+        if(count($devices) > 0)
+        {
+            if(count($breakdowns) > 0)
+                $deviceBreakdown = DeviceProblem::model()->findByAttributes(array('device_id' => $devices[0]->getPrimaryKey(), 'problem_id' => $breakdowns[0]->getPrimaryKey()));
+            if(count($problems) > 0)
+                $deviceProblem = DeviceProblem::model()->findByAttributes(array('device_id' => $devices[0]->getPrimaryKey(), 'problem_id' => $problems[0]->getPrimaryKey()));
+        }
+
+        $this->render('catalog', array('deviceTypes' => $deviceTypes, 'manufacturers' => $manufacturers, 'devices' => $devices, 'breakdowns' => $breakdowns, 'problems' => $problems, 'problemCategories' => $problemCategories, 'deviceBreakdown' => $deviceBreakdown, 'deviceProblem' => $deviceProblem));
+    }
     public function actionServices()
     {
         $problemCategories = array();

@@ -8,6 +8,7 @@
  * @property integer $pos
  * @property string $name
  * @property string $icon
+ * @property integer $active
  * @property integer $device_type_id
  */
 class ProblemCategory extends CActiveRecord
@@ -35,7 +36,7 @@ class ProblemCategory extends CActiveRecord
             array('icon_file', 'file', 'types'=>'jpg, jpeg, gif, png', 'allowEmpty' => true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, device_type_id, pos, icon', 'safe', 'on'=>'search'),
+			array('id, name, device_type_id, pos, icon, active', 'safe', 'on'=>'search'),
 		);
 	}
 
