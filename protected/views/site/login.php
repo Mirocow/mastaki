@@ -40,7 +40,7 @@ $form=$this->beginWidget('CActiveForm', array(
         </div>
         <div class="form-group">
             <div class="col-lg-10 col-lg-offset-2 text-center">
-                <button type="submit" class="btn btn-primary">Войти</button>
+                <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i>&nbsp;Войти</button>
                 <!--<a href="<?=$this->createUrl('/site/registration');?>" class="btn btn-primary">Регистрация</a>
                 <a href="<?=$this->createUrl('/site/forgot');?>" class="btn btn-warning pull-right">Восстановить пароль</a>-->
             </div>

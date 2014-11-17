@@ -34,13 +34,23 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
             <?php $this->getNavBar(); ?>
             <ul class="pull-right nav navbar-nav">
-                <li>
-                    <?php if(Yii::app()->user->isGuest) { ?>
-                        <a href="<?=$this->createUrl('/site/login')?>"><i class="fa fa-user"></i> Войти</a>
-                    <?php } else { ?>
-                        <a href="<?=$this->createUrl('/site/logout')?>"><i class="fa fa-user"></i> Выйти</a>
-                    <?php } ?>
-                </li>
+                <?php if(Yii::app()->user->isGuest) { ?>
+                    <li>
+                        <a href="<?=$this->createUrl('/site/login')?>"><i class="fa fa-sign-in"></i> Войти</a>
+                    </li>
+                <?php } else { ?>
+                    <?php if(isset(Yii::app()->user->role)) { if(Yii::app()->user->role == 'ADMIN') { ?>
+                        <li>
+                            <a href="<?=$this->createUrl('/admin/index')?>"><i class="fa fa-wrench"></i> Админка</a>
+                        </li>
+                    <?php }} ?>
+                    <li>
+                        <a href="<?=$this->createUrl('/cabinet/index')?>"><i class="fa fa-user"></i> Личный кабинет</a>
+                    </li>
+                    <li>
+                        <a href="<?=$this->createUrl('/site/logout')?>"><i class="fa fa-sign-out"></i> Выйти</a>
+                    </li>
+                <?php } ?>
             </ul>
         </div>
     </div>
