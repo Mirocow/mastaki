@@ -166,3 +166,10 @@ table td {
     font-style: italic;
     display: block;
 }
+
+#client-form > div {
+    margin-bottom: 5px;
+}
+.search-row {
+    margin-bottom: 10px;
+}

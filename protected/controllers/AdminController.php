@@ -94,90 +94,6 @@ class AdminController extends Controller
 
         $this->render('services', array('deviceTypes' => $deviceTypes, 'problemCategories' => $problemCategories, 'breakdowns' => $breakdowns, 'problems' => $problems));
     }
-    public function actionProblems($problem_category_id = null)
-    {
-        $criteria = new CDbCriteria();
-        if($problem_category_id !== null)
-        {
-            $criteria->condition = 'problem_category_id = :id';
-            $criteria->params = array(':id' => $problem_category_id);
-        }
-        $problems = new CActiveDataProvider('Problem', array(
-            'criteria' => $criteria,
-            'pagination'=>array(
-                'pageSize' => 10,
-                'pageVar' =>'page',
-            ),
-        ));
-
-        $problemCategories = new CActiveDataProvider('ProblemCategory', array(
-            'pagination' => false,
-        ));
-
-        $this->render('problems', array('problems' => $problems, 'problemCategories' => $problemCategories, 'problem_category_id' => $problem_category_id));
-    }
-
-    public function actionAddProblemCategory()
-    {
-        $problemCategory = new ProblemCategory();
-
-        if(isset($_POST['ProblemCategory']))
-        {
-            $problemCategory->attributes = $_POST['ProblemCategory'];
-
-            if($problemCategory->validate())
-            {
-                if($problemCategory->save())
-                {
-                    Yii::app()->user->setFlash('SUCCESS', 'Категория проблемы добавлена');
-                    $this->redirect(array('/admin/problems'));
-                }
-            }
-        }
-
-        $this->render('addProblemCategory', array('problemCategory' => $problemCategory));
-    }
-    public function actionAddProblem()
-    {
-        $problem= new Problem();
-
-        if(isset($_POST['Problem']))
-        {
-            $problem->attributes = $_POST['Problem'];
-
-            if($problem->validate())
-            {
-                if($problem->save())
-                {
-                    Yii::app()->user->setFlash('SUCCESS', 'Проблема добавлена');
-                    $this->redirect(array('/admin/problems'));
-                }
-            }
-        }
-
-        $this->render('addProblem', array('problem' => $problem));
-    }
-
-    public function actionAddDevice()
-    {
-        $device = new Device();
-
-        if(isset($_POST['Device']))
-        {
-            $device->attributes = $_POST['Device'];
-
-            if($device->validate())
-            {
-                if($device->save())
-                {
-                    Yii::app()->user->setFlash('SUCCESS', 'Устройство добавлено');
-                    $this->redirect(array('/admin/devices'));
-                }
-            }
-        }
-
-        $this->render('addDevice', array('device' => $device));
-    }
     public function actionOrders()
     {
         $orders = FixOrder::model()->findAll(array(
@@ -185,6 +101,17 @@ class AdminController extends Controller
         ));
 
         $this->render('orders', array('orders' => $orders));
+    }
+    public function actionClients()
+    {
+        $orders = array();
+
+        $users = User::model()->findAllByAttributes(array('role' => 'USER'));
+
+        if(count($users) > 0)
+            $orders = FixOrder::model()->findAllByAttributes(array('user_id' => $users[0]->getPrimaryKey()));
+
+        $this->render('clients', array('clients' => $users, 'orders' => $orders));
     }
 
     /**

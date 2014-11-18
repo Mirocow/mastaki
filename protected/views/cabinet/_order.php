@@ -50,10 +50,10 @@ $discount = 0;
             <strong>Итого по всем работам со скидкой:</strong>
         </td>
         <td>
-            <?=$totalPrice.'р.';?>
+            <?=$data->getTotalPrice().'р.';?>
         </td>
         <td>
-            <?=$data->discount.'%';?>
+            <?=$data->getTotalDiscount();?>
         </td>
         <td>
             <?=Html::getOrderStatus($data->status);?>

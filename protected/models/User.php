@@ -12,6 +12,7 @@
  * @property string $password
  * @property string $role
  * @property string $open_pass
+ * @property double $discount
  *
  * The followings are the available model relations:
  * @property Review[] $reviews
@@ -41,7 +42,7 @@ class User extends CActiveRecord
             array('address', 'length', 'max'=>128),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, phone, name, email, address, password, role, open_pass', 'safe', 'on'=>'search'),
+			array('id, phone, name, email, address, password, role, open_pass, discount', 'safe', 'on'=>'search'),
 		);
 	}
 

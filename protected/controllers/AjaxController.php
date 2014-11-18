@@ -863,4 +863,33 @@ class AjaxController extends Controller
             }
         }
     }
+
+    public function actionSaveClient()
+    {
+        if(isset($_POST['User']) && isset($_POST['clientId']))
+        {
+            $user = User::model()->findByPk($_POST['clientId']);
+            $user->attributes = $_POST['User'];
+
+            $user->save();
+        }
+    }
+    public function actionClientOrders()
+    {
+        if(isset($_POST['id']))
+        {
+            $orders = FixOrder::model()->findAllByAttributes(array('user_id' => $_POST['id']));
+
+            $this->renderPartial('/admin/_orders', array('orders' => $orders));
+        }
+    }
+    public function actionClientInfo()
+    {
+        if(isset($_POST['id']))
+        {
+            $user = User::model()->findByPk($_POST['id']);
+
+            print json_encode($user->attributes);
+        }
+    }
 }
