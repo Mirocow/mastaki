@@ -4902,3 +4902,102 @@ Stack trace:
 REQUEST_URI=/index.php?r=site/deviceType&type_id=1
 HTTP_REFERER=http://mastaki/index.php?r=admin/orders
 ---
+2014/11/18 18:56:14 [error] [php] Undefined variable: devices (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:164)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/getDevices
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (164)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/18 18:56:31 [error] [php] Undefined variable: devices (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:164)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/getDevices
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (164)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/18 18:57:49 [error] [php] Undefined variable: devices (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:164)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/getDevices
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (164)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/18 19:02:13 [error] [php] Undefined variable: devices (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:164)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/getDevices
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (164)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/18 19:03:21 [error] [php] Undefined index: deviceId (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:164)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/getDevices
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (164)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/18 19:04:05 [error] [php] Undefined index: deviceId (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:164)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/getDevices
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (164)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/18 19:04:39 [error] [php] Undefined index: deviceId (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:164)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/getDevices
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (164)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/18 19:05:09 [error] [php] Undefined index: deviceId (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:164)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/getDevices
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (164)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/18 19:05:59 [error] [php] Undefined index: deviceId (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:164)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/getDevices
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (164)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)

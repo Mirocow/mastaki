@@ -139,6 +139,27 @@ $(document).ready(function(){/*
             });
         updatePrices();
     });
+    $(document).on('click', '.device-li', function(){
+        var deviceTypeId = $('.device-types-list .bg-info span').attr('device-type-id');
+        var deviceId = $(this).attr('device-id');
+
+        $('.device-li').parent().removeClass('bg-info');
+        $(this).parent().addClass('bg-info');
+
+        var data = {
+            deviceTypeId: deviceTypeId,
+            deviceId: deviceId,
+            action: 'catalogDevice'
+        };
+
+        $.post( Yii.app.createUrl('ajax/getDevices'),
+            {
+                data: JSON.stringify(data)
+            })
+            .done(function(response){updateServices(response)});
+
+        updateServices();
+    });
     $('#breakdown-price-save').click(function(){
         var problemId = $('.breakdowns-list .bg-info span').attr('breakdown-id');
         var deviceId = $('.devices-list .bg-info span').attr('device-id');
@@ -267,7 +288,7 @@ function updateServices(data)
     var html = '';
     var first = true;
 
-    if(data.action == 'catalogDeviceType')
+    if(data.action == 'catalogDeviceType' || data.action == 'catalogDevice')
     {
         $('.problem-categories-list').html('');
         $('.breakdowns-list').html('');
