@@ -804,8 +804,10 @@ class AjaxController extends Controller
                         'with' => array('device', 'problem' => array(
                             'with' => array('problemCategory'),
                         )),
-                        'condition' => 'device.id = :deviceId AND problemCategory.id = :problemCategoryId',
-                        'params' => array(':problemCategoryId' => $data['problemCategoryId'], ':deviceId' => $data['deviceId']),
+                        'condition' => 'problemCategory.id = :problemCategoryId',
+                        //'condition' => 'device.id = :deviceId AND problemCategory.id = :problemCategoryId',
+                        'params' => array(':problemCategoryId' => $data['problemCategoryId']),
+                        //'params' => array(':problemCategoryId' => $data['problemCategoryId'], ':deviceId' => $data['deviceId']),
                     ));
 
                     foreach ($deviceProblems as $deviceProblem)

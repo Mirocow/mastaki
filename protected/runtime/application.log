@@ -5001,3 +5001,51 @@ Stack trace:
 REQUEST_URI=/index.php?r=ajax/getDevices
 in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (164)
 in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/18 19:39:58 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens. The SQL statement executed was: SELECT `t`.`id` AS `t0_c0`, `t`.`device_id` AS `t0_c1`, `t`.`problem_id` AS `t0_c2`, `t`.`price` AS `t0_c3`, `t`.`part_price` AS `t0_c4`, `t`.`active` AS `t0_c5`, `device`.`id` AS `t1_c0`, `device`.`name` AS `t1_c1`, `device`.`image` AS `t1_c2`, `device`.`manufacturer_id` AS `t1_c3`, `device`.`type_id` AS `t1_c4`, `device`.`pos` AS `t1_c5`, `device`.`active` AS `t1_c6`, `problem`.`id` AS `t2_c0`, `problem`.`name` AS `t2_c1`, `problem`.`description` AS `t2_c2`, `problem`.`type` AS `t2_c3`, `problem`.`pos` AS `t2_c4`, `problem`.`image` AS `t2_c5`, `problem`.`active` AS `t2_c6`, `problem`.`problem_category_id` AS `t2_c7`, `problemCategory`.`id` AS `t3_c0`, `problemCategory`.`name` AS `t3_c1`, `problemCategory`.`icon` AS `t3_c2`, `problemCategory`.`pos` AS `t3_c3`, `problemCategory`.`active` AS `t3_c4`, `problemCategory`.`device_type_id` AS `t3_c5` FROM `device_problem` `t`  LEFT OUTER JOIN `device` `device` ON (`t`.`device_id`=`device`.`id`)  LEFT OUTER JOIN `problem` `problem` ON (`t`.`problem_id`=`problem`.`id`)  LEFT OUTER JOIN `problem_category` `problemCategory` ON (`problem`.`problem_category_id`=`problemCategory`.`id`)  WHERE (problemCategory.id = :problemCategoryId).
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (810)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/18 19:39:58 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens. The SQL statement executed was: SELECT `t`.`id` AS `t0_c0`, `t`.`device_id` AS `t0_c1`, `t`.`problem_id` AS `t0_c2`, `t`.`price` AS `t0_c3`, `t`.`part_price` AS `t0_c4`, `t`.`active` AS `t0_c5`, `device`.`id` AS `t1_c0`, `device`.`name` AS `t1_c1`, `device`.`image` AS `t1_c2`, `device`.`manufacturer_id` AS `t1_c3`, `device`.`type_id` AS `t1_c4`, `device`.`pos` AS `t1_c5`, `device`.`active` AS `t1_c6`, `problem`.`id` AS `t2_c0`, `problem`.`name` AS `t2_c1`, `problem`.`description` AS `t2_c2`, `problem`.`type` AS `t2_c3`, `problem`.`pos` AS `t2_c4`, `problem`.`image` AS `t2_c5`, `problem`.`active` AS `t2_c6`, `problem`.`problem_category_id` AS `t2_c7`, `problemCategory`.`id` AS `t3_c0`, `problemCategory`.`name` AS `t3_c1`, `problemCategory`.`icon` AS `t3_c2`, `problemCategory`.`pos` AS `t3_c3`, `problemCategory`.`active` AS `t3_c4`, `problemCategory`.`device_type_id` AS `t3_c5` FROM `device_problem` `t`  LEFT OUTER JOIN `device` `device` ON (`t`.`device_id`=`device`.`id`)  LEFT OUTER JOIN `problem` `problem` ON (`t`.`problem_id`=`problem`.`id`)  LEFT OUTER JOIN `problem_category` `problemCategory` ON (`problem`.`problem_category_id`=`problemCategory`.`id`)  WHERE (problemCategory.id = :problemCategoryId)' in /Applications/MAMP/htdocs/mastaki/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/db/CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveFinder.php(803): CDbCommand->queryAll()
+#2 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveFinder.php(437): CJoinElement->runQuery(Object(CJoinQuery))
+#3 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveFinder.php(68): CJoinElement->find(Object(CDbCriteria))
+#4 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveRecord.php(1357): CActiveFinder->query(Object(CDbCriteria), true)
+#5 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveRecord.php(1471): CActiveRecord->query(Object(CDbCriteria), true)
+#6 /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php(810): CActiveRecord->findAll(Array)
+#7 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CInlineAction.php(49): AjaxController->actionToggle()
+#8 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#10 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): CController->run('toggle')
+#12 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController('ajax/toggle')
+#13 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /Applications/MAMP/htdocs/mastaki/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/index.php?r=ajax/toggle
+HTTP_REFERER=http://mastaki/index.php?r=admin/catalog
+---
+2014/11/18 19:40:08 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens. The SQL statement executed was: SELECT `t`.`id` AS `t0_c0`, `t`.`device_id` AS `t0_c1`, `t`.`problem_id` AS `t0_c2`, `t`.`price` AS `t0_c3`, `t`.`part_price` AS `t0_c4`, `t`.`active` AS `t0_c5`, `device`.`id` AS `t1_c0`, `device`.`name` AS `t1_c1`, `device`.`image` AS `t1_c2`, `device`.`manufacturer_id` AS `t1_c3`, `device`.`type_id` AS `t1_c4`, `device`.`pos` AS `t1_c5`, `device`.`active` AS `t1_c6`, `problem`.`id` AS `t2_c0`, `problem`.`name` AS `t2_c1`, `problem`.`description` AS `t2_c2`, `problem`.`type` AS `t2_c3`, `problem`.`pos` AS `t2_c4`, `problem`.`image` AS `t2_c5`, `problem`.`active` AS `t2_c6`, `problem`.`problem_category_id` AS `t2_c7`, `problemCategory`.`id` AS `t3_c0`, `problemCategory`.`name` AS `t3_c1`, `problemCategory`.`icon` AS `t3_c2`, `problemCategory`.`pos` AS `t3_c3`, `problemCategory`.`active` AS `t3_c4`, `problemCategory`.`device_type_id` AS `t3_c5` FROM `device_problem` `t`  LEFT OUTER JOIN `device` `device` ON (`t`.`device_id`=`device`.`id`)  LEFT OUTER JOIN `problem` `problem` ON (`t`.`problem_id`=`problem`.`id`)  LEFT OUTER JOIN `problem_category` `problemCategory` ON (`problem`.`problem_category_id`=`problemCategory`.`id`)  WHERE (problemCategory.id = :problemCategoryId).
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (810)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/18 19:40:08 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens. The SQL statement executed was: SELECT `t`.`id` AS `t0_c0`, `t`.`device_id` AS `t0_c1`, `t`.`problem_id` AS `t0_c2`, `t`.`price` AS `t0_c3`, `t`.`part_price` AS `t0_c4`, `t`.`active` AS `t0_c5`, `device`.`id` AS `t1_c0`, `device`.`name` AS `t1_c1`, `device`.`image` AS `t1_c2`, `device`.`manufacturer_id` AS `t1_c3`, `device`.`type_id` AS `t1_c4`, `device`.`pos` AS `t1_c5`, `device`.`active` AS `t1_c6`, `problem`.`id` AS `t2_c0`, `problem`.`name` AS `t2_c1`, `problem`.`description` AS `t2_c2`, `problem`.`type` AS `t2_c3`, `problem`.`pos` AS `t2_c4`, `problem`.`image` AS `t2_c5`, `problem`.`active` AS `t2_c6`, `problem`.`problem_category_id` AS `t2_c7`, `problemCategory`.`id` AS `t3_c0`, `problemCategory`.`name` AS `t3_c1`, `problemCategory`.`icon` AS `t3_c2`, `problemCategory`.`pos` AS `t3_c3`, `problemCategory`.`active` AS `t3_c4`, `problemCategory`.`device_type_id` AS `t3_c5` FROM `device_problem` `t`  LEFT OUTER JOIN `device` `device` ON (`t`.`device_id`=`device`.`id`)  LEFT OUTER JOIN `problem` `problem` ON (`t`.`problem_id`=`problem`.`id`)  LEFT OUTER JOIN `problem_category` `problemCategory` ON (`problem`.`problem_category_id`=`problemCategory`.`id`)  WHERE (problemCategory.id = :problemCategoryId)' in /Applications/MAMP/htdocs/mastaki/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/db/CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveFinder.php(803): CDbCommand->queryAll()
+#2 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveFinder.php(437): CJoinElement->runQuery(Object(CJoinQuery))
+#3 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveFinder.php(68): CJoinElement->find(Object(CDbCriteria))
+#4 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveRecord.php(1357): CActiveFinder->query(Object(CDbCriteria), true)
+#5 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveRecord.php(1471): CActiveRecord->query(Object(CDbCriteria), true)
+#6 /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php(810): CActiveRecord->findAll(Array)
+#7 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CInlineAction.php(49): AjaxController->actionToggle()
+#8 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#10 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): CController->run('toggle')
+#12 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController('ajax/toggle')
+#13 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /Applications/MAMP/htdocs/mastaki/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/index.php?r=ajax/toggle
+HTTP_REFERER=http://mastaki/index.php?r=admin/catalog
+---
