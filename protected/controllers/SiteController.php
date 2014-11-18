@@ -118,6 +118,12 @@ class SiteController extends Controller
             ));
         }
     }
+    public function actionResume()
+    {
+        $skillCategories = SkillCategory::model()->with('skills')->findAll();
+
+        $this->render('resume', array('skillCategories' => $skillCategories));
+    }
     public function actionInit()
     {
         foreach (Problem::model()->findAll() as $problem)

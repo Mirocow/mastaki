@@ -167,7 +167,21 @@ table td {
     display: block;
 }
 
-#client-form > div {
+#client-form > div,
+.fields > div {
+    margin-bottom: 5px;
+}
+#mastak-form .skills {
+    padding: 0;
+}
+#mastak-form > div.fields {
+    padding: 0;
+    margin-top: 5px;
+}
+#mastak-form textarea {
+    resize: vertical;
+}
+#mastak-form {
     margin-bottom: 5px;
 }
 .search-row {

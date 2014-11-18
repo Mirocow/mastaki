@@ -5327,3 +5327,14 @@ in /Applications/MAMP/htdocs/mastaki/index.php (13)
 2014/11/18 21:31:05 [warning] [application] Failed to set unsafe attribute "discount" of "User".
 in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (872)
 in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/18 23:44:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "resume".' in /Applications/MAMP/htdocs/mastaki/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(270): CController->missingAction('resume')
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): CController->run('resume')
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController('site/resume')
+#3 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/mastaki/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=site/resume
+HTTP_REFERER=http://mastaki/index.php?r=admin/resume
+---

@@ -114,6 +114,12 @@ class AdminController extends Controller
         $this->render('clients', array('clients' => $users, 'orders' => $orders));
     }
 
+    public function actionResume()
+    {
+
+        $this->render('resume');
+    }
+
     /**
      * Displays the login page
      */

@@ -9,6 +9,7 @@
                 array('label' => 'Аппараты', 'url' => array('/admin/devices')),
                 array('label' => 'Услуги', 'url' => array('/admin/services')),
                 array('label' => 'Каталог услуг', 'url' => array('/admin/catalog')),
+                array('label' => 'База резюме', 'url' => array('/admin/resume')),
             ),
             'submenuHtmlOptions' => array('class' => 'dropdown-menu'),
             'htmlOptions' => array('class'=>'nav nav-pills nav-stacked'),
