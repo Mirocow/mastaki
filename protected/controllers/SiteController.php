@@ -56,7 +56,7 @@ class SiteController extends Controller
             $devices = Device::model()->with('manufacturer')->with('type')->findAllByAttributes(array('type_id' => $type_id, 'active' => '1'),array('order' => 't.pos ASC'));
 
             $manufacturers = Manufacturer::model()->with('devices')->findAll(array(
-                'condition' => 'devices.type_id = :type_id AND t.active = 1',
+                'condition' => 'devices.type_id = :type_id AND t.active = 1 AND devices.active = 1',
                 'order' => 't.pos ASC',
                 'params' => array(':type_id' => $type_id),
             ));
@@ -70,7 +70,7 @@ class SiteController extends Controller
                     $manufacturer_id = $manufacturers[0]->id;
             }
 
-            $devices = Device::model()->with('manufacturer')->with('type')->findAllByAttributes(array('type_id' => $type_id, 'manufacturer_id' => $manufacturer_id));
+            $devices = Device::model()->with('manufacturer')->with('type')->findAllByAttributes(array('type_id' => $type_id, 'manufacturer_id' => $manufacturer_id, 'active' => '1'));
 
             if($device_id === null)
                 $device_id = $devices[0]->id;
