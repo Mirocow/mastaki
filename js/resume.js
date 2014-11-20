@@ -36,7 +36,7 @@ function updateMastaks(response)
     $(response).each(function(){
         var mastak = $(this)[0];
 
-        html += '<tr class="mastak-row" mastak-id="' + mastak.id + '"><td>' + mastak.id + '</td><td>' + mastak.name + '</td><td>' + mastak.phone + '</td><td>' + mastak.skills + '</td></tr>';
+        html += '<tr class="mastak-row" mastak-id="' + mastak.id + '"><td>' + mastak.id + '</td><td>' + mastak.name + '</td><td>' + mastak.phone + '</td><td>' + mastak.skills + '</td><td>' + mastak.status + '</td></tr>';
 
         $('')
 
