@@ -187,3 +187,7 @@ table td {
 .search-row {
     margin-bottom: 10px;
 }
+
+.mastak-row {
+    cursor: pointer;
+}

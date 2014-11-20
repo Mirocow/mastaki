@@ -892,4 +892,39 @@ class AjaxController extends Controller
             print json_encode($user->attributes);
         }
     }
+
+    public function actionGetMastak()
+    {
+        if(isset($_POST['id']))
+        {
+            $mastak = Mastak::model()->findByPk($_POST['id']);
+            if($mastak !== null)
+            {
+                $response = $mastak->attributes;
+                $response['skills'] = $mastak->skillsDetail();
+                print json_encode($response);
+            }
+        }
+    }
+
+    public function actionGetMastaks()
+    {
+        if(isset($_POST['search']))
+        {
+            $response = array();
+            $mastaki = Mastak::model()->findAll(array(
+                'condition' => "name LIKE '%".$_POST['search']."%' OR phone LIKE '%".$_POST['search']."%'",
+            ));
+
+            foreach($mastaki as $mastak)
+            {
+                $array = $mastak->attributes;
+                $array['skills'] = $mastak->skillsLine();
+
+                $response[] = $array;
+            }
+
+            print json_encode($response);
+        }
+    }
 }

@@ -120,9 +120,46 @@ class SiteController extends Controller
     }
     public function actionResume()
     {
+        $mastak = new Mastak();
         $skillCategories = SkillCategory::model()->with('skills')->findAll();
 
-        $this->render('resume', array('skillCategories' => $skillCategories));
+        if(isset($_POST['Mastak']))
+        {
+            $mastak->attributes = $_POST['Mastak'];
+
+            if(isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['second_name']))
+            {
+                $mastak->name = $_POST['last_name'].' '.$_POST['first_name'].' '.$_POST['second_name'];
+                if($mastak->validate())
+                {
+                    if($mastak->save())
+                    {
+                        if(isset($_POST['Skills']))
+                        {
+                            foreach($_POST['Skills'] as $skillId => $skillState)
+                            {
+                                $skill = Skill::model()->findByPk($skillId);
+                                if(isset($_POST['SkillCategories'][$skill->skill_category_id]))
+                                {
+                                    if($_POST['SkillCategories'][$skill->skill_category_id] == 'on' && $skillState == 'on')
+                                    {
+                                        $mastakSkill = new MastakSkill();
+                                        $mastakSkill->mastak_id = $mastak->getPrimaryKey();
+                                        $mastakSkill->skill_id = $skillId;
+                                        $mastakSkill->save();
+                                    }
+                                }
+                            }
+                        }
+
+                        Yii::app()->user->setFlash('SUCCESS', 'Ваша анкета отправлена!');
+                        $this->redirect(array('/site/resume'));
+                    }
+                }
+            }
+        }
+
+        $this->render('resume', array('skillCategories' => $skillCategories, 'mastak' => $mastak));
     }
     public function actionInit()
     {

@@ -116,8 +116,9 @@ class AdminController extends Controller
 
     public function actionResume()
     {
+        $mastaki = Mastak::model()->findAll();
 
-        $this->render('resume');
+        $this->render('resume', array('mastaki' => $mastaki));
     }
 
     /**

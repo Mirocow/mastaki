@@ -117,4 +117,50 @@ class Mastak extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+    public function skillsLine()
+    {
+        $line = '';
+        $skillCategories = SkillCategory::model()->findAll(array(
+            'with' => array('skills' => array(
+                'with' => array('mastaks'),
+            )),
+            'condition' => 'mastaks.id = :mastakId',
+            'params' => array(':mastakId' => $this->getPrimaryKey()),
+        ));
+
+        foreach($skillCategories as $skillCategory)
+        {
+            $line .= $skillCategory->short_name.'-';
+            foreach($skillCategory->skills as $skill)
+                $line .= $skill->code;
+        }
+
+        return $line;
+    }
+
+    public function skillsDetail()
+    {
+        $line = '';
+        $skillCategories = SkillCategory::model()->findAll(array(
+            'with' => array('skills' => array(
+                'with' => array('mastaks'),
+            )),
+            'condition' => 'mastaks.id = :mastakId',
+            'params' => array(':mastakId' => $this->getPrimaryKey()),
+        ));
+
+        foreach($skillCategories as $skillCategory)
+        {
+            $line .= '<div class="col-md-12">+ ';
+            foreach($skillCategory->skills as $skill)
+            {
+                $line .=  $skill->code;
+            }
+
+            $line .= ' '.$skillCategory['name'].'</div>';
+        }
+
+        return $line;
+    }
 }
