@@ -191,3 +191,11 @@ table td {
 .mastak-row {
     cursor: pointer;
 }
+
+.mastak-info div {
+    word-wrap: break-word;
+}
+
+#resume-form .form-group {
+    padding: 0 5px;
+}

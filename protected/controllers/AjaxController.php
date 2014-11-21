@@ -916,15 +916,21 @@ class AjaxController extends Controller
                 'condition' => "name LIKE '%".$_POST['search']."%' OR phone LIKE '%".$_POST['search']."%'",
             ));
 
-            foreach($mastaki as $mastak)
+            $this->renderPartial('_mastaki', array('mastaki', $mastaki));
+        }
+    }
+
+    public function actionSetMastakStatus()
+    {
+        if(isset($_POST['id']) && isset($_POST['status']))
+        {
+            $mastak = Mastak::model()->findByPk($_POST['id']);
+
+            if($mastak !== null)
             {
-                $array = $mastak->attributes;
-                $array['skills'] = $mastak->skillsLine();
-
-                $response[] = $array;
+                $mastak->status = $_POST['status'];
+                $mastak->save();
             }
-
-            print json_encode($response);
         }
     }
 }

@@ -48,4 +48,14 @@ class Core
             'CANCELED' => 'Отменено',
         );
     }
+    public static function mastakStatuses()
+    {
+        return array(
+            'NOT_VERIFIED' => 'Не проверен',
+            'VERIFIED' => 'Проверен',
+            'SUCCESS' => 'Подходит',
+            'DENIED' => 'Не подходит',
+            'WORKING' => 'Работает',
+        );
+    }
 }

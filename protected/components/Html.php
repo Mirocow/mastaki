@@ -27,4 +27,15 @@ class Html {
             default: return $status;
         }
     }
+    public static function getMastakStatus($status)
+    {
+        switch($status)
+        {
+            case 'NOT_VERIFIED': return '<span class="text-muted">&nbsp;Не проверен</span>'; break;
+            case 'SUCCESS': return '<span class="text-success"><i class="fa fa-check"></i>&nbsp;Подходит</span>'; break;
+            case 'DENIED': return '<span class="text-danger">&nbsp;Не подходит</span>'; break;
+            case 'WORKING': return '<span class="text-warning"><i class="fa fa-gear fa-spin"></i>&nbsp;Работает</span>'; break;
+            default: return $status;
+        }
+    }
 }

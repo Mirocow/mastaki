@@ -5578,3 +5578,6 @@ Stack trace:
 REQUEST_URI=/index.php?r=ajax/getMastaks
 HTTP_REFERER=http://mastaki/index.php?r=admin/resume
 ---
+2014/11/21 19:32:26 [warning] [application] Failed to set unsafe attribute "email" of "Mastak".
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/SiteController.php (128)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)

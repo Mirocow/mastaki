@@ -1,4 +1,4 @@
-<div class="col-md-4">
+<div class="col-md-4 mastak-info">
     <div class="well col-md-12">
         <div class="col-md-12" id="name-well">
             <?=$mastak->name;?>
@@ -7,11 +7,11 @@
             <?=$mastak->skillsDetail();?>
         </div>
     </div>
-    <div class="well col-md-12">
+    <div class="well col-md-12" id="education-well">
         <?=$mastak->education; ?>
     </div>
 </div>
-<div class="col-md-8">
+<div class="col-md-8 mastak-info">
     <div class="well col-md-12" id="address-well">
         <?=$mastak->address; ?>
     </div>
