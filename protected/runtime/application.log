@@ -5581,3 +5581,19 @@ HTTP_REFERER=http://mastaki/index.php?r=admin/resume
 2014/11/21 19:32:26 [warning] [application] Failed to set unsafe attribute "email" of "Mastak".
 in /Applications/MAMP/htdocs/mastaki/protected/controllers/SiteController.php (128)
 in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/21 20:37:09 [error] [php] Undefined variable: mastaki (/Applications/MAMP/htdocs/mastaki/protected/views/admin/_mastaki.php:3)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(869): AjaxController->renderFile()
+#1 /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php(919): AjaxController->renderPartial()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CInlineAction.php(49): AjaxController->actionGetMastaks()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CInlineAction->runWithParams()
+#4 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#5 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#6 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#7 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#8 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#9 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/getMastaks
+in /Applications/MAMP/htdocs/mastaki/protected/views/admin/_mastaki.php (3)
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (919)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)

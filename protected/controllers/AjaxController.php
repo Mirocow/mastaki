@@ -916,7 +916,7 @@ class AjaxController extends Controller
                 'condition' => "name LIKE '%".$_POST['search']."%' OR phone LIKE '%".$_POST['search']."%'",
             ));
 
-            $this->renderPartial('/admin/_mastaki', array('mastaki', $mastaki));
+            $this->renderPartial('/admin/_mastaki', array('mastaki' => $mastaki));
         }
     }
 
