@@ -21,6 +21,7 @@ $(document).ready(function(){
                 status: $(this).val()
             })
             .done(function(response){});
+        //@todo Implement
     })
 
     $('#search-btn').click(function(){
