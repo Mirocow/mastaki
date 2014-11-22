@@ -14,6 +14,14 @@ $(document).ready(function(){
             })
             .done(function(response){});
     })
+    $(document).on('click', '.mastak-add-review', function(){
+        $.post( Yii.app.createUrl('ajax/addMastakReview'),
+            {
+                id: $(this).attr('mastak-id'),
+                status: $(this).val()
+            })
+            .done(function(response){});
+    })
 
     $('#search-btn').click(function(){
         $.post( Yii.app.createUrl('ajax/getMastaks'),
