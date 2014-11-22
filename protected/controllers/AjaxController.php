@@ -933,4 +933,17 @@ class AjaxController extends Controller
             }
         }
     }
+
+    public function actionAddMastakReview()
+    {
+        if(isset($_POST['id']) && isset($_POST['content']))
+        {
+            $mastakReview = new MastakReview();
+            $mastakReview->content = $_POST['content'];
+            $mastakReview->mastak_id = $_POST['id'];
+            $mastakReview->created = $this->sqlDateTime();
+            $mastakReview->save();
+            print json_encode(array('date' => $mastakReview->created, 'content' => $_POST['content']));
+        }
+    }
 }

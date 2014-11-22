@@ -16,7 +16,7 @@ $(document).ready(function () {
     $('.order-short').on('click', function(){
         orderShortClick($(this));
     });
-    $('button.add-problem').on('click', function(){
+    $(document).on('click', 'button.add-problem', function(){
         var orderId = $('table.order-details-table').attr('order-id');
 
         var data = {

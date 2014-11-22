@@ -13,16 +13,24 @@ $(document).ready(function(){
                 status: $(this).val()
             })
             .done(function(response){});
-    })
-    $(document).on('click', '.mastak-add-review', function(){
+    });
+    $(document).on('click', '#mastak-add-review', function(){
         $.post( Yii.app.createUrl('ajax/addMastakReview'),
             {
-                id: $(this).attr('mastak-id'),
-                status: $(this).val()
+                id: $('#mastak-reviews').attr('mastak-id'),
+                content: $('#mastak-review-content').val()
             })
-            .done(function(response){});
-        //@todo Implement
-    })
+            .done(function(response){
+                response = JSON.parse(response);
+
+                if($('#mastak-reviews table tr').length > 0)
+                    $('#mastak-reviews table tr:last').after('<tr><td>'+ response.date + '</td><td>'+ response.content + '</td></tr>');
+                else
+                    $('#mastak-reviews table').html('<tr><td>'+ response.date + '</td><td>'+ response.content + '</td></tr>');
+
+                $('#mastak-review-content').val('');
+            });
+    });
 
     $('#search-btn').click(function(){
         $.post( Yii.app.createUrl('ajax/getMastaks'),

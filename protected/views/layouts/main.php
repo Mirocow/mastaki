@@ -18,7 +18,6 @@
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/common.js" type="application/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/addToCart.js" type="application/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/html.js" type="application/javascript"></script>
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/order.js" type="application/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/mask.js" type="application/javascript"></script>
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>

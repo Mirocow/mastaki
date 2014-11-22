@@ -7,7 +7,7 @@
             <?=$mastak->skillsDetail();?>
         </div>
     </div>
-    <div class="col-md-12 table-responsive mastak-reviews">
+    <div class="col-md-12 table-responsive mastak-reviews" id="mastak-reviews" mastak-id="<?=$mastak->id;?>">
         <?php $this->renderPartial('_reviews', array('reviews' => $reviews)); ?>
     </div>
     <div class="col-md-12 mastak-review-form">

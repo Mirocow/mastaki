@@ -5618,3 +5618,25 @@ REQUEST_URI=/index.php?r=admin/resume
 in /var/www/mastaki/protected/views/admin/_mastakInfo.php (11)
 in /var/www/mastaki/protected/views/admin/resume.php (19)
 in /var/www/mastaki/protected/controllers/AdminController.php (132)
+2014/11/22 14:58:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "addMastakReview".' in /var/www/mastaki/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/mastaki/framework/web/CController.php(270): CController->missingAction('addMastakReview')
+#1 /var/www/mastaki/framework/web/CWebApplication.php(282): CController->run('addMastakReview')
+#2 /var/www/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController('ajax/addMastakR...')
+#3 /var/www/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/mastaki/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=ajax/addMastakReview
+HTTP_REFERER=http://mastaki/index.php?r=admin/resume
+---
+2014/11/22 15:09:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "addMastakReview".' in /var/www/mastaki/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/mastaki/framework/web/CController.php(270): CController->missingAction('addMastakReview')
+#1 /var/www/mastaki/framework/web/CWebApplication.php(282): CController->run('addMastakReview')
+#2 /var/www/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController('ajax/addMastakR...')
+#3 /var/www/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/mastaki/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=ajax/addMastakReview
+HTTP_REFERER=http://mastaki/index.php?r=admin/resume
+---
