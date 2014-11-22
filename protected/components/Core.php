@@ -15,14 +15,24 @@ class Core
         return $password;
     }
 
-    public static function now($type = 'sql')
+    public static function now($type = 'sql', $param = 'date')
     {
         $time = new DateTime();
-
-        switch($type)
+        if($param == 'date')
         {
-            case 'sql': return $time->format('Y-m-d');
-            default: return $time->format('d.m.Y');
+            switch($type)
+            {
+                case 'sql': return $time->format('Y-m-d');
+                default: return $time->format('d.m.Y');
+            }
+        }
+        else
+        {
+            switch($type)
+            {
+                case 'sql': return $time->format('Y-m-d H:i:s');
+                default: return $time->format('H:i:s d.m.Y');
+            }
         }
     }
 
@@ -52,7 +62,6 @@ class Core
     {
         return array(
             'NOT_VERIFIED' => 'Не проверен',
-            'VERIFIED' => 'Проверен',
             'SUCCESS' => 'Подходит',
             'DENIED' => 'Не подходит',
             'WORKING' => 'Работает',

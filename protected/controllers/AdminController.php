@@ -28,7 +28,7 @@ class AdminController extends Controller
      */
     public function actionIndex()
     {
-        $this->redirect(array('/admin/orders'));
+        $this->redirect(array('/admin/clients'));
     }
 
     public function actionDevices()
@@ -94,10 +94,35 @@ class AdminController extends Controller
 
         $this->render('services', array('deviceTypes' => $deviceTypes, 'problemCategories' => $problemCategories, 'breakdowns' => $breakdowns, 'problems' => $problems));
     }
-    public function actionOrders()
+    public function actionOrders($id = null)
     {
         $counters = array();
+        $problems = array();
+
+        $showOrder = null;
+
+        if($id !== null)
+        {
+            $showOrder = FixOrder::model()->find(array(
+                'condition' => 't.id = :id',
+                'params' => array(':id' => $id),
+                'with' => array(
+                    'orderProblems' => array(
+                        'with' => array(
+                            'deviceProblem' => array(
+                                'with' => array('device', 'problem'),
+                            )
+                        ),
+                    ),
+                    'user',
+                ),
+            ));
+            $problems = CHtml::listData(DeviceProblem::model()->findAllByAttributes(array('device_id' => FixOrder::model()->findByPk($id)->getDevice())), 'id', 'problem.name');
+        }
+
+
         $counters['ALL'] = FixOrder::model()->count();
+
         foreach(Core::orderStatuses() as $status=>$val)
             $counters[$status] = FixOrder::model()->countByAttributes(array('status' => $status));
 
@@ -105,7 +130,7 @@ class AdminController extends Controller
             'with' => array('user'),
         ));
 
-        $this->render('orders', array('orders' => $orders, 'counters' => $counters));
+        $this->render('orders', array('orders' => $orders, 'counters' => $counters, 'showOrder' => $showOrder, 'problems' => $problems));
     }
     public function actionClients()
     {

@@ -134,6 +134,17 @@ class FixOrder extends CActiveRecord
 
     public function getDevice()
     {
-        return $this->deviceProblems[0]->device->id;
+        if(count($this->deviceProblems) > 0)
+            return $this->deviceProblems[0]->device->id;
+        else
+            return null;
+    }
+
+    public function getDeviceName()
+    {
+        if(count($this->deviceProblems) > 0)
+            return $this->deviceProblems[0]->device->name;
+        else
+            return null;
     }
 }

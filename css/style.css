@@ -222,3 +222,10 @@ table td {
 .mastak-review-form button {
     margin-top: 10px;
 }
+.orders-table .badge {
+    bottom: 1px;
+}
+
+textarea {
+    resize: vertical;
+}

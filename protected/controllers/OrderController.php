@@ -33,7 +33,7 @@ class OrderController extends Controller
                 }
 
                 $newFixOrder = new FixOrder();
-                $newFixOrder->created = Core::now('sql');
+                $newFixOrder->created = Core::now('sql', 'datetime');
                 $newFixOrder->status = 'PENDING';
                 $newFixOrder->user_id = $user->getPrimaryKey();
                 $newFixOrder->save();
@@ -76,7 +76,7 @@ class OrderController extends Controller
             'condition' => $condition,
             'with' => array('user'),
         ));
-        $this->renderPartial('/admin/_orders', array('orders' => $orders));
+        $this->renderPartial('/admin/_ordersExt', array('orders' => $orders));
     }
     public function actionAjaxGetOrder($id)
     {

@@ -1,6 +1,10 @@
 <?php
     $cs = Yii::app()->clientScript;
     $cs->registerScriptFile(Yii::app()->baseUrl.'/js/order.js');
+
+    $id = null;
+    if($showOrder !== null)
+        $id = $showOrder->id;
 ?>
 <div class="col-md-12">
     <div class="col-md-3">
@@ -30,30 +34,21 @@
 </div>
 <div class="col-md-12">
     <div class="table-responsive orders-table-container">
-        <table class="table">
-            <thead>
-                <tr>
-                    <td>ID</td>
-                    <td>Имя</td>
-                    <td>Статус</td>
-                </tr>
-            </thead>
-            <tbody id="orders-tbody">
-                <?php
-                    foreach($orders as $order)
-                    {
-                        echo
-                        '<tr order-id="'.$order->id.'" class="order-short">
-                            <td>'.$order->id.'</td><td>'.$order->user->name.'</td><td>'.Html::getOrderStatus($order->status).'</td>
-                        </tr>';
-                    }
-                ?>
-            </tbody>
-        </table>
+        <?php $this->renderPartial('/admin/_ordersExt', array('orders' => $orders)); ?>
     </div>
 </div>
 <div class="col-md-12">
     <div class="table-responsive order-table-container">
+        <?php
+            if($showOrder !== null)
+            {
+                echo $this->renderPartial('/order/_order', array('data' => $showOrder), true);
+                echo '<button class="btn btn-warning add-problem col-md-2">Добавить работу</button>';
+                echo '<div class="col-md-10">';
+                echo CHtml::dropDownList(null, null, $problems, array('class' => 'form-control col-md-10 new-problem-select'));
+                echo '</div>';
+            }
+        ?>
     </div>
 </div>
 <div class="col-md-12" id="problems-dropdown-container">
