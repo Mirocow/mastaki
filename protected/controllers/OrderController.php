@@ -66,17 +66,17 @@ class OrderController extends Controller
         $response = array();
         $condition = '';
         if(isset($_POST['filter']))
-            $condition = "t.id = '".$_POST['filter']."' OR user.name LIKE '%".$_POST['filter']."%'";
+        {
+            $condition = "(t.id = '".$_POST['filter']."' OR user.name LIKE '%".$_POST['filter']."%')";
+            if($_POST['status'] !== 'ALL')
+                $condition .= " AND t.status = '".$_POST['status']."'";
+        }
 
         $orders = FixOrder::model()->findAll(array(
             'condition' => $condition,
             'with' => array('user'),
         ));
-
-        foreach($orders as $order)
-            $response[] = array('id' => $order->id, 'name' => $order->user->name, 'status' => $order->status);
-
-        print json_encode($response);
+        $this->renderPartial('/admin/_orders', array('orders' => $orders));
     }
     public function actionAjaxGetOrder($id)
     {

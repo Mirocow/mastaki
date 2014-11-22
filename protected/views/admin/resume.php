@@ -16,5 +16,5 @@ $cs->registerScriptFile(Yii::app()->baseUrl.'/js/resume.js');
 </div>
 <?php
     if(count($mastaki) > 0)
-        $this->renderPartial('_mastakInfo', array('mastak' => $mastaki[0]));
+        $this->renderPartial('_mastakInfo', array('mastak' => $mastaki[0], 'reviews' => $reviews));
 ?>

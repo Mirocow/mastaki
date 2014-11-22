@@ -5,7 +5,7 @@
     <?php
         foreach($clients as $client)
         {
-            echo '<tr client-id="'.$client->id.'"><td>'.$client->id.'</td><td>'.$client->name.'</td><td>'.$client->phone.'</td><td></td><td>'.$client->discount.'</td></tr>';
+            echo '<tr class="client-row" client-id="'.$client->id.'"><td>'.$client->id.'</td><td>'.$client->name.'</td><td>'.$client->phone.'</td><td>'.count($client->orders).'</td><td>'.$client->discount.'</td></tr>';
         }
     ?>
 </table>

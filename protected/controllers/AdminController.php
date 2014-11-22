@@ -96,29 +96,40 @@ class AdminController extends Controller
     }
     public function actionOrders()
     {
+        $counters = array();
+        $counters['ALL'] = FixOrder::model()->count();
+        foreach(Core::orderStatuses() as $status=>$val)
+            $counters[$status] = FixOrder::model()->countByAttributes(array('status' => $status));
+
         $orders = FixOrder::model()->findAll(array(
             'with' => array('user'),
         ));
 
-        $this->render('orders', array('orders' => $orders));
+        $this->render('orders', array('orders' => $orders, 'counters' => $counters));
     }
     public function actionClients()
     {
         $orders = array();
+        $reviews = array();
 
         $users = User::model()->findAllByAttributes(array('role' => 'USER'));
 
         if(count($users) > 0)
+        {
             $orders = FixOrder::model()->findAllByAttributes(array('user_id' => $users[0]->getPrimaryKey()));
+            $reviews = Review::model()->findAllByAttributes(array('user_id' => $users[0]->getPrimaryKey()));
+        }
 
-        $this->render('clients', array('clients' => $users, 'orders' => $orders));
+        $this->render('clients', array('clients' => $users, 'orders' => $orders, 'reviews' => $reviews));
     }
 
     public function actionResume()
     {
         $mastaki = Mastak::model()->findAll();
+        if(count($mastaki) > 0)
+            $reviews = MastakReview::model()->findAllByAttributes(array('mastak_id' => $mastaki[0]->getPrimaryKey()));
 
-        $this->render('resume', array('mastaki' => $mastaki));
+        $this->render('resume', array('mastaki' => $mastaki, 'reviews' => $reviews));
     }
 
     /**

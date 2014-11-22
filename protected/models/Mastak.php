@@ -129,11 +129,18 @@ class Mastak extends CActiveRecord
             'params' => array(':mastakId' => $this->getPrimaryKey()),
         ));
 
+        $first = true;
+
         foreach($skillCategories as $skillCategory)
         {
+            if(!$first)
+                $line .= ' | ';
+
             $line .= $skillCategory->short_name.'-';
             foreach($skillCategory->skills as $skill)
                 $line .= $skill->code;
+
+            $first = false;
         }
 
         return $line;

@@ -8,9 +8,10 @@ $(document).ready(function () {
             .done(function(response){filter(response)});
 
     });
-    $('button#do-filter').on('click', function(){
+    $('#do-filter').click(function(e){
         var string = $('#orders-filter').val();
         doFiltration(string);
+
     });
     $('.order-short').on('click', function(){
         orderShortClick($(this));
@@ -30,7 +31,7 @@ $(document).ready(function () {
             .done(function(response){problemAdded(response)});
 
     });
-    $('.save-order').on('click', function(){
+    $(document).on('click', '.save-order', function(){
 
         var problemStatuses = [];
         var orderId = $(this).attr('order-id');
@@ -88,19 +89,6 @@ function problemAdded(data)
     $('table.order-details-table tr.problem-row:last').after(html);
 }
 
-function filter(data)
-{
-    data = JSON.parse(data);
-    var html = '';
-    $(data).each(function(){
-        var order = $(this);
-        order = order[0];
-        html += '<tr order-id="' + order.id + '" class="order-short"><td>' + order.id + '</td><td>' + order.name + '</td><td>' + getOrderStatus(order.status) + '</td></tr>';
-    });
-
-    $('tbody#orders-tbody').html(html);
-}
-
 function orderDetails(data)
 {
     data = JSON.parse(data);
@@ -127,14 +115,15 @@ function doFiltration(string)
 
     $.post( Yii.app.createUrl('order/ajaxGetOrders'),
         {
-            filter: string
+            filter: string,
+            status: $('#select-orders-status').val()
         })
-        .done(function(response){filter(response)});
+        .done(function(response){$('.orders-table-container').html(response)});
 }
 
 function drawProblemsDropdown(problems)
 {
-    var html = '<button class="btn btn-success add-problem col-md-2">Добавить проблему</button>';
+    var html = '<button class="btn btn-warning add-problem col-md-2">Добавить работу</button>';
     html += '<div class="col-md-10"><select class="form-control col-md-10 new-problem-select">';
     $.each(problems, function(key, value){
         html += '<option value="' + key + '">' + value + '</option>';

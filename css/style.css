@@ -188,7 +188,8 @@ table td {
     margin-bottom: 10px;
 }
 
-.mastak-row {
+.mastak-row,
+.client-row {
     cursor: pointer;
 }
 
@@ -198,4 +199,26 @@ table td {
 
 #resume-form .form-group {
     padding: 0 5px;
+}
+.badges,
+.badges > div {
+    padding: 0;
+}
+
+.badges .badge {
+    top: 1px;
+    float: right;
+}
+.badges .btn[disabled] {
+    opacity: 1;
+}
+.mastak-review-form,
+.mastak-review-form div {
+    padding: 0;
+}
+.mastak-review-form textarea {
+    resize: vertical;
+}
+.mastak-review-form button {
+    margin-top: 10px;
 }

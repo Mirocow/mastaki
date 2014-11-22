@@ -4,7 +4,7 @@
         <?php
         $this->widget('zii.widgets.CMenu',array(
             'items'=> array(
-                array('label' => 'Заказы', 'url' => array('/cabinet/index')),
+                array('label' => 'Мои заявки', 'url' => array('/cabinet/index')),
                 array('label' => 'Настройки', 'url' => array('/cabinet/settings')),
             ),
             'submenuHtmlOptions' => array('class' => 'dropdown-menu'),

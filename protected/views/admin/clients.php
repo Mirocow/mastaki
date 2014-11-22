@@ -67,3 +67,6 @@ if(count($clients) > 0)
         </div>
     </div>
 </div>
+<div class="col-md-12 client-reviews-container table-responsive">
+    <?php $this->renderPartial('_reviews', array('reviews' => $reviews)); ?>
+</div>
