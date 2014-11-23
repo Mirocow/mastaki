@@ -51,6 +51,9 @@ $discount = 0;
                 echo CHtml::dropDownList('problemStatus', $orderProblem->status, Core::problemStatuses(), array('class' => 'form-control input-sm problem-status-select','order-problem-id' => $orderProblem->id));
             ?>
         </td>
+        <td>
+            <i class="fa fa-close text-danger delete-order-problem" order-problem-id="<?=$orderProblem->id;?>"></i>
+        </td>
     </tr>
     <?php
             $counter++;
@@ -69,7 +72,7 @@ $discount = 0;
         <td class="col-md-1">
             <span class="total-discount"><?=$data->getTotalDiscount();?></span> %
         </td>
-        <td>
+        <td colspan="2">
             <?php
             echo CHtml::dropDownList('orderStatus', $data->status, Core::orderStatuses(), array('class' => 'form-control input-sm order-status-select', 'order-id' => $data->id));
             ?>

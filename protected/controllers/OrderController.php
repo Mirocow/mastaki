@@ -159,4 +159,29 @@ class OrderController extends Controller
             print json_encode($response);
         }
     }
+
+    public function actionDeleteOrderProblem()
+    {
+        if(isset($_POST['orderProblemId']))
+        {
+            $response = array();
+
+            $orderProblem = OrderProblem::model()->findByPk($_POST['orderProblemId']);
+            if($orderProblem !== null)
+            {
+                $orderId = $orderProblem->fix_order_id;
+                $orderProblem->delete();
+
+                $order = FixOrder::model()->findByPk($orderId);
+                if($order !== null)
+                {
+                    $response['totalPrice'] = $order->getTotalPrice();
+                    $response['totalDiscount'] = $order->getTotalDiscount();
+                    $response['orderId'] = $order->getPrimaryKey();
+
+                    print json_encode($response);
+                }
+            }
+        }
+    }
 }

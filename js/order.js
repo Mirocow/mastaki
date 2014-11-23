@@ -65,6 +65,28 @@ $(document).ready(function () {
             })
             .done(function(response){orderSaved(response)});
     });
+
+    $(document).on('click', '.delete-order-problem', function(){
+        if (confirm('Удалить?')) {
+            var orderProblem = $(this).parent().parent();
+            var orderProblemId = $(this).attr('order-problem-id');
+
+            $.post( Yii.app.createUrl('order/deleteOrderProblem'),
+                {
+                    orderProblemId: orderProblemId
+                })
+                .done(function(response){
+                    response = JSON.parse(response);
+
+                    var table = $('table.order-details-table[order-id="' + response.orderId + '"]');
+
+                    table.find('span.price').text(response.totalPrice);
+                    table.find('span.total-discount').text(response.totalDiscount);
+                    orderProblem.remove();
+                    $('td.main-td').attr('rowspan', parseInt($('td.main-td').attr('rowspan')) - 1);
+                });
+        }
+    });
 });
 
 function orderSaved(data)
@@ -84,7 +106,7 @@ function problemAdded(data)
 {
     data = JSON.parse(data);
     $('td.main-td').attr('rowspan', parseInt($('td.main-td').attr('rowspan')) + 1);
-    var html = '<tr class="problem-row" order-problem-id="' + data.problemId + '"><td>' + data.position + '</td><td>' + data.device + '</td><td>' + data.name + '</td><td>' + data.price + '</td><td>' + data.discount + '</td><td>' + data.status + '</td></tr>';
+    var html = '<tr class="problem-row" order-problem-id="' + data.problemId + '"><td>' + data.position + '</td><td>' + data.device + '</td><td>' + data.name + '</td><td>' + data.price + '</td><td>' + data.discount + '</td><td>' + data.status + '</td><td><i class="fa fa-close text-danger delete-order-problem" order-problem-id="' + data.problemId + '"></i></td></tr>';
 
     $('table.order-details-table tr.problem-row:last').after(html);
 }
