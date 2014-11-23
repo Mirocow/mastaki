@@ -5,7 +5,7 @@
     <?php
         foreach($orders as $order)
         {
-            echo '<tr class="order-short"><td>'.$order->id.'</td><td>'.$order->user->name.'</td><td>'.$order->getDeviceName().'</td><td>'.Html::getOrderStatus($order->status).'</td></tr>';
+            echo '<tr class="order-short" order-id="'.$order->id.'"><td>'.$order->id.'</td><td>'.$order->user->name.'</td><td>'.$order->getDeviceName().'</td><td>'.Html::getOrderStatus($order->status).'</td></tr>';
         }
     ?>
 </table>

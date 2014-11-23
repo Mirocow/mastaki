@@ -78,8 +78,9 @@ class OrderController extends Controller
         ));
         $this->renderPartial('/admin/_ordersExt', array('orders' => $orders));
     }
-    public function actionAjaxGetOrder($id)
+    public function actionAjaxGetOrder()
     {
+        $id = $_POST['id'];
         $response = array();
         $order = FixOrder::model()->find(array(
             'condition' => 't.id = :id',

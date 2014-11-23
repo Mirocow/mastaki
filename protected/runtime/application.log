@@ -5821,3 +5821,74 @@ in /var/www/mastaki/index.php (13)
 2014/11/22 17:42:24 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '(903) 555-55-55' for key 'email_UNIQUE'. The SQL statement executed was: UPDATE `user` SET `id`=:yp0, `phone`=:yp1, `name`=:yp2, `email`=:yp3, `address`=:yp4, `password`=:yp5, `discount`=:yp6, `role`=:yp7, `open_pass`=:yp8 WHERE `user`.`id`=2.
 in /var/www/mastaki/protected/controllers/AjaxController.php (874)
 in /var/www/mastaki/index.php (13)
+2014/11/23 02:04:10 [error] [php] Undefined index: id (/Applications/MAMP/htdocs/mastaki/protected/controllers/OrderController.php:83)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): OrderController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): OrderController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): OrderController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=order/ajaxGetOrder
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/OrderController.php (83)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/23 02:04:11 [error] [php] Undefined index: id (/Applications/MAMP/htdocs/mastaki/protected/controllers/OrderController.php:83)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): OrderController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): OrderController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): OrderController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=order/ajaxGetOrder
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/OrderController.php (83)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/23 02:04:54 [error] [php] Undefined index: id (/Applications/MAMP/htdocs/mastaki/protected/controllers/OrderController.php:83)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): OrderController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): OrderController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): OrderController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=order/ajaxGetOrder
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/OrderController.php (83)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/23 02:05:46 [error] [php] Undefined index: id (/Applications/MAMP/htdocs/mastaki/protected/controllers/OrderController.php:83)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): OrderController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): OrderController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): OrderController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=order/ajaxGetOrder
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/OrderController.php (83)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/23 02:06:09 [warning] [application] Failed to set unsafe attribute "discount" of "User".
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (872)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/23 02:09:30 [warning] [application] Failed to set unsafe attribute "discount" of "User".
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (872)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/23 02:09:33 [warning] [application] Failed to set unsafe attribute "discount" of "User".
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (872)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/23 02:09:41 [warning] [application] Failed to set unsafe attribute "discount" of "User".
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (872)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/23 02:09:45 [warning] [application] Failed to set unsafe attribute "discount" of "User".
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (872)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/23 02:10:29 [warning] [application] Failed to set unsafe attribute "discount" of "User".
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (872)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/23 02:10:41 [warning] [application] Failed to set unsafe attribute "discount" of "User".
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (872)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/23 02:11:27 [warning] [application] Failed to set unsafe attribute "discount" of "User".
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (872)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/23 02:11:31 [warning] [application] Failed to set unsafe attribute "discount" of "User".
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (872)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)

@@ -12,6 +12,10 @@ $(document).ready(function(){
             data: form
         });
         request.done(function(response) {
+            var tr = $('tr.client-row[client-id="' + $('#clientId').val() + '"]');
+            tr.find('td:eq(1)').text($('#name-input').val());
+            tr.find('td:eq(2)').text($('#phone-input').val());
+            tr.find('td:eq(4)').text($('#discount-input').val());
         });
     });
 

@@ -163,6 +163,8 @@ class SiteController extends Controller
     }
     public function actionInit()
     {
+        DeviceProblem::model()->deleteAll();
+
         foreach (Problem::model()->findAll() as $problem)
         {
             foreach(Device::model()->findAll() as $device)

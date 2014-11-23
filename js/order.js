@@ -13,7 +13,7 @@ $(document).ready(function () {
         doFiltration(string);
 
     });
-    $('.order-short').on('click', function(){
+    $(document).on('click', '.order-short', function(){
         orderShortClick($(this));
     });
     $(document).on('click', 'button.add-problem', function(){
@@ -103,7 +103,7 @@ function orderDetails(data)
 
 function orderShortClick(order)
 {
-    $.get( Yii.app.createUrl('order/ajaxGetOrder'),
+    $.post( Yii.app.createUrl('order/ajaxGetOrder'),
         {
             id: order.attr('order-id')
         })
