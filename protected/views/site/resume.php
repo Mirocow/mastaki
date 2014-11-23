@@ -62,7 +62,7 @@ $form=$this->beginWidget('CActiveForm', array(
         </div>
         <div class="col-md-12">
             <div class="form-group">
-                <textarea class="form-control col-lg-12" name="Mastak[qualities]" placeholder="Личные качества"></textarea>
+                <textarea class="form-control col-lg-12" name="Mastak[qualities]" placeholder="Профессиональные навыки и личные качества"></textarea>
             </div>
         </div>
     </div>

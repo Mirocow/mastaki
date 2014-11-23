@@ -870,7 +870,6 @@ class AjaxController extends Controller
         {
             $user = User::model()->findByPk($_POST['clientId']);
             $user->attributes = $_POST['User'];
-
             $user->save();
         }
     }

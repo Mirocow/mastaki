@@ -34,6 +34,7 @@ $(document).ready(function(){
                 $('#email-input').val(response.email);
                 $('#address-input').val(response.address);
                 $('#discount-input').val(response.discount);
+                $('#clientId').val(response.id);
             });
         $.post( Yii.app.createUrl('ajax/clientOrders'),
             {
