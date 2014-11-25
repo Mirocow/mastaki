@@ -89,6 +89,24 @@ $(document).ready(function () {
                 });
         }
     });
+
+    $(document).on('click', '#order-add-comment', function(){
+        $.post( Yii.app.createUrl('ajax/addOrderComment'),
+            {
+                id: $('.order-details-table').attr('order-id'),
+                content: $('#order-comment-content').val()
+            })
+            .done(function(response){
+                response = JSON.parse(response);
+
+                if($('.order-comments table tr').length > 0)
+                    $('.order-comments table tr:last').after('<tr><td>'+ response.date + '</td><td>'+ response.content + '</td></tr>');
+                else
+                    $('.order-comments table').html('<tr><td>'+ response.date + '</td><td>'+ response.content + '</td></tr>');
+
+                $('#order-comment-content').val('');
+            });
+    });
 });
 
 function orderSaved(data)
@@ -117,6 +135,8 @@ function orderDetails(data)
 {
     data = JSON.parse(data);
     $('.order-table-container').html(data.output);
+    $('.order-comments').html(data.comments);
+    $('.order-review-form').removeClass('hidden');
 
     drawProblemsDropdown(data.problems);
 

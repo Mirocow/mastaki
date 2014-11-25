@@ -946,4 +946,17 @@ class AjaxController extends Controller
             print json_encode(array('date' => $mastakReview->created, 'content' => $_POST['content']));
         }
     }
+    public function actionAddOrderComment()
+    {
+        if(isset($_POST['id']) && isset($_POST['content']))
+        {
+            $orderComment = new OrderComment();
+            $orderComment->content = $_POST['content'];
+            $orderComment->fix_order_id = $_POST['id'];
+            $orderComment->created = $this->sqlDateTime();
+            $orderComment->user_id = intval(Yii::app()->user->getId());
+            $orderComment->save();
+            print json_encode(array('date' => $orderComment->created, 'content' => $orderComment->content));
+        }
+    }
 }

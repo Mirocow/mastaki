@@ -94,9 +94,6 @@ table td {
 .body {
     margin-bottom: 50px;
 }
-#problems-dropdown-container {
-    margin-bottom: 200px;
-}
 
 .device-types-list > li > i,
 .manufacturers-list > li > i,
@@ -213,13 +210,17 @@ table td {
     opacity: 1;
 }
 .mastak-review-form,
-.mastak-review-form div {
+.order-review-form,
+.mastak-review-form div,
+.order-review-form div {
     padding: 0;
 }
-.mastak-review-form textarea {
+.mastak-review-form textarea,
+.order-review-form textarea {
     resize: vertical;
 }
-.mastak-review-form button {
+.mastak-review-form button,
+.order-review-form button {
     margin-top: 10px;
 }
 .orders-table .badge {
@@ -233,4 +234,9 @@ textarea {
     top: 4px;
     position: relative;
     cursor: pointer;
+}
+
+.order-review-form,
+.order-comments {
+    margin-top: 20px;
 }

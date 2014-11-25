@@ -36,7 +36,7 @@ class OrderComment extends CActiveRecord
 			array('user_id, fix_order_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, content, created, user_id, fix_order_id', 'safe', 'on'=>'search'),
+			array('id, content, created, user_id, fix_order_id', 'safe'),
 		);
 	}
 

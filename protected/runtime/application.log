@@ -6038,3 +6038,142 @@ in /Applications/MAMP/htdocs/mastaki/index.php (13)
 2014/11/25 18:34:30 [warning] [application] Failed to set unsafe attribute "email" of "Mastak".
 in /Applications/MAMP/htdocs/mastaki/protected/controllers/SiteController.php (128)
 in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/25 19:12:29 [error] [php] Undefined variable: reviews (/Applications/MAMP/htdocs/mastaki/protected/views/admin/_reviews.php:3)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(869): OrderController->renderFile()
+#1 /Applications/MAMP/htdocs/mastaki/protected/controllers/OrderController.php(102): OrderController->renderPartial()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CInlineAction.php(49): OrderController->actionAjaxGetOrder()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CInlineAction->runWithParams()
+#4 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): OrderController->runAction()
+#5 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): OrderController->runActionWithFilters()
+#6 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): OrderController->run()
+#7 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#8 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#9 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=order/ajaxGetOrder
+in /Applications/MAMP/htdocs/mastaki/protected/views/admin/_reviews.php (3)
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/OrderController.php (102)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/25 19:18:38 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`mastaki`.`order_comment`, CONSTRAINT `fk_order_comment_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `order_comment` (`content`, `fix_order_id`, `created`, `user_id`) VALUES (:yp0, :yp1, :yp2, :yp3).
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (958)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/25 19:18:38 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`mastaki`.`order_comment`, CONSTRAINT `fk_order_comment_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `order_comment` (`content`, `fix_order_id`, `created`, `user_id`) VALUES (:yp0, :yp1, :yp2, :yp3)' in /Applications/MAMP/htdocs/mastaki/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveRecord.php(1080): CDbCommand->execute()
+#1 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php(958): CActiveRecord->save()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CInlineAction.php(49): AjaxController->actionAddOrderComment()
+#4 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): CController->run('addOrderComment')
+#8 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController('ajax/addOrderCo...')
+#9 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/mastaki/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=ajax/addOrderComment
+HTTP_REFERER=http://mastaki/index.php?r=admin/orders
+---
+2014/11/25 19:18:47 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`mastaki`.`order_comment`, CONSTRAINT `fk_order_comment_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `order_comment` (`content`, `fix_order_id`, `created`, `user_id`) VALUES (:yp0, :yp1, :yp2, :yp3).
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (958)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/25 19:18:47 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`mastaki`.`order_comment`, CONSTRAINT `fk_order_comment_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `order_comment` (`content`, `fix_order_id`, `created`, `user_id`) VALUES (:yp0, :yp1, :yp2, :yp3)' in /Applications/MAMP/htdocs/mastaki/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveRecord.php(1080): CDbCommand->execute()
+#1 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php(958): CActiveRecord->save()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CInlineAction.php(49): AjaxController->actionAddOrderComment()
+#4 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): CController->run('addOrderComment')
+#8 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController('ajax/addOrderCo...')
+#9 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/mastaki/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=ajax/addOrderComment
+HTTP_REFERER=http://mastaki/index.php?r=admin/orders
+---
+2014/11/25 19:19:34 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`mastaki`.`order_comment`, CONSTRAINT `fk_order_comment_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `order_comment` (`content`, `fix_order_id`, `created`, `user_id`) VALUES (:yp0, :yp1, :yp2, :yp3).
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (958)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/25 19:19:37 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`mastaki`.`order_comment`, CONSTRAINT `fk_order_comment_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `order_comment` (`content`, `fix_order_id`, `created`, `user_id`) VALUES (:yp0, :yp1, :yp2, :yp3)' in /Applications/MAMP/htdocs/mastaki/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveRecord.php(1080): CDbCommand->execute()
+#1 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php(958): CActiveRecord->save()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CInlineAction.php(49): AjaxController->actionAddOrderComment()
+#4 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): CController->run('addOrderComment')
+#8 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController('ajax/addOrderCo...')
+#9 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/mastaki/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=ajax/addOrderComment
+HTTP_REFERER=http://mastaki/index.php?r=admin/orders
+---
+2014/11/25 19:20:37 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`mastaki`.`order_comment`, CONSTRAINT `fk_order_comment_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `order_comment` (`content`, `fix_order_id`, `created`, `user_id`) VALUES (:yp0, :yp1, :yp2, :yp3).
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (958)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/25 19:22:15 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`mastaki`.`order_comment`, CONSTRAINT `fk_order_comment_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `order_comment` (`content`, `fix_order_id`, `created`, `user_id`) VALUES (:yp0, :yp1, :yp2, :yp3).
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (958)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/25 19:22:15 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`mastaki`.`order_comment`, CONSTRAINT `fk_order_comment_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `order_comment` (`content`, `fix_order_id`, `created`, `user_id`) VALUES (:yp0, :yp1, :yp2, :yp3)' in /Applications/MAMP/htdocs/mastaki/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveRecord.php(1080): CDbCommand->execute()
+#1 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php(958): CActiveRecord->save()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CInlineAction.php(49): AjaxController->actionAddOrderComment()
+#4 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): CController->run('addOrderComment')
+#8 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController('ajax/addOrderCo...')
+#9 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/mastaki/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=ajax/addOrderComment
+HTTP_REFERER=http://mastaki/index.php?r=admin/orders
+---
+2014/11/25 19:23:42 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`mastaki`.`order_comment`, CONSTRAINT `fk_order_comment_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `order_comment` (`content`, `fix_order_id`, `created`, `user_id`) VALUES (:yp0, :yp1, :yp2, :yp3).
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (958)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/25 19:23:42 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`mastaki`.`order_comment`, CONSTRAINT `fk_order_comment_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `order_comment` (`content`, `fix_order_id`, `created`, `user_id`) VALUES (:yp0, :yp1, :yp2, :yp3)' in /Applications/MAMP/htdocs/mastaki/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveRecord.php(1080): CDbCommand->execute()
+#1 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php(958): CActiveRecord->save()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CInlineAction.php(49): AjaxController->actionAddOrderComment()
+#4 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): CController->run('addOrderComment')
+#8 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController('ajax/addOrderCo...')
+#9 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/mastaki/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=ajax/addOrderComment
+HTTP_REFERER=http://mastaki/index.php?r=admin/orders
+---
+2014/11/25 19:27:13 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`mastaki`.`order_comment`, CONSTRAINT `fk_order_comment_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `order_comment` (`content`, `fix_order_id`, `created`, `user_id`) VALUES (:yp0, :yp1, :yp2, :yp3).
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (958)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/25 19:27:13 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`mastaki`.`order_comment`, CONSTRAINT `fk_order_comment_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `order_comment` (`content`, `fix_order_id`, `created`, `user_id`) VALUES (:yp0, :yp1, :yp2, :yp3)' in /Applications/MAMP/htdocs/mastaki/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveRecord.php(1080): CDbCommand->execute()
+#1 /Applications/MAMP/htdocs/mastaki/framework/db/ar/CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php(958): CActiveRecord->save()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CInlineAction.php(49): AjaxController->actionAddOrderComment()
+#4 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): CController->run('addOrderComment')
+#8 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController('ajax/addOrderCo...')
+#9 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/mastaki/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=ajax/addOrderComment
+HTTP_REFERER=http://mastaki/index.php?r=admin/orders
+---

@@ -54,6 +54,15 @@
 <div class="col-md-12" id="problems-dropdown-container">
 
 </div>
-<div class="col-md-12">
+<div class="col-md-6 order-review-form hidden">
+
+    <div class="col-md-12">
+        <textarea class="col-md-12 form-control" id="order-comment-content"></textarea>
+    </div>
+    <div class="text-center col-md-12">
+        <button class="btn btn-success" id="order-add-comment">Добавить комментарий</button>
+    </div>
+</div>
+<div class="col-md-6 order-comments">
 
 </div>
