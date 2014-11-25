@@ -6011,3 +6011,12 @@ HTTP_REFERER=http://mastaki/index.php?r=admin/clients
 2014/11/24 02:59:16 [warning] [application] Failed to set unsafe attribute "discount" of "User".
 in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (872)
 in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/25 18:16:12 [warning] [application] Failed to set unsafe attribute "discount" of "User".
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (872)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/25 18:16:19 [warning] [application] Failed to set unsafe attribute "discount" of "User".
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (872)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/25 18:16:24 [warning] [application] Failed to set unsafe attribute "discount" of "User".
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (872)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)

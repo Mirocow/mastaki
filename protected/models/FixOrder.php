@@ -112,8 +112,9 @@ class FixOrder extends CActiveRecord
             foreach($this->orderProblems as $orderProblem)
             {
                 $totalPrice += $orderProblem->deviceProblem->part_price;
-                $totalPrice += $orderProblem->deviceProblem->price - ($orderProblem->deviceProblem->price/100 * $orderProblem->discount);
+                $totalPrice += $orderProblem->deviceProblem->price - ($orderProblem->deviceProblem->price/100 * ($orderProblem->discount + $this->user->discount));
             }
+
             return $totalPrice;
         }
         else
