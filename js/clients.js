@@ -21,6 +21,7 @@ $(document).ready(function(){
 
     $('.clients-container tr').click(function(){
         var clientId = $(this).attr('client-id');
+        $('#clientId').val(clientId);
 
         $.post( Yii.app.createUrl('ajax/clientInfo'),
             {

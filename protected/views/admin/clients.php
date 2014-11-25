@@ -52,7 +52,7 @@ if(count($clients) > 0)
                 </div>
                 <div class="col-md-6">
                     <div class="input-group">
-                        <input type="text" name="User[discount]" class="col-md-12 form-control" value="<?=$discount;?>">
+                        <input type="text" name="User[discount]" class="col-md-12 form-control" id="discount-input" value="<?=$discount;?>" />
                         <span class="input-group-addon">%</span>
                     </div>
                     <input type="hidden" name="clientId" id="clientId" value="<?=$clientId;?>"/>
