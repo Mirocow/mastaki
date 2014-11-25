@@ -98,6 +98,7 @@ class AdminController extends Controller
     {
         $counters = array();
         $problems = array();
+        $reviews = array();
 
         $showOrder = null;
 
@@ -118,6 +119,9 @@ class AdminController extends Controller
                 ),
             ));
             $problems = CHtml::listData(DeviceProblem::model()->findAllByAttributes(array('device_id' => FixOrder::model()->findByPk($id)->getDevice())), 'id', 'problem.name');
+
+            if($showOrder !== null)
+                $reviews = OrderComment::model()->findAllByAttributes(array('fix_order_id' => $showOrder->getPrimaryKey()));
         }
 
 
@@ -130,7 +134,7 @@ class AdminController extends Controller
             'with' => array('user'),
         ));
 
-        $this->render('orders', array('orders' => $orders, 'counters' => $counters, 'showOrder' => $showOrder, 'problems' => $problems));
+        $this->render('orders', array('orders' => $orders, 'counters' => $counters, 'showOrder' => $showOrder, 'problems' => $problems, 'reviews' => $reviews));
     }
     public function actionClients()
     {

@@ -6177,3 +6177,22 @@ Stack trace:
 REQUEST_URI=/index.php?r=ajax/addOrderComment
 HTTP_REFERER=http://mastaki/index.php?r=admin/orders
 ---
+2014/11/25 20:13:38 [error] [php] Undefined variable: reviews (/Applications/MAMP/htdocs/mastaki/protected/views/admin/orders.php:71)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(869): AdminController->renderFile()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(782): AdminController->renderPartial()
+#2 /Applications/MAMP/htdocs/mastaki/protected/controllers/AdminController.php(133): AdminController->render()
+#3 unknown(0): AdminController->actionOrders()
+#4 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs()
+#5 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#6 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CInlineAction->runWithParams()
+#7 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AdminController->runAction()
+#8 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AdminController->runActionWithFilters()
+#9 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AdminController->run()
+#10 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=admin/orders&id=1
+in /Applications/MAMP/htdocs/mastaki/protected/views/admin/orders.php (71)
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AdminController.php (133)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
