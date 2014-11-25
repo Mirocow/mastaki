@@ -161,6 +161,57 @@ class AdminController extends Controller
         $this->render('resume', array('mastaki' => $mastaki, 'reviews' => $reviews));
     }
 
+    public function actionPages()
+    {
+        $pages = new CActiveDataProvider('Page', array(
+            'criteria' => array(
+                'order' => 'id DESC',
+            ),
+            'pagination' => array(
+                'pageSize' => 20,
+            ),
+        ));
+
+        $this->render('pages', compact('pages'));
+    }
+    public function actionPage($id)
+    {
+        $page = Page::model()->findByPk($id);
+
+        if($page !== null)
+        {
+            if(isset($_POST['Page']))
+            {
+                $page->attributes = $_POST['Page'];
+                if($page->validate())
+                {
+                    if($page->save())
+                        Yii::app()->user->setFlash('SUCCESS', 'Страница сохранена!');
+
+                    $this->redirect(array('/admin/pages'));
+                }
+            }
+            $this->render('page', compact('page'));
+        }
+        else
+            $this->redirect(array('/admin/pages'));
+    }
+    public function actionNewPage()
+    {
+        $page = new Page();
+        if(isset($_POST['Page']))
+        {
+            $page->attributes = $_POST['Page'];
+            if($page->validate())
+            {
+                if($page->save())
+                    Yii::app()->user->setFlash('SUCCESS', 'Страница создана!');
+
+                $this->redirect(array('/admin/pages'));
+            }
+        }
+        $this->render('newPage', compact('page'));
+    }
     /**
      * Displays the login page
      */

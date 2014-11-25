@@ -93,6 +93,23 @@ class Controller extends CController
             'encodeLabel'=> false,
         ));
     }
+    public function getFooterBar()
+    {
+        $links = Page::model()->findAllByAttributes(array('footer' => '1'), array('order' => 'id ASC'));
+
+
+        $items = array();
+
+        foreach($links as $link)
+        {
+            $items[] = array('label'=>  $link->title  , 'url' => array('/site/page', 'id' => $link->id));
+        }
+        $this->widget('zii.widgets.CMenu',array(
+            'items'=> $items,
+            'htmlOptions' => array('class'=>'nav nav-pills'),
+            'encodeLabel'=> false,
+        ));
+    }
 
     public function getCart()
     {

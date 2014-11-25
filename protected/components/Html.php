@@ -38,4 +38,8 @@ class Html {
             default: return $status;
         }
     }
+    public static function pageEditButton($id)
+    {
+        return CHtml::link('Изменить', array('/admin/page', 'id' => $id), array('class' => 'btn btn-primary pull-right'));
+    }
 }

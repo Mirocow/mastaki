@@ -180,6 +180,17 @@ class SiteController extends Controller
             }
         }
     }
+    public function actionPage($id)
+    {
+        $page = Page::model()->findByPk($id);
+
+        if($page !== null)
+        {
+            $this->render('page', compact('page'));
+        }
+        else
+            $this->redirect(array('/site'));
+    }
 	/**
 	 * Displays the login page
 	 */

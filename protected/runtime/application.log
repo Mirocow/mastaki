@@ -6196,3 +6196,114 @@ REQUEST_URI=/index.php?r=admin/orders&id=1
 in /Applications/MAMP/htdocs/mastaki/protected/views/admin/orders.php (71)
 in /Applications/MAMP/htdocs/mastaki/protected/controllers/AdminController.php (133)
 in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/25 20:19:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "pages".' in /Applications/MAMP/htdocs/mastaki/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(270): CController->missingAction('pages')
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): CController->run('pages')
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/pages')
+#3 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/mastaki/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=admin/pages
+HTTP_REFERER=http://mastaki/index.php?r=admin/orders
+---
+2014/11/25 20:26:08 [error] [exception.CException] exception 'CException' with message 'Property "CDataColumn.title" is not defined.' in /Applications/MAMP/htdocs/mastaki/framework/base/CComponent.php:173
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/YiiBase.php(220): CComponent->__set('title', '')
+#1 /Applications/MAMP/htdocs/mastaki/framework/zii/widgets/grid/CGridView.php(388): YiiBase::createComponent(Array, Object(CGridView))
+#2 /Applications/MAMP/htdocs/mastaki/framework/zii/widgets/grid/CGridView.php(359): CGridView->initColumns()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CBaseController.php(147): CGridView->init()
+#4 /Applications/MAMP/htdocs/mastaki/framework/web/CBaseController.php(180): CBaseController->createWidget('zii.widgets.gri...', Array)
+#5 /Applications/MAMP/htdocs/mastaki/protected/views/admin/pages.php(15): CBaseController->widget('zii.widgets.gri...', Array)
+#6 /Applications/MAMP/htdocs/mastaki/framework/web/CBaseController.php(126): require('/Applications/M...')
+#7 /Applications/MAMP/htdocs/mastaki/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Applications/M...', Array, true)
+#8 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(869): CBaseController->renderFile('/Applications/M...', Array, true)
+#9 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(782): CController->renderPartial('pages', Array, true)
+#10 /Applications/MAMP/htdocs/mastaki/protected/controllers/AdminController.php(175): CController->render('pages', Array)
+#11 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CInlineAction.php(49): AdminController->actionPages()
+#12 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#13 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#14 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): CController->run('pages')
+#16 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/pages')
+#17 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#18 /Applications/MAMP/htdocs/mastaki/index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/index.php?r=admin/pages
+HTTP_REFERER=http://mastaki/index.php?r=admin/clients
+---
+2014/11/25 20:32:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "newPage".' in /Applications/MAMP/htdocs/mastaki/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(270): CController->missingAction('newPage')
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): CController->run('newPage')
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/newPage')
+#3 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/mastaki/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=admin/newPage
+HTTP_REFERER=http://mastaki/index.php?r=admin/pages
+---
+2014/11/25 20:33:31 [error] [php] Undefined variable: news (/Applications/MAMP/htdocs/mastaki/protected/views/admin/newPage.php:22)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(869): AdminController->renderFile()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(782): AdminController->renderPartial()
+#2 /Applications/MAMP/htdocs/mastaki/protected/controllers/AdminController.php(181): AdminController->render()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CInlineAction.php(49): AdminController->actionNewPage()
+#4 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AdminController->runAction()
+#6 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AdminController->runActionWithFilters()
+#7 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AdminController->run()
+#8 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=admin/newPage
+in /Applications/MAMP/htdocs/mastaki/protected/views/admin/newPage.php (22)
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AdminController.php (181)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/25 20:33:55 [error] [php] Undefined variable: news (/Applications/MAMP/htdocs/mastaki/protected/views/admin/newPage.php:22)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(869): AdminController->renderFile()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(782): AdminController->renderPartial()
+#2 /Applications/MAMP/htdocs/mastaki/protected/controllers/AdminController.php(181): AdminController->render()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CInlineAction.php(49): AdminController->actionNewPage()
+#4 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AdminController->runAction()
+#6 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AdminController->runActionWithFilters()
+#7 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AdminController->run()
+#8 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=admin/newPage
+in /Applications/MAMP/htdocs/mastaki/protected/views/admin/newPage.php (22)
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AdminController.php (181)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/25 20:42:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested view "index" was not found.' in /Applications/MAMP/htdocs/mastaki/framework/web/actions/CViewAction.php:112
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CViewAction.php(123): CViewAction->resolveView('index')
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CAction.php(76): CViewAction->run()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CAction->runWithParams(Array)
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): CController->runAction(Object(CViewAction))
+#4 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): CController->run('page')
+#6 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/page')
+#7 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#8 /Applications/MAMP/htdocs/mastaki/index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php?r=admin/page&id=2
+HTTP_REFERER=http://mastaki/index.php?r=admin/pages
+---
+2014/11/25 20:57:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested view "index" was not found.' in /Applications/MAMP/htdocs/mastaki/framework/web/actions/CViewAction.php:112
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CViewAction.php(123): CViewAction->resolveView('index')
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CAction.php(76): CViewAction->run()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CAction->runWithParams(Array)
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): CController->runAction(Object(CViewAction))
+#4 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): CController->run('page')
+#6 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController('site/page')
+#7 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#8 /Applications/MAMP/htdocs/mastaki/index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php?r=site/page&id=1
+HTTP_REFERER=http://mastaki/index.php?r=admin/pages
+---

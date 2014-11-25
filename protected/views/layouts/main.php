@@ -22,45 +22,54 @@
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 <body>
-<div class="navbar navbar-default">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">MASTAKI</a>
-        </div>
-        <div class="navbar-collapse collapse navbar-responsive-collapse">
-            <?php $this->getNavBar(); ?>
-            <ul class="pull-right nav navbar-nav">
-                <li>
-                    <a href="<?=$this->createUrl('/site/resume')?>"><i class="fa fa-file-text"></i> Анкета</a>
-                </li>
-                <?php if(Yii::app()->user->isGuest) { ?>
+<div id="wrapper">
+    <div class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">MASTAKI</a>
+            </div>
+            <div class="navbar-collapse collapse navbar-responsive-collapse">
+                <?php $this->getNavBar(); ?>
+                <ul class="pull-right nav navbar-nav">
                     <li>
-                        <a href="<?=$this->createUrl('/site/login')?>"><i class="fa fa-sign-in"></i> Войти</a>
+                        <a href="<?=$this->createUrl('/site/resume')?>"><i class="fa fa-file-text"></i> Анкета</a>
                     </li>
-                <?php } else { ?>
-                    <?php if(isset(Yii::app()->user->role)) { if(Yii::app()->user->role == 'ADMIN') { ?>
+                    <?php if(Yii::app()->user->isGuest) { ?>
                         <li>
-                            <a href="<?=$this->createUrl('/admin/index')?>"><i class="fa fa-wrench"></i> Админка</a>
+                            <a href="<?=$this->createUrl('/site/login')?>"><i class="fa fa-sign-in"></i> Войти</a>
                         </li>
-                    <?php }} ?>
-                    <li>
-                        <a href="<?=$this->createUrl('/cabinet/index')?>"><i class="fa fa-user"></i> Личный кабинет</a>
-                    </li>
-                    <li>
-                        <a href="<?=$this->createUrl('/site/logout')?>"><i class="fa fa-sign-out"></i> Выйти</a>
-                    </li>
-                <?php } ?>
-            </ul>
+                    <?php } else { ?>
+                        <?php if(isset(Yii::app()->user->role)) { if(Yii::app()->user->role == 'ADMIN') { ?>
+                            <li>
+                                <a href="<?=$this->createUrl('/admin/index')?>"><i class="fa fa-wrench"></i> Админка</a>
+                            </li>
+                        <?php }} ?>
+                        <li>
+                            <a href="<?=$this->createUrl('/cabinet/index')?>"><i class="fa fa-user"></i> Личный кабинет</a>
+                        </li>
+                        <li>
+                            <a href="<?=$this->createUrl('/site/logout')?>"><i class="fa fa-sign-out"></i> Выйти</a>
+                        </li>
+                    <?php } ?>
+                </ul>
+            </div>
         </div>
     </div>
+    <div class="body">
+        <?php echo $content; ?>
+    </div>
 </div>
-<div class="body">
-    <?php echo $content; ?>
-</div>
+<footer>
+    <div class="container">
+        <div class="col-md-12 footer-links text-center">
+            <?php $this->getFooterBar(); ?>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
