@@ -6,13 +6,23 @@ $(document).ready(function(){
             })
             .done(function(response){updateMastak(response)});
     });
-    $(document).on('change', '.mastak-status-select', function(){
-        $.post( Yii.app.createUrl('ajax/setMastakStatus'),
-            {
-                id: $(this).attr('mastak-id'),
-                status: $(this).val()
-            })
-            .done(function(response){});
+    $(document).on('change', '.mastak-status-select', function(e){
+
+        var dropdown = $(this);
+
+        if(confirm('Уверены?'))
+        {
+            $.post( Yii.app.createUrl('ajax/setMastakStatus'),
+                {
+                    id: $(this).attr('mastak-id'),
+                    status: $(this).val()
+                })
+                .done(function(response){$(dropdown).parent().parent().attr('old-status', $(dropdown).val());});
+        }
+        else
+        {
+            $(dropdown).val($(dropdown).parent().parent().attr('old-status'));
+        }
     });
     $(document).on('click', '#mastak-add-review', function(){
         $.post( Yii.app.createUrl('ajax/addMastakReview'),
@@ -31,7 +41,6 @@ $(document).ready(function(){
                 $('#mastak-review-content').val('');
             });
     });
-
     $('#search-btn').click(function(){
         $.post( Yii.app.createUrl('ajax/getMastaks'),
             {
