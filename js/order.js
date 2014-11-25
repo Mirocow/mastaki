@@ -35,6 +35,7 @@ $(document).ready(function () {
 
         var problemStatuses = [];
         var orderId = $(this).attr('order-id');
+        var mastakId = $('#mastak-id').val();
 
         var tbody = $('table[order-id=' + orderId + ']');
 
@@ -54,6 +55,7 @@ $(document).ready(function () {
 
         var data = {
             orderId: orderId,
+            mastakId: mastakId,
             problemStatuses: problemStatuses,
             orderStatus: orderStatus
         };
@@ -118,7 +120,7 @@ function orderDetails(data)
 
     drawProblemsDropdown(data.problems);
 
-    $('.problem-status-select,.order-status-select,.discount').change(function(){
+    $('.problem-status-select,.order-status-select,.discount,#mastak-id').change(function(){
         $('table.order-details-table a.save-order').removeAttr('disabled').removeClass('btn-default').addClass('btn-success');
     });
 }

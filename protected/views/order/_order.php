@@ -5,11 +5,14 @@
 $firstRow = true;
 $totalPrice = 0;
 $discount = 0;
+$freeMastaks = CHtml::listData(Mastak::model()->findAllByAttributes(array('status' => 'WORKING')), 'id', 'name');
+array_unshift($freeMastaks, '--Выберите исполнителя--');
 ?>
 
 <table class="table order-details-table" order-id="<?=$data->id;?>">
-    <tr colspan="7">
-        Клиент: <?=$data->user->id.'  '.$data->user->name;?>
+    <tr>
+        <td colspan="4">Клиент: <?=$data->user->id.'  '.$data->user->name;?></td>
+        <td colspan="4"><?=CHtml::dropDownList('mastak_id', $data->mastak_id, $freeMastaks, array('id' => 'mastak-id'));?></td>
     </tr>
     <?php if($firstRow) {
         $firstRow = false;

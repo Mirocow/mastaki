@@ -108,6 +108,12 @@ class OrderController extends Controller
         {
             $data = json_decode($_POST['data']);
             $order = FixOrder::model()->findByPk($data->orderId);
+
+            if($data->mastakId != 0)
+                $order->mastak_id = $data->mastakId;
+            else
+                $order->mastak_id = null;
+
             $order->status = $data->orderStatus;
             $order->save();
 
