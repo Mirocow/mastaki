@@ -54,4 +54,6 @@ function updateMastak(response)
     $('#experience-well').text(response.experience);
     $('#qualities-well').text(response.qualities);
     $('#skills-well').html(response.skills);
+
+    $('#mastak-reviews').html(response.reviews).attr('mastak-id', response.id);
 }

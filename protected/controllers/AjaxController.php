@@ -901,6 +901,7 @@ class AjaxController extends Controller
             {
                 $response = $mastak->attributes;
                 $response['skills'] = $mastak->skillsDetail();
+                $response['reviews'] = $this->renderPartial('/admin/_reviews', array('reviews' => MastakReview::model()->findAllByAttributes(array('mastak_id' => $_POST['id']))), true);
                 print json_encode($response);
             }
         }

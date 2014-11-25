@@ -6032,3 +6032,9 @@ in /Applications/MAMP/htdocs/mastaki/index.php (13)
 2014/11/25 18:32:06 [warning] [application] Failed to set unsafe attribute "discount" of "User".
 in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (872)
 in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/25 18:34:29 [warning] [application] Failed to set unsafe attribute "email" of "Mastak".
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/SiteController.php (128)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/25 18:34:30 [warning] [application] Failed to set unsafe attribute "email" of "Mastak".
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/SiteController.php (128)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
