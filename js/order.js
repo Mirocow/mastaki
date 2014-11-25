@@ -107,6 +107,10 @@ $(document).ready(function () {
                 $('#order-comment-content').val('');
             });
     });
+
+    $(document).on('change', '.problem-status-select,.order-status-select,.discount,#mastak-id', function(){
+        $('table.order-details-table a.save-order').removeAttr('disabled').removeClass('btn-default').addClass('btn-success');
+    });
 });
 
 function orderSaved(data)
@@ -139,10 +143,6 @@ function orderDetails(data)
     $('.order-review-form').removeClass('hidden');
 
     drawProblemsDropdown(data.problems);
-
-    $('.problem-status-select,.order-status-select,.discount,#mastak-id').change(function(){
-        $('table.order-details-table a.save-order').removeAttr('disabled').removeClass('btn-default').addClass('btn-success');
-    });
 }
 
 function orderShortClick(order)
