@@ -12,6 +12,7 @@ class OrderController extends Controller
         if(isset($_POST['data']))
         {
             $data = json_decode($_POST['data'], true);
+
             if ($data['name'] !== '' && $data['phone'] !== '')
             {
                 $user = User::model()->findByAttributes(array('phone' => $data['phone']));
@@ -26,6 +27,8 @@ class OrderController extends Controller
                     $user->save();
 
                     //@todo Отправка SMS с паролем, пока вместо этого вывод на экран
+                    $sms = new SMS();
+                    $result = $sms->send('7'.str_replace(')','',str_replace(' ','',str_replace('-','',str_replace('(','',$data['phone'])))), 'Ваш аккаунт создан! Тел: '.$data['phone'].' Пароль:'.$user->open_pass);
 
                     $userPhone = $user->phone;
                     $userPassword = $user->open_pass;

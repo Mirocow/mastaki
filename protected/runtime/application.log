@@ -6307,3 +6307,28 @@ Stack trace:
 REQUEST_URI=/index.php?r=site/page&id=1
 HTTP_REFERER=http://mastaki/index.php?r=admin/pages
 ---
+2014/11/30 01:53:54 [error] [php] file_get_contents(http%3A%2F%2Fgateway.api.sc%2Fget%2F%3Fuser%3Dblackman%26pwd%3Ddark555%26sadr%3DSMS+Info%26dadr%3D9035679902%26text%3DHello+world%21): failed to open stream: No such file or directory (/Applications/MAMP/htdocs/mastaki/protected/components/SMS.php:10)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CInlineAction.php(49): SiteController->actionTest()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): SiteController->runAction()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#4 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): SiteController->run()
+#5 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#6 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#7 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=site/test
+in /Applications/MAMP/htdocs/mastaki/protected/components/SMS.php (10)
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/SiteController.php (186)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/11/30 02:03:04 [error] [php] Undefined variable: data (/Applications/MAMP/htdocs/mastaki/protected/controllers/OrderController.php:11)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): OrderController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): OrderController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): OrderController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=order/createOrder
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/OrderController.php (11)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)

@@ -64,7 +64,7 @@ function orderCreated(data)
 
         if(data.userPhone != null && data.userPassword != null)
         {
-            $('#additional-message').html('Номер телефона:' + data.userPhone + ' Пароль:' + data.userPassword);
+            //  $('#additional-message').html('Номер телефона:' + data.userPhone + ' Пароль:' + data.userPassword);
         }
 
         $('#form-div').hide(500);
