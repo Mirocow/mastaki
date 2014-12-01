@@ -20,22 +20,23 @@ if(count($clients) > 0)
 }
 
 ?>
-
-<div class="col-md-12 search-row">
-    <div class="col-md-4">
-        <input type="text" class="col-md-12 form-control" id="search-client-input"/>
+<div class="col-md-6">
+    <div class="col-md-12 search-row">
+        <div class="col-md-8">
+            <input type="text" class="col-md-12 form-control" id="search-client-input"/>
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-success col-md-12" id="search">Поиск</button>
+        </div>
     </div>
-    <div class="col-md-2">
-        <button class="btn btn-success col-md-12" id="search">Поиск</button>
-    </div>
-</div>
-<div class="col-md-12">
-    <div class="col-md-7">
+    <div class="col-md-12">
         <div class="table-responsive clients-container">
             <?php $this->renderPartial('_clients', array('clients' => $clients));?>
         </div>
     </div>
-    <div class="col-md-5">
+</div>
+<div class="col-md-6">
+    <div class="col-md-12">
         <div class="well col-md-12">
             <form id="client-form">
                 <div class="col-md-12">
@@ -66,7 +67,7 @@ if(count($clients) > 0)
             <?php $this->renderPartial('_orders', array('orders' => $orders)); ?>
         </div>
     </div>
-</div>
-<div class="col-md-12 client-reviews-container table-responsive">
-    <?php $this->renderPartial('_reviews', array('reviews' => $reviews)); ?>
+    <div class="col-md-12 client-reviews-container table-responsive">
+        <?php $this->renderPartial('_reviews', array('reviews' => $reviews)); ?>
+    </div>
 </div>

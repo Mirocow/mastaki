@@ -12,7 +12,7 @@ array_unshift($freeMastaks, '--Выберите исполнителя--');
 <table class="table order-details-table" order-id="<?=$data->id;?>">
     <tr>
         <td colspan="4">Клиент: <?=$data->user->id.'  '.$data->user->name;?></td>
-        <td colspan="4"><?=CHtml::dropDownList('mastak_id', $data->mastak_id, $freeMastaks, array('id' => 'mastak-id'));?></td>
+        <td colspan="4"><?=CHtml::dropDownList('mastak_id', $data->mastak_id, $freeMastaks, array('id' => 'mastak-id', 'class' => 'form-control'));?></td>
     </tr>
     <?php if($firstRow) {
         $firstRow = false;
@@ -28,7 +28,6 @@ array_unshift($freeMastaks, '--Выберите исполнителя--');
         $counter = 1;
         foreach($data->orderProblems as $orderProblem)
         {
-            $totalPrice += $orderProblem->deviceProblem->price;
     ?>
     <tr class="problem-row" order-problem-id="<?=$orderProblem->id;?>">
         <td>

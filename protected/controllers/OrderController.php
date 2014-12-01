@@ -100,9 +100,9 @@ class OrderController extends Controller
             ),
         ));
 
+        $response['comments'] = $this->renderPartial('/admin/_reviews', array('reviews' => OrderComment::model()->findAllByAttributes(array('fix_order_id' => $id))), true);
         $response['output']   = $this->renderPartial('_order', array('data' => $order), true);
         $response['problems'] = CHtml::listData(DeviceProblem::model()->findAllByAttributes(array('device_id' => FixOrder::model()->findByPk($id)->getDevice())), 'id', 'problem.name');
-        $response['comments'] = $this->renderPartial('/admin/_reviews', array('reviews' => OrderComment::model()->findAllByAttributes(array('fix_order_id' => $id))), true);
         print json_encode($response);
     }
 
