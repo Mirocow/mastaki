@@ -9,6 +9,7 @@
  * @property integer $active
  * @property integer $device_type_id
  * @property string $name
+ * @property string $icon
  */
 class Manufacturer extends CActiveRecord
 {
@@ -33,7 +34,7 @@ class Manufacturer extends CActiveRecord
 			array('name', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, device_type_id, pos, active', 'safe', 'on'=>'search'),
+			array('id, name, device_type_id, pos, active, icon', 'safe', 'on'=>'search'),
 		);
 	}
 

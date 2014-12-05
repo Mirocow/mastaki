@@ -15,12 +15,12 @@ $(document).ready(function () {
         if (position == -1)
         {
             orderedProblems.push(problemId);
-            problemItem.parent().addClass('list-group-item-info', 300, "swing" );
+            problemItem.parent().addClass('list-group-item-info', 300, "swing").css('background', "#c7e894 url('../images/white_circle.png') -16px 4px no-repeat");
         }
         else
         {
             orderedProblems.splice(position, 1);
-            problemItem.parent().removeClass('list-group-item-info', 300, "swing" );
+            problemItem.parent().removeClass('list-group-item-info', 300, "swing" ).css('background', "white url('../images/blue_circle.png') -16px 4px no-repeat");
         }
 
         if(orderedProblems.length > 0)

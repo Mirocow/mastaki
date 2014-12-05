@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/css/dropdowns-enhancement.min.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/fa/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/new.css" />
 
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/js/bootstrap.js" type="application/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/js/dropdowns-enhancement.js" type="application/javascript"></script>
@@ -23,7 +24,37 @@
 </head>
 <body>
 <div id="wrapper">
-    <div class="navbar navbar-default">
+    <div class="header">
+        <div class="title-container col-md-3">
+            <div class="up col-md-12">
+                +7 495 000 00 00
+            </div>
+            <div class="title">
+                МАСТАКИ
+            </div>
+            <div class="down col-md-12">
+                Ремонт цифровой техники
+            </div>
+        </div>
+        <div class="col-md-6 menu">
+            <?php
+                foreach(DeviceType::model()->findAllByAttributes(array('active' => '1'), array('order' => 'pos ASC')) as $deviceType)
+                {
+            ?>
+                <div class="menu-item">
+                    <div class="col-md-12 icon">
+                        <a href="<?=$this->createUrl('/site/deviceType', array('type_id' => $deviceType->id));?>"><i class="<?=$deviceType->icon;?>"></i></a>
+                    </div>
+                    <div class="col-md-12 link">
+                        <a href="<?=$this->createUrl('/site/deviceType', array('type_id' => $deviceType->id));?>"><?=$deviceType->name;?></a>
+                    </div>
+                </div>
+            <?
+                }
+            ?>
+        </div>
+    </div>
+    <div class="navbar navbar-default" style="display: none;">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
