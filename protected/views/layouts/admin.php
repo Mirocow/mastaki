@@ -1,6 +1,6 @@
 <?php /* @var $this Controller */ ?>
 <?php $this->beginContent('//layouts/main'); ?>
-    <div class="col-md-2">
+    <div class="col-md-1">
         <?php
         $this->widget('zii.widgets.CMenu',array(
             'items'=> array(
@@ -18,7 +18,7 @@
         ));
         ?>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-11">
         <?php echo $content; ?>
     </div><!-- content -->
 <?php $this->endContent(); ?>

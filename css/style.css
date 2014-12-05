@@ -271,3 +271,17 @@ footer {
 .clear {
     margin-bottom: 5px;
 }
+
+.no-pad {
+    padding-left: 0;
+    padding-right: 0;
+}
+.no-pad-x {
+    padding-bottom: 0;
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+    vertical-align: middle;
+}
