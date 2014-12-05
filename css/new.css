@@ -1,0 +1,212 @@
+body {
+  background: #f6f8ff;
+}
+.clear-margin {
+  margin-top: 30px;
+}
+.header {
+  width: 100%;
+  height: 120px;
+  border-bottom: 1px solid lightslategray;
+  margin-bottom: 20px;
+  background-color: white;
+}
+.header .title-container {
+  text-align: center;
+}
+.header .title-container .up,
+.header .title-container .down,
+.header .title-container .title {
+  padding: 5px 0;
+}
+.header .title-container .up,
+.header .title-container .down,
+.header .title-container .title {
+  text-align: center;
+}
+.header .title-container .title {
+  font-size: 28pt;
+}
+.header .menu {
+  min-height: 100%;
+}
+.header .menu .menu-item {
+  min-height: 100%;
+  width: auto;
+  display: inline-block;
+  text-align: center;
+  padding: 25px 0;
+  cursor: pointer;
+}
+.header .menu .menu-item .icon a i {
+  color: #5e5971;
+  font-size: 20pt;
+  width: 50px;
+  height: 50px;
+  background-color: #b5e1f2;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 50px;
+  margin: 0 auto;
+}
+.header .menu .menu-item .icon a i:hover {
+  background-color: #b5f2d5;
+}
+.header .menu .menu-item .link {
+  text-align: center;
+}
+.header .menu .menu-item .link a,
+.header .menu .menu-item .link a:hover {
+  color: #5e5971;
+  text-decoration: none;
+}
+#leftMenu .list-group .list-group-item {
+  border-radius: 0;
+  border: none;
+  color: #FFFFFF;
+}
+#leftMenu .list-group .list-group-item.disabled {
+  color: #afe5fa;
+}
+#leftMenu .list-group .list-group-item-info {
+  background-color: #32a6d2;
+  color: #FFFFFF;
+  font-size: 14pt;
+}
+#leftMenu .list-group .list-group-item-info i {
+  font-size: 14pt;
+}
+#leftMenu .list-group .list-group-item-info:first-child {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+#leftMenu .list-group .list-group-item-info:last-child {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+#leftMenu .list-group div a {
+  text-align: left;
+  padding-left: 25px;
+}
+#leftMenu .list-group .collapse,
+#leftMenu .list-group .collapsing {
+  background: #0b75a2 url('../images/lvl.png') 10px 10px repeat-y;
+}
+#leftMenu .list-group .collapse .list-group-item,
+#leftMenu .list-group .collapsing .list-group-item {
+  background: transparent url('../images/gray_circle.png') 8px 17px no-repeat;
+  background-size: 6px 6px;
+}
+#leftMenu .list-group .collapse .list-group-item.disabled,
+#leftMenu .list-group .collapsing .list-group-item.disabled {
+  background: transparent url('../images/green_circle.png') 8px 17px no-repeat;
+  background-size: 6px 6px;
+}
+.problems .panel {
+  border: none;
+}
+.problems .panel .panel-heading {
+  line-height: 25px;
+  vert-align: middle;
+  background-color: #b5e1f2;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.problems .panel .panel-heading i {
+  padding: 5px;
+  background-color: #0b75a2;
+  border-radius: 5px;
+  color: white;
+  width: 35px;
+  height: 35px;
+  font-size: 24pt;
+  line-height: 25px;
+  text-align: center;
+}
+.problems .panel .panel-heading span {
+  font-size: 20pt;
+  padding-left: 20px;
+}
+.problems .panel .list-group .list-group-item,
+.problems .panel .list-group .list-group-item-info {
+  color: #000000;
+}
+.problems .panel .list-group .list-group-item {
+  background: #ffffff url('../images/blue_circle.png') -16px 4px no-repeat;
+}
+.problems .panel .list-group .list-group-item:hover {
+  background-color: #d1eaf2;
+}
+.problems .panel .list-group .list-group-item-info,
+.problems .panel .list-group .list-group-item-info:hover {
+  background: #c7e894 url('../images/white_circle.png') -16px 4px no-repeat;
+}
+.problems .panel .list-group .list-group-item {
+  padding-left: 0;
+  overflow-x: hidden;
+}
+.problems .panel .list-group .list-group-item a i {
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+.problems .panel .list-group .list-group-item i {
+  text-align: center;
+}
+.problems .panel .list-group .list-group-item span.problem-item {
+  padding-left: 10px;
+}
+.problems .panel .list-group .list-group-item span.price {
+  border-left: 2px solid #d9ead1;
+  padding-left: 10px;
+  padding-top: 0;
+  padding-bottom: 0;
+  width: 12%;
+  text-align: right;
+}
+.problems .panel .list-group .list-group-item .problem-details {
+  padding-top: 10px;
+  padding-left: 20px;
+}
+.deviceInfo {
+  padding: 15px;
+  position: absolute;
+  right: 10%;
+  top: -140px;
+  width: 30%;
+  background-color: #fefefe;
+  border-radius: 10px;
+  z-index: 1;
+}
+.deviceInfo .order-form,
+.deviceInfo #form-div,
+.deviceInfo div {
+  padding-left: 0;
+  padding-right: 0;
+}
+.deviceInfo .padding {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.deviceInfo #form-div div {
+  margin-top: 5px;
+}
+.problem-type {
+  padding: 20px 0;
+  padding-left: 80px;
+}
+.problem-type i {
+  background-color: #b5e1f2;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  font-size: 14pt;
+  color: black;
+  text-align: center;
+  line-height: 30px;
+}
+.problem-type span {
+  line-height: 30px;
+  vertical-align: middle;
+}
