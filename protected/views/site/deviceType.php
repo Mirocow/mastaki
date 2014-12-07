@@ -29,7 +29,7 @@ $date->add(new DateInterval('PT4H'));
                 <button type="button" id="order-btn" class="btn btn-success col-md-12" disabled="disabled">Заказать услугу</button>
             </div>
             <div class="col-md-6 text-center padding">
-                <input type="text" name="date" class="form-control col-md-4" value="<?=$date->format('Y-m-d H:i:s');?>"/>
+                <input type="text" name="date" class="form-control col-md-4" id="dateTime" value="<?=$date->format('Y-m-d H:i:s');?>"/>
             </div>
         </div>
         <div class="row col-md-12 text-ceter" id="form-message">
@@ -97,7 +97,7 @@ $date->add(new DateInterval('PT4H'));
                      {
                          $price = ($problem->type == 'BREAKDOWN') ? $problem->devicesProblem[0]->getTotalPrice() .'р.' : 'от '.$problem->devicesProblem[0]->getTotalPrice().'р.';
                          echo '<li class="list-group-item">';
-                         echo '<a aria-expanded="true" aria-controls="p'.$problem->devicesProblem[0]->id.'" data-toggle="collapse" class="collapsed" data-parent="#problems-columns" href="#p'.$problem->devicesProblem[0]->id.'"><i class="fa fa-angle-right details-arrow" problem-id="'.$problem->devicesProblem[0]->id.'"></i></a>&nbsp;<span class="problem-item" problem-id="'.$problem->devicesProblem[0]->id.'"><i class="'.$problem->icon.'"></i> '.$problem->name.'</span><span class="pull-right price">'.$price.'</span>';
+                         echo '<a aria-expanded="true" aria-controls="p'.$problem->devicesProblem[0]->id.'" data-toggle="collapse" class="collapsed" data-parent="#problems-columns" href="#p'.$problem->devicesProblem[0]->id.'"><i class="fa fa-angle-right details-arrow" problem-id="'.$problem->devicesProblem[0]->id.'"></i></a>&nbsp;<span class="problem-item" problem-id="'.$problem->devicesProblem[0]->id.'"><i class="'.$problem->icon.'"></i> <span>'.$problem->name.'</span></span><span class="pull-right price">'.$price.'</span>';
                          echo '<p role="tabpanel" aria-labelledby="p'.$problem->devicesProblem[0]->id.'" class="problem-details row panel-collapse collapse" id="p'.$problem->devicesProblem[0]->id.'" problem-id="'.$problem->devicesProblem[0]->id.'">';
                          if($problem->image)
                              echo '<img src="'.Yii::app()->request->baseUrl.'/images/images/'.$problem->image.'" class="desc-img img-responsive"/>';

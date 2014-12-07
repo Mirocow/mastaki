@@ -7,6 +7,7 @@
  * @property integer $id
  * @property string $created
  * @property string $status
+ * @property string $to
  * @property integer $user_id
  */
 class FixOrder extends CActiveRecord
@@ -32,7 +33,7 @@ class FixOrder extends CActiveRecord
 			array('status', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, created, status, user_id', 'safe', 'on'=>'search'),
+			array('id, created, to, status, user_id', 'safe', 'on'=>'search'),
 		);
 	}
 

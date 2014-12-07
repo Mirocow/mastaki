@@ -18,7 +18,7 @@ $form=$this->beginWidget('CActiveForm', array(
 		'validateOnSubmit'=>true,
 	),
     'htmlOptions' => array(
-        'class' => 'form-horizontal black-form',
+        'class' => 'form-horizontal',
     )
 )); ?>
     <fieldset>

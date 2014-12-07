@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/fa/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/new.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/datetimepicker.css" />
 
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/js/bootstrap.js" type="application/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/js/dropdowns-enhancement.js" type="application/javascript"></script>
@@ -20,6 +21,7 @@
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/addToCart.js" type="application/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/html.js" type="application/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/mask.js" type="application/javascript"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/datetimepicker.js" type="application/javascript"></script>
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 <body>
@@ -96,10 +98,50 @@
     </div>
 </div>
 <footer>
-    <div class="container">
-        <div class="col-md-12 footer-links text-center">
-            <?php $this->getFooterBar(); ?>
-        </div>
+    <div class="col-md-12 footer-links text-center">
+        <?php $this->getFooterBar(); ?>
+    </div>
+    <div id="popoverExampleTwoHiddenContent" style="display: none;">
+        <div class="col-md-12">
+            <?php
+            $model = new LoginForm();
+            $this->showMessages($model);
+            $form=$this->beginWidget('CActiveForm', array(
+                'id'=>'login-form',
+                'action' => array('/site/login'),
+                'enableClientValidation'=>true,
+                'clientOptions'=>array(
+                    'validateOnSubmit'=>true,
+                ),
+                'htmlOptions' => array(
+                    'class' => 'form-horizontal',
+                )
+            )); ?>
+            <fieldset>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <span class="input-group-addon">+7</span>
+                            <?php echo $form->textField($model,'phone', array('class' => 'form-control')); ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <?php echo $form->passwordField($model,'password', array('class' => 'form-control', 'placeholder' => 'Пароль')); ?>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2 text-center">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i>&nbsp;Войти</button>
+                        <!--<a href="<?=$this->createUrl('/site/registration');?>" class="btn btn-primary">Регистрация</a>
+                <a href="<?=$this->createUrl('/site/forgot');?>" class="btn btn-warning pull-right">Восстановить пароль</a>-->
+                    </div>
+                </div>
+            </fieldset>
+
+            <?php $this->endWidget(); ?>
+        </div><!-- form -->
     </div>
 </footer>
 </body>

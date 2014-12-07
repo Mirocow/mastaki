@@ -7,6 +7,7 @@
  * @property integer $id
  * @property string $title
  * @property string $content
+ * @property string $icon
  * @property integer $footer
  */
 class Page extends CActiveRecord
@@ -32,7 +33,7 @@ class Page extends CActiveRecord
 			array('title', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, content, footer', 'safe', 'on'=>'search'),
+			array('id, title, content, icon, footer', 'safe', 'on'=>'search'),
 		);
 	}
 

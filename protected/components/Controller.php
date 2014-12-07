@@ -99,10 +99,12 @@ class Controller extends CController
 
 
         $items = array();
+        $items[] = array('label'=>  '<i class="fa fa-user"></i> <span>Личный кабинет</span>'  , 'url' => '', 'linkOptions' => array('id' => 'cabinet-login'), 'visible' => Yii::app()->user->isGuest);
 
         foreach($links as $link)
         {
-            $items[] = array('label'=>  $link->title  , 'url' => array('/site/page', 'id' => $link->id));
+            $label = (isset($link->icon)) ? '<i class="'.$link->icon.'"></i> <span>'.$link->title.'</span>' : $link->title;
+            $items[] = array('label'=>  $label  , 'url' => array('/site/page', 'id' => $link->id));
         }
         $this->widget('zii.widgets.CMenu',array(
             'items'=> $items,

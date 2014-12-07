@@ -39,6 +39,7 @@ class OrderController extends Controller
                 $newFixOrder->created = Core::now('sql', 'datetime');
                 $newFixOrder->status = 'PENDING';
                 $newFixOrder->user_id = $user->getPrimaryKey();
+                $newFixOrder->to = $data['date'];
                 $newFixOrder->save();
 
                 foreach($data['orderedProblems'] as $problem)

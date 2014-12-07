@@ -36,19 +36,19 @@ body {
       width: auto;
       display: inline-block;
       text-align: center;
-      padding: 25px 0;
+      padding: 15px 0;
       cursor: pointer;
       .icon {
         a {
           i {
             color: #5e5971;
-            font-size: 20pt;
-            width: 50px;
-            height: 50px;
+            font-size: 30pt;
+            width: 70px;
+            height: 70px;
             background-color: #b5e1f2;
             border-radius: 50%;
             text-align: center;
-            line-height: 50px;
+            line-height: 70px;
             margin: 0 auto;
           }
           i:hover {
@@ -162,10 +162,12 @@ body {
         overflow-x: hidden;
         a {
           i {
-            padding-top: 3px;
-            padding-bottom: 5px;
-            padding-left: 2px;
-            padding-right: 2px;
+            position: relative;
+            bottom: 3px;
+            left: 2px;
+          }
+          i.fa-angle-down {
+            left: 0px;
           }
         }
         i {
@@ -173,6 +175,16 @@ body {
         }
         span.problem-item {
           padding-left: 10px;
+          line-height: 16pt;
+          color: #898989;
+          i {
+            font-size: 16pt;
+          }
+          span {
+            line-height: 16pt;
+            bottom: 2px;
+            position: relative;
+          }
         }
         span.price {
           border-left: 2px solid #d9ead1;
@@ -181,6 +193,7 @@ body {
           padding-bottom: 0;
           width: 12%;
           text-align: right;
+          color: #898989;
         }
         .problem-details {
           padding-top: 10px;
@@ -202,7 +215,7 @@ body {
   position: absolute;
   right: 10%;
   top: -140px;
-  width: 30%;
+  width: 20%;
   background-color: #fefefe;
   border-radius: 10px;
   z-index: 1;
@@ -234,4 +247,63 @@ body {
     vertical-align: middle;
   }
   padding-left: 80px;
+}
+
+footer {
+  background-color: #537080;
+  .footer-links {
+    ul {
+      li {
+        a {
+          color: white;
+          line-height: 30px;
+          cursor: pointer;
+          i{
+            color: #6e7187;
+            font-size: 18pt;
+            padding-top: 3px;
+            width: 30px;
+            height: 30px;
+            background-color: #b9e2f4;
+            border-radius: 5px;
+
+          }
+          span {
+            bottom: 2px;
+            position: relative;
+          }
+        }
+        a:hover {
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}
+
+.panel>.list-group:last-child .list-group-item:last-child {
+  border-bottom: 0;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+.popover-content {
+  input[name="LoginForm[phone]"] {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  padding-left: 15px;
+  padding-right: 15px;
+  div {
+    padding-left: 5px;
+    padding-right: 5px;
+    div {
+      padding-left: 0;
+      padding-right: 0;
+      div {
+        padding-left: 0;
+        padding-right: 0;
+
+      }
+    }
+  }
 }

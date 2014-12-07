@@ -36,7 +36,8 @@ $(document).ready(function () {
         var data = {
             orderedProblems: orderedProblems,
             phone: $('input[name=phone]').val(),
-            name: $('input[name=name]').val()
+            name: $('input[name=name]').val(),
+            date: $('input[name=date]').val()
         };
 
         $.post( Yii.app.createUrl('order/createOrder'),
