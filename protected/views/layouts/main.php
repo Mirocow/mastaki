@@ -26,7 +26,7 @@
 </head>
 <body>
 <div id="wrapper">
-    <div class="header">
+    <div class="header row">
         <div class="title-container col-md-3">
             <div class="up col-md-12">
                 +7 495 000 00 00
