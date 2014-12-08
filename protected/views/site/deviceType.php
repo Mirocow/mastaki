@@ -65,7 +65,7 @@ $date->add(new DateInterval('PT4H'));
         </div>
     </div>
 </div>
-<div class="col-md-10 clear-margin">
+<div class="col-md-10">
     <div class="col-md-12 problem-type">
         <div class="pull-left col-md-6">
             <a href="<?=$this->createUrl('/site/deviceType', array('type_id' => $type_id, 'manufacturer_id' => $manufacturer_id, 'device_id' => $device_id, 'problem_type' => 'BREAKDOWN'));?>">
