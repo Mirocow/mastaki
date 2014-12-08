@@ -22,7 +22,6 @@ $discount = 0;
         $counter = 1;
         foreach($data->orderProblems as $orderProblem)
         {
-            $totalPrice += $orderProblem->deviceProblem->price;
     ?>
     <tr>
         <td>
@@ -35,7 +34,7 @@ $discount = 0;
             <?=$orderProblem->deviceProblem->problem->name;?>
         </td>
         <td colspan="2">
-            <?=$orderProblem->deviceProblem->price;?>
+            <?=$orderProblem->deviceProblem->getTotalPrice();?>
         </td>
         <td>
             <?=Html::getProblemStatus($orderProblem->status);?>
@@ -53,7 +52,7 @@ $discount = 0;
             <?=$data->getTotalPrice().'р.';?>
         </td>
         <td>
-            <?=$data->getTotalDiscount();?>
+            <?=$data->getTotalDiscount().'%';?>
         </td>
         <td>
             <?=Html::getOrderStatus($data->status);?>

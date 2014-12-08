@@ -168,7 +168,7 @@ function doFiltration(string)
 function drawProblemsDropdown(problems)
 {
     var html = '<button class="btn btn-warning add-problem col-md-2">Добавить работу</button>';
-    html += '<div class="col-md-10"><select class="form-control col-md-10 new-problem-select">';
+    html += '<div class="col-md-9 col-md-offset-1"><select class="form-control col-md-10 new-problem-select">';
     $.each(problems, function(key, value){
         html += '<option value="' + key + '">' + value + '</option>';
     });

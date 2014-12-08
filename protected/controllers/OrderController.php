@@ -28,7 +28,7 @@ class OrderController extends Controller
 
                     //@todo Отправка SMS с паролем, пока вместо этого вывод на экран
                     $sms = new SMS();
-                    $result = $sms->send('7'.str_replace(')','',str_replace(' ','',str_replace('-','',str_replace('(','',$data['phone'])))), 'Ваш аккаунт создан! Тел: '.$data['phone'].' Пароль:'.$user->open_pass);
+                    $result = $sms->send('7'.str_replace(')','',str_replace(' ','',str_replace('-','',str_replace('(','',$data['phone'])))), 'Ваш пароль в сервис-центре Mastaki.pro '.$user->open_pass.' . Мы рады приветствовать вас, '.$data['name'].'!');
 
                     $userPhone = $user->phone;
                     $userPassword = $user->open_pass;
@@ -42,12 +42,22 @@ class OrderController extends Controller
                 $newFixOrder->to = $data['date'];
                 $newFixOrder->save();
 
+                $first = true;
                 foreach($data['orderedProblems'] as $problem)
                 {
                     $newOrderProblem = new OrderProblem();
                     $newOrderProblem->fix_order_id = $newFixOrder->getPrimaryKey();
                     $newOrderProblem->device_problem_id = $problem;
                     $newOrderProblem->save();
+                    if($first)
+                    {
+                        $deviceProblem = DeviceProblem::model()->findByPk($problem);
+                        if($deviceProblem)
+                        {
+                            $sms = new SMS();
+                            $result = $sms->send('7'.str_replace(')','',str_replace(' ','',str_replace('-','',str_replace('(','',$data['phone'])))), $data['name'].'Ваш заказ на ремонт '.$deviceProblem->device->name.' получен. Ваш личный мастер свяжется с вами. № '.$newFixOrder->getPrimaryKey());
+                        }
+                    }
                 }
                 print json_encode(array('result' => 'SUCCESS', 'userPhone' => $userPhone, 'userPassword' => $userPassword));
             }
@@ -118,7 +128,13 @@ class OrderController extends Controller
                 $order->mastak_id = $data->mastakId;
             else
                 $order->mastak_id = null;
-
+            $oldStatus = $order->status;
+            if($oldStatus !== $data->orderStatus)
+            {
+                $orderStatuses = Core::orderStatuses();
+                $sms = new SMS();
+                $result = $sms->send('7'.str_replace(')','',str_replace(' ','',str_replace('-','',str_replace('(','',$order->user->phone)))), $order->user->name.', статус Вашего заказа на ремонт '.$order->deviceProblems[0]->device->name.' изменился на '.$orderStatuses[$data->orderStatus]);
+            }
             $order->status = $data->orderStatus;
             $order->save();
 
