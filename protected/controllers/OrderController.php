@@ -56,6 +56,8 @@ class OrderController extends Controller
                         {
                             $sms = new SMS();
                             $result = $sms->send('7'.str_replace(')','',str_replace(' ','',str_replace('-','',str_replace('(','',$data['phone'])))), $data['name'].', Ваш заказ на ремонт '.$deviceProblem->device->name.' получен. Ваш личный мастер свяжется с вами. № '.$newFixOrder->getPrimaryKey());
+
+                            $first = false;
                         }
                     }
                 }
