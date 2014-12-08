@@ -101,6 +101,7 @@ class Controller extends CController
         $items = array();
         $items[] = array('label'=>  '<i class="fa fa-user"></i> <span>Личный кабинет</span>'  , 'url' => '', 'linkOptions' => array('id' => 'cabinet-login'), 'visible' => Yii::app()->user->isGuest);
         $items[] = array('label'=>  '<i class="fa fa-user"></i> <span>Личный кабинет</span>'  , 'url' => array('/cabinet/index'), 'visible' => !Yii::app()->user->isGuest);
+        $items[] = array('label'=>  '<i class="fa fa-file-text-o"></i> <span>Вакансии</span>'  , 'url' => array('/site/resume'));
 
         foreach($links as $link)
         {
