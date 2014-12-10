@@ -15,7 +15,7 @@ $cs->registerScriptFile(Yii::app()->baseUrl.'/js/jquery.swap.js');
                 $first = true;
                 foreach($deviceTypes as $deviceType)
                 {
-                    echo '<li'.(($first) ? ' class="bg-info"' : '').'><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span device-type-id="'.$deviceType->id.'" class="device-type-li">'.$deviceType->name.'</span></li>';
+                    echo '<li'.(($first) ? ' class="bg-info"' : '').'><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span device-type-id="'.$deviceType->id.'" icon="'.$deviceType->icon.'" class="device-type-li">'.$deviceType->name.'</span></li>';
                     $first = false;
                 }
 
@@ -34,7 +34,7 @@ $cs->registerScriptFile(Yii::app()->baseUrl.'/js/jquery.swap.js');
                 </ul>
             </div>
             <div class="col-md-12">
-                <input id="device-type-icon-file" name="DeviceType[icon_file]" type="file" class="form-control col-md-12">
+                <input id="device-type-icon" name="DeviceType[icon]" type="text" class="form-control col-md-12" placeholder="Иконка" value="<?=(isset($deviceTypes[0]) ? $deviceTypes[0]->icon : '');?>">
             </div>
             <input type="hidden" id="deviceTypeIdHidden" name="id" value="<?=(isset($deviceTypes[0]) ? $deviceTypes[0]->getPrimaryKey() : '');?>"/>
             <input type="hidden" name="action" value="deviceType"/>

@@ -6963,3 +6963,15 @@ REQUEST_URI=/index.php?r=cabinet/index
 in /Applications/MAMP/htdocs/mastaki/protected/views/cabinet/_order.php (31)
 in /Applications/MAMP/htdocs/mastaki/protected/views/cabinet/index.php (11)
 in /Applications/MAMP/htdocs/mastaki/protected/controllers/CabinetController.php (27)
+2014/12/10 20:58:11 [warning] [application] Failed to set unsafe attribute "icon" of "DeviceType".
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (199)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/12/10 20:58:22 [warning] [application] Failed to set unsafe attribute "icon" of "DeviceType".
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (199)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/12/10 20:59:01 [warning] [application] Failed to set unsafe attribute "icon" of "DeviceType".
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (199)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/12/10 21:13:56 [warning] [application] Failed to set unsafe attribute "icon" of "DeviceType".
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (199)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)

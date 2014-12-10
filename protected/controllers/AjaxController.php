@@ -196,18 +196,8 @@ class AjaxController extends Controller
             if($data['action'] == 'deviceType')
             {
                 $deviceType = DeviceType::model()->findByPk($data['id']);
+                $deviceType->attributes = $_POST['DeviceType'];
                 $deviceType->name = $data['value'];
-
-                if(isset($_FILES['DeviceType']))
-                {
-                    if($_FILES['DeviceType']['tmp_name']['icon_file'] !== '')
-                    {
-                        $deviceType->icon_file=CUploadedFile::getInstance($deviceType,'icon_file');
-                        $deviceType->icon_file->saveAs('images/icons/'.$deviceType->icon_file->name);
-                        $deviceType->icon = $deviceType->icon_file->name;
-                    }
-                }
-
                 $deviceType->save();
             }
             if($data['action'] == 'manufacturer')

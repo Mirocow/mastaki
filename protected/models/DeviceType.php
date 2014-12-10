@@ -12,7 +12,6 @@
  */
 class DeviceType extends CActiveRecord
 {
-    public $icon_file;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -30,10 +29,9 @@ class DeviceType extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('name', 'length', 'max' => 45),
-            array('icon_file', 'file', 'types'=>'jpg, jpeg, gif, png', 'allowEmpty' => true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, pos, icon, icon_file, active', 'safe', 'on'=>'search'),
+			array('id, name, pos, icon, active', 'safe'),
 		);
 	}
 

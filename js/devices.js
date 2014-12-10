@@ -13,6 +13,7 @@ $(document).ready(function(){
         });
         request.done(function(response) {
             $('.device-types-list .bg-info span').text($('#device-type-input').val());
+            $('.device-types-list .bg-info span').attr('icon',$('#device-type-icon').val());
         });
     });
     $('#save-manufacturer').click(function(){
@@ -202,9 +203,7 @@ $(document).ready(function(){
         $(this).parent().addClass('bg-info');
 
         $('#device-type-input').val($(this).text());
-
-        clearIconFile();
-        getDeviceTypeImage(deviceTypeId);
+        $('#device-type-icon').val($(this).attr('icon'));
 
         var data = {
             deviceTypeId: deviceTypeId,
