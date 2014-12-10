@@ -72,7 +72,7 @@
             $first = true;
             foreach($breakdowns as $breakdown)
             {
-                echo '<li'.(($first) ? ' class="bg-info"' : '').'><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span breakdown-id="'.$breakdown->id.'" class="breakdown-li" icon="'.$breakdown->icon.'">'.$breakdown->name.'</span></li>';
+                echo '<li'.(($first) ? ' class="bg-info"' : '').'><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span breakdown-id="'.$breakdown->id.'" class="breakdown-li" icon="'.$breakdown->icon.'" page="'.$breakdown->page_id.'">'.$breakdown->name.'</span></li>';
                 $first = false;
             }
             ?>
@@ -85,6 +85,26 @@
             </div>
             <div class="col-md-12">
                 <textarea type="text" id="breakdown-description-input" name="description" class="form-control"><?=(isset($breakdowns[0]) ? $breakdowns[0]->description : '');?></textarea>
+            </div>
+            <div class="col-md-12">
+                <select name="Problem[page_id]" id="breakdown-page" class="col-md-12 form-control">
+                    <option value="0">-- Выбор страницы описания --</option>
+                    <?php
+                    foreach(Page::model()->findAll() as $page)
+                    {
+                        $active = 0;
+                        if(isset($breakdowns[0]))
+                        {
+                            if($breakdowns[0]->page_id == $page->getPrimaryKey())
+                                $active = 1;
+                        }
+                        echo '<option value="'.$page->getPrimaryKey().'"';
+                        if($active)
+                            echo ' selected="selected"';
+                        echo '>'.$page->title.'</option>';
+                    }
+                    ?>
+                </select>
             </div>
         </div>
         <div class="col-md-4">
@@ -122,7 +142,7 @@
             $first = true;
             foreach($problems as $problem)
             {
-                echo '<li'.(($first) ? ' class="bg-info"' : '').'><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span problem-id="'.$problem->id.'" class="problem-li" icon="'.$problem->icon.'">'.$problem->name.'</span></li>';
+                echo '<li'.(($first) ? ' class="bg-info"' : '').'><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span problem-id="'.$problem->id.'" class="problem-li" icon="'.$problem->icon.'" page="'.$problem->page_id.'">'.$problem->name.'</span></li>';
                 $first = false;
             }
             ?>
@@ -135,6 +155,26 @@
             </div>
             <div class="col-md-12">
                 <textarea type="text" id="problem-description-input" name="description" class="form-control"><?=(isset($problems[0]) ? $problems[0]->description : '');?></textarea>
+            </div>
+            <div class="col-md-12">
+                <select name="Problem[page_id]" id="problem-page" class="col-md-12 form-control">
+                    <option value="0">-- Выбор страницы описания --</option>
+                    <?php
+                        foreach(Page::model()->findAll() as $page)
+                        {
+                            $active = 0;
+                            if(isset($problems[0]))
+                            {
+                                if($problems[0]->page_id == $page->getPrimaryKey())
+                                    $active = 1;
+                            }
+                            echo '<option value="'.$page->getPrimaryKey().'"';
+                            if($active)
+                                echo ' selected="selected"';
+                            echo '>'.$page->title.'</option>';
+                        }
+                    ?>
+                </select>
             </div>
         </div>
         <div class="col-md-4">

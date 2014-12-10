@@ -41,14 +41,14 @@ class AjaxController extends Controller
                 {
                     foreach(Problem::model()->findAllByAttributes(array('problem_category_id' => $problemCategories[0]['id'], 'type' => 'BREAKDOWN'), array('order' => 'pos ASC')) as $breakdown)
                     {
-                        $breakdowns[] = array('id' => $breakdown->getPrimaryKey(), 'name' => $breakdown->name, 'description' => $breakdown->description, 'icon' => $breakdown->icon, 'active' => $breakdown->active);
+                        $breakdowns[] = array('id' => $breakdown->getPrimaryKey(), 'name' => $breakdown->name, 'description' => $breakdown->description, 'icon' => $breakdown->icon, 'page' => $breakdown->page_id, 'active' => $breakdown->active);
                     }
                 }
                 if(count($problemCategories) > 0)
                 {
                     foreach(Problem::model()->findAllByAttributes(array('problem_category_id' => $problemCategories[0]['id'], 'type' => 'PROBLEM'), array('order' => 'pos ASC')) as $problem)
                     {
-                        $problems[] = array('id' => $problem->getPrimaryKey(), 'name' => $problem->name, 'description' => $problem->description, 'icon' => $problem->icon, 'active' => $problem->active);
+                        $problems[] = array('id' => $problem->getPrimaryKey(), 'name' => $problem->name, 'description' => $problem->description, 'icon' => $problem->icon, 'page' => $problem->page_id, 'active' => $problem->active);
                     }
                 }
 
@@ -76,7 +76,7 @@ class AjaxController extends Controller
                 {
                     foreach(Problem::model()->findAllByAttributes(array('problem_category_id' => $problemCategories[0]['id'], 'type' => 'BREAKDOWN'), array('order' => 'pos ASC')) as $breakdown)
                     {
-                        $data = array('id' => $breakdown->getPrimaryKey(), 'name' => $breakdown->name, 'description' => $breakdown->description, 'icon' => $breakdown->icon, 'active' => $breakdown->active);
+                        $data = array('id' => $breakdown->getPrimaryKey(), 'name' => $breakdown->name, 'description' => $breakdown->description, 'icon' => $breakdown->icon, 'page' => $breakdown->page_id, 'active' => $breakdown->active);
                         $deviceBreakdown = DeviceProblem::model()->findByAttributes(array('problem_id' => $breakdown->getPrimaryKey(), 'device_id' => $devices[0]['id']));
 
                         if($deviceBreakdown !== null)
@@ -88,7 +88,7 @@ class AjaxController extends Controller
                     }
                     foreach(Problem::model()->findAllByAttributes(array('problem_category_id' => $problemCategories[0]['id'], 'type' => 'PROBLEM'), array('order' => 'pos ASC')) as $problem)
                     {
-                        $data = array('id' => $problem->getPrimaryKey(), 'name' => $problem->name, 'description' => $problem->description, 'icon' => $problem->icon, 'active' => $problem->active);
+                        $data = array('id' => $problem->getPrimaryKey(), 'name' => $problem->name, 'description' => $problem->description, 'icon' => $problem->icon, 'page' => $problem->page_id, 'active' => $problem->active);
                         $deviceProblem = DeviceProblem::model()->findByAttributes(array('problem_id' => $problem->getPrimaryKey(), 'device_id' => $devices[0]['id']));
 
                         if($deviceProblem !== null)
@@ -109,7 +109,7 @@ class AjaxController extends Controller
 
                 foreach(Problem::model()->findAllByAttributes(array('problem_category_id' => $data['problemCategoryId'], 'type' => 'BREAKDOWN'), array('order' => 'pos ASC')) as $breakdown)
                 {
-                    $element = array('id' => $breakdown->getPrimaryKey(), 'name' => $breakdown->name, 'description' => $breakdown->description, 'icon' => $breakdown->icon, 'active' => $breakdown->active);
+                    $element = array('id' => $breakdown->getPrimaryKey(), 'name' => $breakdown->name, 'description' => $breakdown->description, 'icon' => $breakdown->icon, 'page' => $breakdown->page_id, 'active' => $breakdown->active);
                     $deviceBreakdown = DeviceProblem::model()->findByAttributes(array('problem_id' => $breakdown->getPrimaryKey(), 'device_id' => $data['deviceId']));
 
                     if($deviceBreakdown !== null)
@@ -121,7 +121,7 @@ class AjaxController extends Controller
                 }
                 foreach(Problem::model()->findAllByAttributes(array('problem_category_id' => $data['problemCategoryId'], 'type' => 'PROBLEM'), array('order' => 'pos ASC')) as $problem)
                 {
-                    $element = array('id' => $problem->getPrimaryKey(), 'name' => $problem->name, 'description' => $problem->description, 'icon' => $problem->icon, 'active' => $problem->active);
+                    $element = array('id' => $problem->getPrimaryKey(), 'name' => $problem->name, 'description' => $problem->description, 'icon' => $problem->icon, 'page' => $problem->page_id, 'active' => $problem->active);
                     $deviceProblem = DeviceProblem::model()->findByAttributes(array('problem_id' => $problem->getPrimaryKey(), 'device_id' => $data['deviceId']));
 
                     if($deviceProblem !== null)
@@ -140,10 +140,10 @@ class AjaxController extends Controller
                 $problems = array();
 
                 foreach(Problem::model()->findAllByAttributes(array('problem_category_id' => $data['problemCategoryId'], 'type' => 'BREAKDOWN'), array('order' => 'pos ASC')) as $breakdown)
-                    $breakdowns[] = array('id' => $breakdown->getPrimaryKey(), 'name' => $breakdown->name, 'description' => $breakdown->description, 'icon' => $breakdown->icon, 'active' => $breakdown->active);
+                    $breakdowns[] = array('id' => $breakdown->getPrimaryKey(), 'name' => $breakdown->name, 'description' => $breakdown->description, 'icon' => $breakdown->icon, 'page' => $breakdown->page_id, 'active' => $breakdown->active);
 
                 foreach(Problem::model()->findAllByAttributes(array('problem_category_id' => $data['problemCategoryId'], 'type' => 'PROBLEM'), array('order' => 'pos ASC')) as $problem)
-                    $problems[] = array('id' => $problem->getPrimaryKey(), 'name' => $problem->name, 'description' => $problem->description, 'icon' => $problem->icon, 'active' => $problem->active);
+                    $problems[] = array('id' => $problem->getPrimaryKey(), 'name' => $problem->name, 'description' => $problem->description, 'icon' => $problem->icon, 'page' => $problem->page_id, 'active' => $problem->active);
 
                 print json_encode(array('action' => 'problemCategory', 'breakdowns' => $breakdowns, 'problems' => $problems));
             }
@@ -160,7 +160,7 @@ class AjaxController extends Controller
                 {
                     foreach(Problem::model()->findAllByAttributes(array('problem_category_id' => $problemCategories[0]['id'], 'type' => 'BREAKDOWN'), array('order' => 'pos ASC')) as $breakdown)
                     {
-                        $element = array('id' => $breakdown->getPrimaryKey(), 'name' => $breakdown->name, 'description' => $breakdown->description, 'icon' => $breakdown->icon, 'active' => $breakdown->active);
+                        $element = array('id' => $breakdown->getPrimaryKey(), 'name' => $breakdown->name, 'description' => $breakdown->description, 'icon' => $breakdown->icon, 'page' => $breakdown->page_id, 'active' => $breakdown->active);
                         $deviceBreakdown = DeviceProblem::model()->findByAttributes(array('problem_id' => $breakdown->getPrimaryKey(), 'device_id' => $data['deviceId']));
 
                         if($deviceBreakdown !== null)
@@ -172,7 +172,7 @@ class AjaxController extends Controller
                     }
                     foreach(Problem::model()->findAllByAttributes(array('problem_category_id' => $problemCategories[0]['id'], 'type' => 'PROBLEM'), array('order' => 'pos ASC')) as $problem)
                     {
-                        $element = array('id' => $problem->getPrimaryKey(), 'name' => $problem->name, 'description' => $problem->description, 'icon' => $problem->icon, 'active' => $problem->active);
+                        $element = array('id' => $problem->getPrimaryKey(), 'name' => $problem->name, 'description' => $problem->description, 'icon' => $problem->icon, 'page' => $problem->page_id, 'active' => $problem->active);
                         $deviceProblem = DeviceProblem::model()->findByAttributes(array('problem_id' => $problem->getPrimaryKey(), 'device_id' => $data['deviceId']));
 
                         if($deviceProblem !== null)
@@ -378,6 +378,7 @@ class AjaxController extends Controller
                 $response['id'] = $breakdown->getPrimaryKey();
                 $response['name'] = $breakdown->name;
                 $response['icon'] = $breakdown->icon;
+                $response['page'] = $breakdown->page_id;
             }
             elseif($data['action'] == 'problem')
             {
@@ -406,6 +407,7 @@ class AjaxController extends Controller
                 $response['id'] = $problem->getPrimaryKey();
                 $response['name'] = $problem->name;
                 $response['icon'] = $problem->icon;
+                $response['page'] = $problem->page_id;
             }
         }
 

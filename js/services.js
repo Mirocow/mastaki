@@ -33,6 +33,7 @@ $(document).ready(function(){
         request.done(function(response) {
             $('.breakdowns-list .bg-info span').text($('#breakdown-input').val());
             $('.breakdowns-list .bg-info span').attr('icon', $('#breakdown-icon').val());
+            $('.breakdowns-list .bg-info span').attr('page', $('#breakdown-page option:selected').val());
         });
     });
     $('#save-problem').click(function(){
@@ -49,6 +50,7 @@ $(document).ready(function(){
         request.done(function(response) {
             $('.problems-list .bg-info span').text($('#problem-input').val());
             $('.problems-list .bg-info span').attr('icon', $('#problem-icon').val());
+            $('.problems-list .bg-info span').attr('page', $('#problem-page option:selected').val());
         });
     });
     $('#delete-problem-category').click(function(){
@@ -165,7 +167,7 @@ $(document).ready(function(){
         request.done(function(response) {
             response = JSON.parse(response);
 
-            var html = '<li><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span breakdown-id="' + response.id + '" class="breakdown-li" icon="' + response.icon + '">' + response.name + '</span></li>';
+            var html = '<li><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span breakdown-id="' + response.id + '" class="breakdown-li" icon="' + response.icon + '" page="' + response.page + '">' + response.name + '</span></li>';
             if ($('.breakdowns-list li').length !== 0)
                 $('.breakdowns-list li:last').after(html);
             else
@@ -186,7 +188,7 @@ $(document).ready(function(){
         request.done(function(response) {
             response = JSON.parse(response);
 
-            var html = '<li><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span problem-id="' + response.id + '" class="problem-li" icon="' + response.icon + '">' + response.name + '</span></li>';
+            var html = '<li><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span problem-id="' + response.id + '" class="problem-li" icon="' + response.icon + '" page="' + response.page + '">' + response.name + '</span></li>';
             if ($('.problems-list li').length !== 0)
                 $('.problems-list li:last').after(html);
             else
@@ -248,6 +250,7 @@ $(document).ready(function(){
 
         clearBreakdownImageFile();
         getBreakdownImage($(this).attr('breakdown-id'));
+        updateBreakdownSelect();
 
         $('#breakdown-icon').val($(this).attr('icon'));
         $('#breakdown-input').val($(this).text());
@@ -269,6 +272,7 @@ $(document).ready(function(){
 
         clearProblemImageFile();
         getProblemImage($(this).attr('problem-id'));
+        updateProblemSelect();
 
         $('#problem-icon').val($(this).attr('icon'));
         $('#problem-input').val($(this).text());
@@ -318,7 +322,7 @@ function updateServices(data)
             else
                 html += '<li>';
 
-            html += '<i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span breakdown-id="' + breakdown.id + '" class="breakdown-li" icon="' + breakdown.icon + '">' + breakdown.name + '</span></li>';
+            html += '<i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span breakdown-id="' + breakdown.id + '" class="breakdown-li" icon="' + breakdown.icon + '" page="' + breakdown.page + '">' + breakdown.name + '</span></li>';
 
             first = false;
         });
@@ -333,7 +337,7 @@ function updateServices(data)
             else
                 html += '<li>';
 
-            html += '<i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span problem-id="' + problem.id + '" class="problem-li" icon="' + problem.name + '">' + problem.name + '</span></li>';
+            html += '<i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span problem-id="' + problem.id + '" class="problem-li" icon="' + problem.name + '" page="' + problem.page + '">' + problem.name + '</span></li>';
 
             first = false;
         });
@@ -466,4 +470,23 @@ function getProblemImage(id)
             if(typeof response.src !== 'undefined')
                 $('#problem-image-file-preview').attr('src', response.src).removeClass('hidden');
         });
+}
+
+function updateBreakdownSelect()
+{
+    $('#breakdown-page option').each(function(index, option){
+        if($(option).val() == $('.breakdowns-list .bg-info span').attr('page'))
+            $(option).attr('selected', 'selected');
+        else
+            $(option).removeAttr('selected');
+    })
+}
+function updateProblemSelect()
+{
+    $('#problem-page option').each(function(index, option){
+        if($(option).val() == $('.problems-list .bg-info span').attr('page'))
+            $(option).attr('selected', 'selected');
+        else
+            $(option).removeAttr('selected');
+    })
 }
