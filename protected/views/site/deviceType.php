@@ -104,7 +104,15 @@ $date->add(new DateInterval('PT4H'));
                          else
                              echo '<img src="'.Yii::app()->request->baseUrl.'/images/no-image-150-100.png" class="desc-img img-responsive"/>';
 
-                         echo '<span>'.$problem->description.'</span>';
+                         echo '<span>';
+                         echo $problem->description;
+                         echo '</span>';
+                         if($problem->page_id)
+                         {
+                             echo '<span class="col-md-12 text-center">';
+                             echo '<a href="'.$this->createUrl('/site/page', array('id' => $problem->page_id)).'" class="text-center">Подробнее...</a>';
+                             echo '</span>';
+                         }
                          echo '</p>';
                          echo '</li>';
                      }
