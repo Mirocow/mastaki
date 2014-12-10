@@ -31,7 +31,7 @@
             $first = true;
             foreach($problemCategories as $problemCategory)
             {
-                echo '<li'.(($first) ? ' class="bg-info"' : '').'><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span problem-category-id="'.$problemCategory->id.'" class="problem-category-li">'.$problemCategory->name.'</span></li>';
+                echo '<li'.(($first) ? ' class="bg-info"' : '').'><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span problem-category-id="'.$problemCategory->id.'" class="problem-category-li" icon="'.$problemCategory->icon.'">'.$problemCategory->name.'</span></li>';
                 $first = false;
             }
 
@@ -57,10 +57,7 @@
                 <input type="hidden" id="problemCategoryIdHidden" name="id" value="<?=(isset($problemCategories[0]) ? $problemCategories[0]->getPrimaryKey() : '');?>"/>
                 <input type="hidden" name="deviceTypeId" value="<?=(isset($deviceTypes[0]) ? $deviceTypes[0]->getPrimaryKey() : '');?>"/>
                 <input type="hidden" name="action" value="problemCategory"/>
-                <input id="problem-category-icon-file" name="ProblemCategory[icon_file]" type="file" class="form-control col-md-12">
-            </div>
-            <div class="col-md-12 text-center problem-category-icon-container">
-                <img src="#" id="problem-category-icon-file-preview" class="img-thumbnail img-responsive hidden"/>
+                <input id="problem-category-icon" name="ProblemCategory[icon]" type="text" class="form-control col-md-12" value="<?=(isset($problemCategories[0]) ? $problemCategories[0]->icon : '');?>">
             </div>
         </form>
     </div>
@@ -75,7 +72,7 @@
             $first = true;
             foreach($breakdowns as $breakdown)
             {
-                echo '<li'.(($first) ? ' class="bg-info"' : '').'><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span breakdown-id="'.$breakdown->id.'" class="breakdown-li">'.$breakdown->name.'</span></li>';
+                echo '<li'.(($first) ? ' class="bg-info"' : '').'><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span breakdown-id="'.$breakdown->id.'" class="breakdown-li" icon="'.$breakdown->icon.'">'.$breakdown->name.'</span></li>';
                 $first = false;
             }
             ?>
@@ -110,6 +107,7 @@
                 <input type="hidden" name="problemCategoryId" value="<?=(isset($problemCategories[0]) ? $problemCategories[0]->getPrimaryKey() : '');?>"/>
                 <input type="hidden" name="action" value="breakdown"/>
                 <input id="breakdown-image-file" name="Problem[image_file]" type="file" class="form-control col-md-12">
+                <input id="breakdown-icon" name="Problem[icon]" type="text" class="form-control col-md-12" placeholder="Иконка" value="<?=(isset($breakdowns[0]) ? $breakdowns[0]->icon : '');?>"/>
             </div>
         </div>
     </form>
@@ -124,7 +122,7 @@
             $first = true;
             foreach($problems as $problem)
             {
-                echo '<li'.(($first) ? ' class="bg-info"' : '').'><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span problem-id="'.$problem->id.'" class="problem-li">'.$problem->name.'</span></li>';
+                echo '<li'.(($first) ? ' class="bg-info"' : '').'><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span problem-id="'.$problem->id.'" class="problem-li" icon="'.$problem->icon.'">'.$problem->name.'</span></li>';
                 $first = false;
             }
             ?>
@@ -159,6 +157,7 @@
                 <input type="hidden" name="problemCategoryId" value="<?=(isset($problemCategories[0]) ? $problemCategories[0]->getPrimaryKey() : '');?>"/>
                 <input type="hidden" name="action" value="problem"/>
                 <input id="problem-image-file" name="Problem[image_file]" type="file" class="form-control col-md-12">
+                <input id="problem-icon" name="Problem[icon]" type="text" class="form-control col-md-12" placeholder="Иконка" value="<?=(isset($problems[0]) ? $problems[0]->icon : '');?>"/>
             </div>
         </div>
     </form>

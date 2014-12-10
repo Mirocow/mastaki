@@ -6975,3 +6975,17 @@ in /Applications/MAMP/htdocs/mastaki/index.php (13)
 2014/12/10 21:13:56 [warning] [application] Failed to set unsafe attribute "icon" of "DeviceType".
 in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (199)
 in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/12/10 21:23:25 [warning] [application] Failed to set unsafe attribute "icon" of "ProblemCategory".
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (229)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/12/10 21:45:30 [error] [php] Creating default object from empty value (/Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php:256)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): AjaxController->runAction()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): AjaxController->runActionWithFilters()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): AjaxController->run()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=ajax/saveElement
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (256)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)

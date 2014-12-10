@@ -16,6 +16,7 @@ $(document).ready(function(){
         });
         request.done(function(response) {
             $('.problem-categories-list .bg-info span').text($('#problem-category-input').val());
+            $('.problem-categories-list .bg-info span').attr('icon', $('#problem-category-icon').val());
         });
     });
     $('#save-breakdown').click(function(){
@@ -31,6 +32,7 @@ $(document).ready(function(){
         });
         request.done(function(response) {
             $('.breakdowns-list .bg-info span').text($('#breakdown-input').val());
+            $('.breakdowns-list .bg-info span').attr('icon', $('#breakdown-icon').val());
         });
     });
     $('#save-problem').click(function(){
@@ -46,6 +48,7 @@ $(document).ready(function(){
         });
         request.done(function(response) {
             $('.problems-list .bg-info span').text($('#problem-input').val());
+            $('.problems-list .bg-info span').attr('icon', $('#problem-icon').val());
         });
     });
     $('#delete-problem-category').click(function(){
@@ -140,7 +143,7 @@ $(document).ready(function(){
         request.done(function(response) {
             response = JSON.parse(response);
 
-            var html = '<li><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span problem-category-id="' + response.id + '" class="problem-category-li">' + response.name + '</span></li>';
+            var html = '<li><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span problem-category-id="' + response.id + '" class="problem-category-li" icon="' + response.icon + '">' + response.name + '</span></li>';
             if ($('.problem-categories-list li').length !== 0)
                 $('.problem-categories-list li:last').after(html);
             else
@@ -162,7 +165,7 @@ $(document).ready(function(){
         request.done(function(response) {
             response = JSON.parse(response);
 
-            var html = '<li><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span breakdown-id="' + response.id + '" class="breakdown-li">' + response.name + '</span></li>';
+            var html = '<li><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span breakdown-id="' + response.id + '" class="breakdown-li" icon="' + response.icon + '">' + response.name + '</span></li>';
             if ($('.breakdowns-list li').length !== 0)
                 $('.breakdowns-list li:last').after(html);
             else
@@ -183,7 +186,7 @@ $(document).ready(function(){
         request.done(function(response) {
             response = JSON.parse(response);
 
-            var html = '<li><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span problem-id="' + response.id + '" class="problem-li">' + response.name + '</span></li>';
+            var html = '<li><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span problem-id="' + response.id + '" class="problem-li" icon="' + response.icon + '">' + response.name + '</span></li>';
             if ($('.problems-list li').length !== 0)
                 $('.problems-list li:last').after(html);
             else
@@ -219,13 +222,11 @@ $(document).ready(function(){
         var deviceTypeId = $('.device-types-list .bg-info span').attr('device-type-id');
         var problemCategoryId = $(this).attr('problem-category-id');
 
-        clearIconFile();
-        getProblemCategoryIcon($(this).attr('problem-category-id'));
-
         $('.problem-category-li').parent().removeClass('bg-info');
         $(this).parent().addClass('bg-info');
 
         $('#problem-category-input').val($(this).text());
+        $('#problem-category-icon').val($(this).attr('icon'));
 
         var data = {
             deviceTypeId: deviceTypeId,
@@ -248,6 +249,7 @@ $(document).ready(function(){
         clearBreakdownImageFile();
         getBreakdownImage($(this).attr('breakdown-id'));
 
+        $('#breakdown-icon').val($(this).attr('icon'));
         $('#breakdown-input').val($(this).text());
 
         $.post( Yii.app.createUrl('ajax/getProblemDescription'),
@@ -268,6 +270,7 @@ $(document).ready(function(){
         clearProblemImageFile();
         getProblemImage($(this).attr('problem-id'));
 
+        $('#problem-icon').val($(this).attr('icon'));
         $('#problem-input').val($(this).text());
 
         $.post( Yii.app.createUrl('ajax/getProblemDescription'),
@@ -300,7 +303,7 @@ function updateServices(data)
             else
                 html += '<li>';
 
-            html += '<i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span problem-category-id="' + problemCategory.id + '" class="problem-category-li">' + problemCategory.name + '</span></li>';
+            html += '<i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span problem-category-id="' + problemCategory.id + '" class="problem-category-li" icon="' + problemCategory.icon + '">' + problemCategory.name + '</span></li>';
 
             first = false;
         });
@@ -315,7 +318,7 @@ function updateServices(data)
             else
                 html += '<li>';
 
-            html += '<i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span breakdown-id="' + breakdown.id + '" class="breakdown-li">' + breakdown.name + '</span></li>';
+            html += '<i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span breakdown-id="' + breakdown.id + '" class="breakdown-li" icon="' + breakdown.icon + '">' + breakdown.name + '</span></li>';
 
             first = false;
         });
@@ -330,7 +333,7 @@ function updateServices(data)
             else
                 html += '<li>';
 
-            html += '<i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span problem-id="' + problem.id + '" class="problem-li">' + problem.name + '</span></li>';
+            html += '<i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span problem-id="' + problem.id + '" class="problem-li" icon="' + problem.name + '">' + problem.name + '</span></li>';
 
             first = false;
         });
@@ -347,7 +350,7 @@ function updateServices(data)
             else
                 html += '<li>';
 
-            html += '<i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span breakdown-id="' + breakdown.id + '" class="breakdown-li">' + breakdown.name + '</span></li>';
+            html += '<i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span breakdown-id="' + breakdown.id + '" class="breakdown-li" icon="' + breakdown.icon + '">' + breakdown.name + '</span></li>';
 
             first = false;
         });
@@ -362,7 +365,7 @@ function updateServices(data)
             else
                 html += '<li>';
 
-            html += '<i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span problem-id="' + problem.id + '" class="problem-li">' + problem.name + '</span></li>';
+            html += '<i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span problem-id="' + problem.id + '" class="problem-li" icon="' + problem.name + '">' + problem.name + '</span></li>';
 
             first = false;
         });

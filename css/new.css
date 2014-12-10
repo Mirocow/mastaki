@@ -59,6 +59,10 @@ body {
   color: #5e5971;
   text-decoration: none;
 }
+.header .menu div {
+  padding-right: 0;
+  padding-left: 0;
+}
 #leftMenu {
   margin-top: 20px;
 }

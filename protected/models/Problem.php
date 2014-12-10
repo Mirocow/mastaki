@@ -38,7 +38,7 @@ class Problem extends CActiveRecord
             array('image_file', 'file', 'types'=>'jpg, jpeg, gif, png', 'allowEmpty' => true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, type, problem_category_id, description, image, icon, image_file, active', 'safe', 'on'=>'search'),
+			array('id, name, type, problem_category_id, description, image, icon, image_file, active', 'safe'),
 		);
 	}
 

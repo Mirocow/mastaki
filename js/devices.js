@@ -144,7 +144,7 @@ $(document).ready(function(){
         request.done(function(response) {
             response = JSON.parse(response);
 
-            var html = '<li><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span device-type-id="' + response.id + '" class="device-type-li">' + response.name + '</span></li>';
+            var html = '<li><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span device-type-id="' + response.id + '" class="device-type-li" icon="' + response.icon + '">' + response.name + '</span></li>';
             if ($('.device-types-list li').length !== 0)
                 $('.device-types-list li:last').after(html);
             else
