@@ -27,7 +27,7 @@
 <body>
 <div id="wrapper">
     <div class="header row">
-        <div class="title-container col-md-3">
+        <div class="title-container col-md-2">
             <div class="up col-md-12">
                 +7 495 000 00 00
             </div>
@@ -38,7 +38,7 @@
                 Ремонт цифровой техники
             </div>
         </div>
-        <div class="col-md-6 menu">
+        <div class="col-md-7 menu">
             <?php
                 foreach(DeviceType::model()->findAllByAttributes(array('active' => '1'), array('order' => 'pos ASC')) as $deviceType)
                 {
