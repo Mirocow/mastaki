@@ -70,4 +70,19 @@ if(count($clients) > 0)
     <div class="col-md-12 client-reviews-container table-responsive">
         <?php $this->renderPartial('_reviews', array('reviews' => $reviews)); ?>
     </div>
+    <div class="col-md-12 send-sms">
+        <div class="panel panel-success sms-panel">
+            <div class="panel-heading">
+                <div class="panel-title"><i class="fa fa-envelope-o"></i> Отправка СМС</div>
+            </div>
+            <div class="panel-body nopadding">
+                <div class="col-md-12">
+                    <textarea id="smsContent" class="form-control" placeholder="Текст сообщения"></textarea>
+                </div>
+                <div class="col-md-12 text-center">
+                    <button id="sendSms" class="btn btn-success"><i class="fa fa-envelope-o"></i> Отправить</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

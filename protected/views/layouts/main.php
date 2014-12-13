@@ -101,7 +101,7 @@
     <div class="col-md-12 footer-links text-center">
         <?php $this->getFooterBar(); ?>
     </div>
-    <div id="popoverExampleTwoHiddenContent" style="display: none;">
+    <div id="popoverExampleTwoHiddenContent" style="display: none; width: 200px;">
         <div class="col-md-12">
             <?php
             $model = new LoginForm();
@@ -132,10 +132,11 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-lg-10 col-lg-offset-2 text-center">
+                    <div class="col-lg-6 text-center">
                         <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i>&nbsp;Войти</button>
-                        <!--<a href="<?=$this->createUrl('/site/registration');?>" class="btn btn-primary">Регистрация</a>
-                <a href="<?=$this->createUrl('/site/forgot');?>" class="btn btn-warning pull-right">Восстановить пароль</a>-->
+                    </div>
+                    <div class="col-lg-6 text-center">
+                        <a href="<?=$this->createUrl('/site/forgot');?>" class="btn btn-warning">Забыли?</a>
                     </div>
                 </div>
             </fieldset>

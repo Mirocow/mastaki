@@ -63,9 +63,13 @@ function orderCreated(data)
         $('#order-btn').attr('disabled', 'disabled');
         $('.problem-item').parent().removeClass('list-group-item-info', 300, "swing" );
 
-        if(data.userPhone != null && data.userPassword != null)
+        if(data.userPhone != null && data.userPassword != null && data.orderId != null)
         {
-            //  $('#additional-message').html('Номер телефона:' + data.userPhone + ' Пароль:' + data.userPassword);
+            $('#additional-message').html('Номер телефона:' + data.userPhone + ' Пароль:' + data.userPassword + ' № Заказа: ' + data.orderId);
+        }
+        else if(data.orderId != null)
+        {
+            $('#additional-message').html('№ Заказа: ' + data.orderId);
         }
 
         $('#form-div').hide(500);

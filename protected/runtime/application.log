@@ -6989,3 +6989,62 @@ Stack trace:
 REQUEST_URI=/index.php?r=ajax/saveElement
 in /Applications/MAMP/htdocs/mastaki/protected/controllers/AjaxController.php (256)
 in /Applications/MAMP/htdocs/mastaki/index.php (13)
+2014/12/14 02:19:29 [error] [php] DateTime::createFromFormat() expects parameter 2 to be string, object given (/Applications/MAMP/htdocs/mastaki/protected/components/Html.php:48)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CBaseController.php(126): require()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CBaseController.php(95): SiteController->renderInternal()
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(869): SiteController->renderFile()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(782): SiteController->renderPartial()
+#4 /Applications/MAMP/htdocs/mastaki/protected/controllers/SiteController.php(118): SiteController->render()
+#5 unknown(0): SiteController->actionDeviceType()
+#6 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs()
+#7 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#8 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CInlineAction->runWithParams()
+#9 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): SiteController->runAction()
+#10 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#11 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): SiteController->run()
+#12 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#13 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#14 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=site/deviceType&type_id=1
+in /Applications/MAMP/htdocs/mastaki/protected/components/Html.php (48)
+in /Applications/MAMP/htdocs/mastaki/protected/views/site/deviceType.php (33)
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/SiteController.php (118)
+2014/12/14 03:06:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "logu".' in /Applications/MAMP/htdocs/mastaki/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(270): CController->missingAction('logu')
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): CController->run('logu')
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController('site/logu')
+#3 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/mastaki/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=site/logu
+---
+2014/12/14 03:10:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "forgot".' in /Applications/MAMP/htdocs/mastaki/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(270): CController->missingAction('forgot')
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): CController->run('forgot')
+#2 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController('site/forgot')
+#3 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/mastaki/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=site/forgot
+HTTP_REFERER=http://mastaki/index.php
+---
+2014/12/14 03:11:25 [error] [php] Undefined variable: model (/Applications/MAMP/htdocs/mastaki/protected/views/site/forgot.php:13)
+Stack trace:
+#0 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(869): SiteController->renderFile()
+#1 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(782): SiteController->renderPartial()
+#2 /Applications/MAMP/htdocs/mastaki/protected/controllers/SiteController.php(221): SiteController->render()
+#3 /Applications/MAMP/htdocs/mastaki/framework/web/actions/CInlineAction.php(49): SiteController->actionForgot()
+#4 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(286): SiteController->runAction()
+#6 /Applications/MAMP/htdocs/mastaki/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#7 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(282): SiteController->run()
+#8 /Applications/MAMP/htdocs/mastaki/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /Applications/MAMP/htdocs/mastaki/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#10 /Applications/MAMP/htdocs/mastaki/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=site/forgot
+in /Applications/MAMP/htdocs/mastaki/protected/views/site/forgot.php (13)
+in /Applications/MAMP/htdocs/mastaki/protected/controllers/SiteController.php (221)
+in /Applications/MAMP/htdocs/mastaki/index.php (13)

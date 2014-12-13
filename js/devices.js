@@ -19,11 +19,13 @@ $(document).ready(function(){
     $('#save-manufacturer').click(function(){
         var id = $('.manufacturers-list .bg-info span').attr('manufacturer-id');
         var value = $('#manufacturer-input').val();
+        var icon = $('#manufacturer-icon').val();
 
         var data = {
             action: 'manufacturer',
             id: id,
-            value: value
+            value: value,
+            icon: icon
         };
 
         $.post( Yii.app.createUrl('ajax/saveElement'),
@@ -32,6 +34,7 @@ $(document).ready(function(){
             })
             .done(function(response){
                 $('.manufacturers-list .bg-info span').text($('#manufacturer-input').val());
+                $('.manufacturers-list .bg-info span').attr('icon',$('#manufacturer-icon').val());
             });
     });
     $('#save-device').click(function(){
@@ -155,16 +158,18 @@ $(document).ready(function(){
     $('#add-manufacturer').click(function(){
         var value = $('#manufacturer-input').val();
         var deviceTypeId = $('.device-types-list .bg-info span').attr('device-type-id');
+        var icon = $('#manufacturer-icon').val();
 
         $.post( Yii.app.createUrl('ajax/addElement'),
             {
                 action: 'manufacturer',
                 deviceTypeId: deviceTypeId,
-                value: value
+                value: value,
+                icon: icon
             })
             .done(function(response){
                 response = JSON.parse(response);
-                var html = '<li><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span manufacturer-id="' + response.id + '" class="manufacturer-li">' + response.name + '</span></li>';
+                var html = '<li><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span manufacturer-id="' + response.id + '" class="manufacturer-li" icon="' + icon + '">' + response.name + '</span></li>';
                 if($('.manufacturers-list li').length !== 0)
                     $('.manufacturers-list li:last').after(html);
                 else
@@ -227,6 +232,7 @@ $(document).ready(function(){
         $(this).parent().addClass('bg-info');
 
         $('#manufacturer-input').val($(this).text());
+        $('#manufacturer-icon').val($(this).attr('icon'));
 
         var data = {
             deviceTypeId: deviceTypeId,

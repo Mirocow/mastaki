@@ -115,6 +115,7 @@ class Controller extends CController
                 $items[] = array('label'=>  '<i class="fa fa-cog"></i> <span>Админка</span>'  , 'url' => array('/admin/index'));
             }
         }
+        $items[] = array('label'=>  '<i class="fa fa-sign-out"></i> <span>Выйти</span>'  , 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest);
         $this->widget('zii.widgets.CMenu',array(
             'items'=> $items,
             'htmlOptions' => array('class'=>'nav nav-pills'),

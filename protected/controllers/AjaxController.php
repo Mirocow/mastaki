@@ -204,6 +204,7 @@ class AjaxController extends Controller
             {
                 $manufacturer = Manufacturer::model()->findByPk($data['id']);
                 $manufacturer->name = $data['value'];
+                $manufacturer->icon = $data['icon'];
                 $manufacturer->save();
             }
             if($data['action'] == 'device')
@@ -933,6 +934,18 @@ class AjaxController extends Controller
             $orderComment->user_id = intval(Yii::app()->user->getId());
             $orderComment->save();
             print json_encode(array('date' => $orderComment->created, 'content' => $orderComment->content));
+        }
+    }
+    public function actionSendSms()
+    {
+        if(isset($_POST['id']) && isset($_POST['message']))
+        {
+            $user = User::model()->findByPk($_POST['id']);
+            if($user)
+            {
+                $sms = new SMS();
+                $result = $sms->send('7'.str_replace(')','',str_replace(' ','',str_replace('-','',str_replace('(','',$user->phone)))), $_POST['message']);
+            }
         }
     }
 }

@@ -216,6 +216,27 @@ class SiteController extends Controller
 		// display the login form
 		$this->render('login',array('model'=>$model));
 	}
+    public function actionForgot()
+    {
+        $user = new User();
+        if(isset($_POST['User']))
+        {
+            $user = User::model()->findByAttributes(array('phone' => $_POST['User']['phone']));
+            if($user)
+            {
+
+                $sms = new SMS();
+                $result = $sms->send('7'.str_replace(')','',str_replace(' ','',str_replace('-','',str_replace('(','',$user->phone)))), 'Ваш пароль в сервис-центре Mastaki.pro '.$user->open_pass);
+                $user = new User();
+                Yii::app()->user->setFlash('SUCCESS', 'Пароль выслан на введенный вами номер');
+            }
+            else
+            {
+                Yii::app()->user->setFlash('ERROR', 'Пользователя с таким номером телефона нет');
+            }
+        }
+        $this->render('forgot', array('model' => $user));
+    }
 
 	/**
 	 * Logs out the current user and redirect to homepage.

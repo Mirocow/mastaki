@@ -50,7 +50,7 @@ $cs->registerScriptFile(Yii::app()->baseUrl.'/js/jquery.swap.js');
                 $first = true;
                 foreach($manufacturers as $manufacturer)
                 {
-                    echo '<li'.(($first) ? ' class="bg-info"' : '').'><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span manufacturer-id="'.$manufacturer->id.'" class="manufacturer-li">'.$manufacturer->name.'</span></li>';
+                    echo '<li'.(($first) ? ' class="bg-info"' : '').'><i class="fa fa-arrow-down move down"></i><i class="fa fa-arrow-up move up"></i><span manufacturer-id="'.$manufacturer->id.'" class="manufacturer-li" icon="'.$manufacturer->icon.'">'.$manufacturer->name.'</span></li>';
                     $first = false;
                 }
             ?>
@@ -65,6 +65,9 @@ $cs->registerScriptFile(Yii::app()->baseUrl.'/js/jquery.swap.js');
                 <li><a href="#" id="add-manufacturer">Добавить</a></li>
                 <li><a href="#" id="delete-manufacturer">Удалить</a></li>
             </ul>
+        </div>
+        <div class="col-md-12">
+            <input type="text" id="manufacturer-icon" class="form-control" value="<?=(isset($manufacturers[0]) ? $manufacturers[0]->icon : '');?>"/>
         </div>
     </div>
     <div class="col-md-4">

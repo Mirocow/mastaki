@@ -10,7 +10,13 @@ $(document).ready(function(){
     $('.problem-details').on('hide.bs.collapse', function () {
         $(this).parent().find('a i').removeClass('fa-angle-down').addClass('fa-angle-right');
     });
-    $('input[name=phone],input[name="LoginForm[phone]"],input[name="User[phone]"],input[name="Mastak[phone]"], .popover-content input[name="LoginForm[phone]"]').mask("(999) 999-99-99");
+    $('input[name=phone],input[name="LoginForm[phone]"],input[name="User[phone]"],input[name="Mastak[phone]"], .popover-content input[name="LoginForm[phone]"]').
+        inputmask("(999) 999-99-99",
+        {
+            showMaskOnHover: false,
+            showMaskOnFocus: false
+        }
+    );
 
     var date = new Date();
     date.setHours(date.getHours()+ 3);
@@ -25,7 +31,10 @@ $(document).ready(function(){
         maxTime: '24',
         defaultTime: startDate.getHours().toString(),
         formatTime: 'H',
-        format:'Y-m-d H:i:s'
+        format:'Y-m-d H:i:s',
+        onChangeDateTime:function(dp,$input){
+            assignDateTime($input.val());
+        }
     });
     $('#cabinet-login').popover({
         placement: 'top',
@@ -38,7 +47,24 @@ $(document).ready(function(){
         }
     });
     $('#cabinet-login').on('shown.bs.popover', function () {
-        $('input[name=phone],input[name="LoginForm[phone]"],input[name="User[phone]"],input[name="Mastak[phone]"], .popover-content input[name="LoginForm[phone]"]').mask("(999) 999-99-99");
+        $('input[name=phone],input[name="LoginForm[phone]"],input[name="User[phone]"],input[name="Mastak[phone]"], .popover-content input[name="LoginForm[phone]"]').inputmask("(999) 999-99-99");
+    });
+
+
+    $('#pickDateIcon').click(function()
+    {
+        $('#dateTime').datetimepicker('show');
+        $('.xdsoft_datetimepicker').css('left','');
     });
 
 });
+
+function assignDateTime(inputDate)
+{
+    var monthNames = [ "янв.", "фев.", "мар.", "апр.", "мая", "июн.", "июл.", "авг.", "сен.", "окт.", "ноя.", "дек." ];
+    var date = new Date();
+    date.setTime(Date.parse(inputDate));
+    var output = date.getDate() + " " + monthNames[date.getMonth()] + " " + date.getHours() + "ч.";
+    $('#selectedDateTime').text(output);
+
+}

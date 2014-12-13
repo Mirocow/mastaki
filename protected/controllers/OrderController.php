@@ -61,7 +61,7 @@ class OrderController extends Controller
                         }
                     }
                 }
-                print json_encode(array('result' => 'SUCCESS', 'userPhone' => $userPhone, 'userPassword' => $userPassword));
+                print json_encode(array('result' => 'SUCCESS', 'userPhone' => $userPhone, 'userPassword' => $userPassword, 'orderId' =>  $newFixOrder->getPrimaryKey()));
             }
             else
             {

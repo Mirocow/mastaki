@@ -25,19 +25,40 @@ $date->add(new DateInterval('PT4H'));
             <div class="col-md-12" id="name-input">
                 <input type="text" name="name" class="form-control col-md-4" placeholder="Имя"/>
             </div>
-            <div class="col-md-6 text-center padding">
+            <div class="col-md-6 text-center">
                 <button type="button" id="order-btn" class="btn btn-success col-md-12" disabled="disabled">Заказать услугу</button>
             </div>
-            <div class="col-md-6 text-center padding">
+            <div class="col-md-6 text-center pickDate">
                 <input type="text" name="date" class="form-control col-md-4" id="dateTime" value="<?=$date->format('Y-m-d H:i:s');?>"/>
+                <span id="selectedDateTime"><?=Html::formatDateTime($date);?></span>
+                <i class="fa fa-calendar-o" id="pickDateIcon"></i>
             </div>
         </div>
         <div class="row col-md-12 text-ceter" id="form-message">
             <div class="alert alert-dismissable alert-success">
                 <button type="button" class="close" id="form-message-close">×</button>
-                <strong>Заказ успешно создан!</strong>
+                <strong>Заказ успешно создан!</strong><br>
+                <span id="additional-message"></span>
             </div>
         </div>
+    </div>
+</div>
+<?
+    $deviceImage = false;
+    $deviceName = false;
+    $device = Device::model()->findByPk($device_id);
+    if($device)
+    {
+        $deviceImage = $device->image;
+        $deviceName = $device->name;
+    }
+?>
+<div class="devicePhoto">
+    <div class="deviceImage text-center col-md-12">
+        <img src="<?= $deviceImage ? Yii::app()->request->baseUrl.'/images/images/'.$deviceImage : Yii::app()->request->baseUrl.'/images/no-image.png';?>" class="img-circle"/>
+    </div>
+    <div class="col-md-12 text-center">
+        <?= $deviceName ? $deviceName : '';?>
     </div>
 </div>
 <div class="col-md-2">
@@ -71,11 +92,11 @@ $date->add(new DateInterval('PT4H'));
             <a href="<?=$this->createUrl('/site/deviceType', array('type_id' => $type_id, 'manufacturer_id' => $manufacturer_id, 'device_id' => $device_id, 'problem_type' => 'BREAKDOWN'));?>">
                 <i class="fa fa-cogs"></i>
             </a>
-            <span>Выбрать определенную услугу</span>
+            <span><a href="<?=$this->createUrl('/site/deviceType', array('type_id' => $type_id, 'manufacturer_id' => $manufacturer_id, 'device_id' => $device_id, 'problem_type' => 'BREAKDOWN'));?>">Выбрать определенную услугу</a></span>
             <a href="<?=$this->createUrl('/site/deviceType', array('type_id' => $type_id, 'manufacturer_id' => $manufacturer_id, 'device_id' => $device_id, 'problem_type' => 'PROBLEM'));?>" style="padding-left: 20px;">
                 <i class="fa fa-search"></i>
             </a>
-            <span>Выбрать определенную услугу</span>
+            <span><a href="<?=$this->createUrl('/site/deviceType', array('type_id' => $type_id, 'manufacturer_id' => $manufacturer_id, 'device_id' => $device_id, 'problem_type' => 'PROBLEM'));?>">Поиск по проблеме</a></span>
         </div>
     </div>
     <?php

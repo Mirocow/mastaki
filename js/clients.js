@@ -44,6 +44,19 @@ $(document).ready(function(){
             .done(function(response){
                 $('.orders-table-container').html(response);
             });
-    })
+    });
+
+    $('#sendSms').click(function(){
+        var content = $('#smsContent').val();
+        $.post( Yii.app.createUrl('ajax/sendSms'),
+            {
+                id:$('#clientId').val(),
+                message: content
+            })
+            .done(function(response){
+                alert("Ваше сообщение отправлено!");
+            });
+
+    });
 
 });

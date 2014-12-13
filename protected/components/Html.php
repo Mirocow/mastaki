@@ -42,4 +42,9 @@ class Html {
     {
         return CHtml::link('Изменить', array('/admin/page', 'id' => $id), array('class' => 'btn btn-primary pull-right'));
     }
+    public static function formatDateTime($date)
+    {
+        $monthNames = [ 1 => "янв.", "фев.", "мар.", "апр.", "мая", "июн.", "июл.", "авг.", "сен.", "окт.", "ноя.", "дек." ];
+        return $date->format('d').' '.$monthNames[$date->format('m')].' '.$date->format('G').'ч.';
+    }
 }
