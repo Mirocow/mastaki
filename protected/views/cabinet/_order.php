@@ -28,13 +28,13 @@ $discount = 0;
             <?=$counter;?>
         </td>
         <td>
-            <?=$orderProblem->deviceProblem->device->name;?>
+            <?=$orderProblem->deviceProblem ? $orderProblem->deviceProblem->device->name : ' - ';?>
         </td>
         <td>
-            <?=$orderProblem->deviceProblem->problem->name;?>
+            <?=$orderProblem->deviceProblem ? $orderProblem->deviceProblem->problem->name : ' - ';?>
         </td>
         <td colspan="2">
-            <?=$orderProblem->deviceProblem->getTotalPrice();?>
+            <?=$orderProblem->deviceProblem ? $orderProblem->deviceProblem->getTotalPrice() : ' - ';?>
         </td>
         <td>
             <?=Html::getProblemStatus($orderProblem->status);?>

@@ -112,8 +112,11 @@ class FixOrder extends CActiveRecord
             $totalPrice = 0;
             foreach($this->orderProblems as $orderProblem)
             {
-                $totalPrice += $orderProblem->deviceProblem->part_price;
-                $totalPrice += $orderProblem->deviceProblem->price - ($orderProblem->deviceProblem->price/100 * ($orderProblem->discount + $this->user->discount));
+                if($orderProblem->deviceProblem)
+                {
+                    $totalPrice += $orderProblem->deviceProblem->part_price;
+                    $totalPrice += $orderProblem->deviceProblem->price - ($orderProblem->deviceProblem->price/100 * ($orderProblem->discount + $this->user->discount));
+                }
             }
 
             return $totalPrice;
@@ -123,7 +126,10 @@ class FixOrder extends CActiveRecord
             $totalPrice = 0;
             foreach($this->orderProblems as $orderProblem)
             {
-                $totalPrice += $orderProblem->deviceProblem->part_price + $orderProblem->deviceProblem->price;
+                if($orderProblem->deviceProblem)
+                {
+                    $totalPrice += $orderProblem->deviceProblem->part_price + $orderProblem->deviceProblem->price;
+                }
             }
             return $totalPrice;
         }
@@ -131,7 +137,11 @@ class FixOrder extends CActiveRecord
 
     public function getTotalDiscount()
     {
-        return round(100*($this->getTotalPrice(false) - $this->getTotalPrice(true))/$this->getTotalPrice(false), 2);
+        $totalPrice = $this->getTotalPrice();
+        if($totalPrice !== 0)
+            return round(100*($this->getTotalPrice(false) - $this->getTotalPrice(true))/$this->getTotalPrice(false), 2);
+        else
+            return 0;
     }
 
     public function getDevice()
