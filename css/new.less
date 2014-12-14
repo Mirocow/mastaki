@@ -156,28 +156,25 @@ body {
       .list-group-item-info {
         color: #000000;
       }
-      .list-group-item {
-        background: #FFFFFF url('../images/blue_circle.png') -16px 4px no-repeat;
-      }
       .list-group-item:hover {
         background-color: #d1eaf2;
-      }
-      .list-group-item-info,
-      .list-group-item-info:hover {
-        background: #c7e894 url('../images/white_circle.png') -16px 4px no-repeat;
       }
 
       .list-group-item {
         padding-left: 0;
         overflow-x: hidden;
         a {
+          left: -20px;
+          position: relative;
           i {
             position: relative;
-            bottom: 3px;
-            left: 2px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #D4E3EF;
+            padding: 13px 10px 10px 20px;
           }
           i.fa-angle-down {
-            left: 0px;
           }
         }
         i {

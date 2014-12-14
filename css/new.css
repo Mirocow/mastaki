@@ -144,27 +144,24 @@ body {
 .problems .panel .list-group .list-group-item-info {
   color: #000000;
 }
-.problems .panel .list-group .list-group-item {
-  background: #ffffff url('../images/blue_circle.png') -16px 4px no-repeat;
-}
 .problems .panel .list-group .list-group-item:hover {
   background-color: #d1eaf2;
-}
-.problems .panel .list-group .list-group-item-info,
-.problems .panel .list-group .list-group-item-info:hover {
-  background: #c7e894 url('../images/white_circle.png') -16px 4px no-repeat;
 }
 .problems .panel .list-group .list-group-item {
   padding-left: 0;
   overflow-x: hidden;
 }
+.problems .panel .list-group .list-group-item a {
+  left: -20px;
+  position: relative;
+}
 .problems .panel .list-group .list-group-item a i {
   position: relative;
-  bottom: 3px;
-  left: 2px;
-}
-.problems .panel .list-group .list-group-item a i.fa-angle-down {
-  left: 0px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #D4E3EF;
+  padding: 13px 10px 10px 20px;
 }
 .problems .panel .list-group .list-group-item i {
   text-align: center;

@@ -121,14 +121,17 @@
                 <div class="form-group">
                     <div class="col-md-12">
                         <div class="input-group">
-                            <span class="input-group-addon">+7</span>
+                            <span class="input-group-addon"><i class="fa fa-phone"></i> +7</span>
                             <?php echo $form->textField($model,'phone', array('class' => 'form-control')); ?>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-12">
-                        <?php echo $form->passwordField($model,'password', array('class' => 'form-control', 'placeholder' => 'Пароль')); ?>
+                        <div class="input-group">
+                            <span class="input-group-addon padding-addon"><i class="fa fa-key"></i></span>
+                            <?php echo $form->passwordField($model,'password', array('class' => 'form-control', 'placeholder' => 'Пароль')); ?>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
