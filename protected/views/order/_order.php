@@ -11,7 +11,8 @@ array_unshift($freeMastaks, '--Выберите исполнителя--');
 
 <table class="table order-details-table" order-id="<?=$data->id;?>">
     <tr>
-        <td colspan="4">Клиент: <?=$data->user->id.'  '.$data->user->name;?></td>
+        <td colspan="2">Клиент: <?=$data->user->id.'  '.$data->user->name;?></td>
+        <td colspan="2"><?=$data->to;?></td>
         <td colspan="4"><?=CHtml::dropDownList('mastak_id', $data->mastak_id, $freeMastaks, array('id' => 'mastak-id', 'class' => 'form-control'));?></td>
     </tr>
     <?php if($firstRow) {

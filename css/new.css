@@ -200,7 +200,7 @@ body {
   width: 15%;
   background-color: #fefefe;
   border-radius: 10px;
-  z-index: 1;
+  z-index: 2;
 }
 .deviceInfo .order-form,
 .deviceInfo #form-div,
@@ -225,16 +225,24 @@ body {
   top: -120px;
   height: 143px;
   border-radius: 10px;
-  border: 1px solid #b0b0b0;
+  border: 2px dotted #b0b0b0;
   background-color: #fefefe;
+  z-index: 1;
+}
+.devicePhoto img {
+  width: 100px;
+  height: 100px;
 }
 .devicePhoto .deviceImage {
   padding-left: 0;
   padding-right: 0;
 }
+.devicePhoto .deviceName span {
+  border-bottom: 2px solid #ef9c6e;
+}
 .problem-type {
   padding: 10px 0;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   padding-left: 80px;
 }
 .problem-type i {

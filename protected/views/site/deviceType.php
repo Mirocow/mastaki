@@ -57,8 +57,8 @@ $date->add(new DateInterval('PT4H'));
     <div class="deviceImage text-center col-md-12">
         <img src="<?= $deviceImage ? Yii::app()->request->baseUrl.'/images/images/'.$deviceImage : Yii::app()->request->baseUrl.'/images/no-image.png';?>" class="img-circle"/>
     </div>
-    <div class="col-md-12 text-center">
-        <?= $deviceName ? $deviceName : '';?>
+    <div class="col-md-12 text-center deviceName">
+        <span><?= $deviceName ? $deviceName : '';?></span>
     </div>
 </div>
 <div class="col-md-2">
