@@ -8,6 +8,8 @@ class CabinetController extends Controller
     {
         $orders = new CActiveDataProvider('FixOrder', array(
             'criteria' => array(
+                'condition' => 'user_id = :userId',
+                'params' => array(':userId' => Yii::app()->user->getId()),
                 'with' => array(
                     'orderProblems' => array(
                         'with' => array(
